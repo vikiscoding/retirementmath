@@ -66,3 +66,11 @@ Max monthly OAS, 2026:
 1. Launch ad-free. Build pages first.
 2. JSON plus scraper plus human-merged PR for rule updates.
 3. Show official canada.ca figures next to our estimate when they differ.
+
+## Search and visual pass (2026-10-22)
+
+Search: the title leads with the query people type, "OAS clawback calculator 2026 (Canada)". The description names the recovery tax, net world income, and canada.ca. The lede says which income years sit behind payments from July 2026 to June 2028. Two extra questions match the wording already on the page, and the FAQ schema copies that wording. The visible $93,454 chip is the 2025 income line already published on canada.ca and in the FAQ. No new figure was added.
+
+Canonicals for privacy and disclaimer use `/privacy` and `/disclaimer`, because Cloudflare Pages returns 200 there and redirects the `.html` paths. The sitemap lists those same URLs. The homepage canonical stays `https://retirementmath.ca/`.
+
+The mark is an equals sign: a spruce tile, a cream bar, and a gold bar of the same length. `logo.svg` is the file. The header uses a cream tile so the mark shows on the spruce bar. Favicon and footer use the spruce tile. No extra fonts, no photos, no third-party scripts.

@@ -3,41 +3,50 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>OAS clawback calculator for 2026 | Retirement Math</title>
-<meta name="description" content="Estimate your Old Age Security clawback (recovery tax) for July 2026 to June 2027. Uses official canada.ca thresholds. Free, in your browser, from Retirement Math.">
+<title>OAS clawback calculator 2026 (Canada) | Retirement Math</title>
+<meta name="description" content="Free Canadian OAS clawback calculator for 2026. Estimate the recovery tax from your net world income using official canada.ca thresholds.">
 <link rel="canonical" href="https://retirementmath.ca/">
 <meta name="theme-color" content="#1e4d3a" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#143528" media="(prefers-color-scheme: dark)">
 <meta property="og:site_name" content="Retirement Math">
-<meta property="og:title" content="OAS clawback calculator for 2026 | Retirement Math">
-<meta property="og:description" content="Estimate your Old Age Security clawback (recovery tax). Uses official canada.ca thresholds. Free, and it runs in your browser.">
+<meta property="og:title" content="OAS clawback calculator 2026 (Canada) | Retirement Math">
+<meta property="og:description" content="Free Canadian OAS clawback calculator for 2026. Estimate the recovery tax from your net world income using official canada.ca thresholds.">
 <meta property="og:url" content="https://retirementmath.ca/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_CA">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e4d3a'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial,sans-serif' font-size='12' font-weight='700' fill='%23f4efe6'%3ERM%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OAS clawback calculator 2026 (Canada) | Retirement Math">
+<meta name="twitter:description" content="Free Canadian OAS clawback calculator for 2026. Estimate the recovery tax from your net world income using official canada.ca thresholds.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e4d3a'/%3E%3Crect x='7' y='10' width='18' height='3.5' rx='1.75' fill='%23f6f1e6'/%3E%3Crect x='7' y='18.5' width='18' height='3.5' rx='1.75' fill='%23e2b15a'/%3E%3C/svg%3E" type="image/svg+xml">
 <style>
 :root{--bg:#f3efe6;--fg:#1c1915;--muted:#514c44;--line:#e3dacd;--input:#6f695f;--field:#fff;--accent:#1e4d3a;--accent-hover:#173d2e;--accent-fg:#f7f3eb;--card:#fffcf7;--choice:#e7f2eb;--repay:#f6efe4;--keep:#e7f2eb;--warn:#7a4b00;--warnbg:#fff6e0;--focus:#ffbf47;--bar:#1e4d3a;--bar-fg:#f7f3eb;--placeholder:#5e584f;--shadow:0 1px 2px rgba(28,25,21,.05),0 8px 24px rgba(28,25,21,.04);color-scheme:light}
 @media (prefers-color-scheme:dark){:root{--bg:#141210;--fg:#f3efe8;--muted:#c8c0b4;--line:#3d372f;--input:#a39888;--field:#1c1916;--accent:#8fceb0;--accent-hover:#a9dcc2;--accent-fg:#10241b;--card:#211e1a;--choice:#1a3328;--repay:#2a241c;--keep:#1a3328;--warn:#ffd27a;--warnbg:#2c2410;--bar:#143528;--bar-fg:#f3efe8;--placeholder:#c4bbb0;--shadow:none;color-scheme:dark}}
 *{box-sizing:border-box}
-body{margin:0;font:1.0625rem/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+body{margin:0;font:1.0625rem/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);background-image:radial-gradient(1100px 420px at 50% -160px,#fff8ec 0%,transparent 70%);color:var(--fg)}
 a{color:var(--accent);text-underline-offset:.16em}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
 .skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;color:#1c1915;padding:.55rem .8rem;z-index:10;border-radius:8px;text-decoration:none}
 .wrap{max-width:46rem;margin:0 auto;padding:0 1rem}
-.site-bar{background:var(--bar);color:var(--bar-fg)}
-.bar-inner{max-width:46rem;margin:0 auto;padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;flex-wrap:wrap;min-height:64px}
-.brand{display:flex;align-items:center;gap:.65rem;color:inherit;font-weight:700;text-decoration:none;min-height:44px;letter-spacing:-.015em}
+.site-bar{background:var(--bar);color:var(--bar-fg);box-shadow:inset 0 -3px 0 #e2b15a}
+.bar-inner{max-width:46rem;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;flex-wrap:wrap;min-height:72px}
+.brand{display:flex;align-items:center;gap:.7rem;color:inherit;font-weight:700;text-decoration:none;min-height:44px;letter-spacing:-.02em}
 .brand:hover{text-decoration:underline}
-.mark{width:32px;height:32px;display:block;flex:none}
-.bar-domain{font-size:.9rem;letter-spacing:.01em}
+.mark{width:40px;height:40px;display:block;flex:none}
+.bar-domain{font-size:.9rem;letter-spacing:.01em;color:#e7e0d2}
 main{padding-bottom:1rem}
 .page-intro{padding-top:2rem}
-h1{font-size:2rem;line-height:1.15;margin:0 0 .55rem;letter-spacing:-.03em}
+h1{font-size:2.35rem;line-height:1.15;margin:0 0 .55rem;letter-spacing:-.03em}
 h2{font-size:1.35rem;line-height:1.25;margin:0 0 .75rem;letter-spacing:-.02em}
 h3{font-size:1.05rem;margin:1.35rem 0 .45rem}
-.eyebrow{margin:0 0 .4rem;color:var(--accent);font-weight:700;font-size:.92rem}
-.lede{color:var(--muted);margin:0;max-width:38rem}
+.eyebrow{display:flex;align-items:center;gap:.5rem;margin:0 0 .45rem;color:var(--accent);font-weight:700;font-size:.92rem}
+.eyebrow::before{content:"";width:1.25rem;height:3px;border-radius:2px;background:#e2b15a;flex:none}
+.lede{color:var(--muted);margin:0;max-width:40rem}
+.facts{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0;padding:0;list-style:none}
+.facts li{margin:0;max-width:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:.45rem .75rem;font-size:.92rem;line-height:1.35}
+.onpage{display:flex;flex-wrap:wrap;gap:.15rem 1.1rem;margin:.35rem 0 0;padding:0}
+.onpage a{min-height:44px;display:inline-flex;align-items:center}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.2rem 1.35rem;margin:1.35rem 0 0;box-shadow:var(--shadow)}
+#calc-form{border-top:4px solid #e2b15a}
 label{display:block;font-weight:600;margin-top:1.15rem}
 .hint{display:block;font-weight:400;color:var(--muted);font-size:.95rem;margin-top:.15rem}
 input,select{font:inherit;font-variant-numeric:tabular-nums;display:block;width:100%;padding:.65rem .75rem;border:1px solid var(--input);border-radius:10px;background:var(--field);color:var(--fg);min-height:48px;accent-color:var(--accent)}
@@ -53,10 +62,10 @@ legend{font-weight:600;padding:0}
 .radio input{width:1.15rem;height:1.15rem;min-height:0;margin:0;padding:0;accent-color:var(--accent)}
 button{font:inherit;font-weight:700;display:block;margin-top:1.4rem;padding:.75rem 1.4rem;border:0;border-radius:10px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:48px;width:100%;max-width:16rem}
 button:hover{background:var(--accent-hover)}
-@media (max-width:40rem){h1{font-size:1.7rem}button,input[type="number"],input[inputmode="decimal"]{max-width:none}}
+@media (max-width:40rem){h1{font-size:1.75rem}button,input[type="number"],input[inputmode="decimal"]{max-width:none}}
 .error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
 #calc-form > label:first-of-type{margin-top:0}
-@media (prefers-color-scheme:dark){.error{color:#ff8a8a}input[aria-invalid="true"]{border-color:#ff8a8a}}
+@media (prefers-color-scheme:dark){.error{color:#ff8a8a}input[aria-invalid="true"]{border-color:#ff8a8a}body{background-image:radial-gradient(900px 380px at 50% -160px,#1c3329 0%,transparent 70%)}}
 .table-wrap{overflow-x:auto;margin:.35rem 0 1rem;border:1px solid var(--line);border-radius:12px;background:var(--card)}
 table{border-collapse:collapse;width:100%}
 th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
@@ -77,17 +86,20 @@ caption{text-align:left;caption-side:top;padding:0 0 .45rem;color:var(--muted)}
 .note{background:var(--warnbg);color:var(--warn);border-radius:10px;padding:.8rem 1rem;font-size:.95rem}
 .ad-slot{display:none}
 .reading{border-top:1px solid var(--line);margin-top:2.75rem;padding-top:1.6rem}
+.reading h2{display:flex;align-items:center;gap:.55rem}
+.reading h2::before{content:"";width:.5rem;height:.5rem;border-radius:2px;background:#e2b15a;flex:none}
 .reading p{max-width:40rem}
 details{border-bottom:1px solid var(--line)}
 details p{margin:.15rem 0 .9rem}
 summary{cursor:pointer;font-weight:600;min-height:48px;padding:.7rem 0}
-footer{color:var(--muted);font-size:.95rem;margin-top:2.75rem;border-top:1px solid var(--line);background:var(--card)}
+footer{color:var(--muted);font-size:.95rem;margin-top:2.75rem;border-top:0;box-shadow:inset 0 3px 0 #e2b15a;background:var(--card)}
 .foot-inner{padding:1.35rem 0 2rem}
-.foot-name{margin:0 0 .15rem;color:var(--fg);font-weight:700}
+.foot-name{margin:0 0 .15rem;color:var(--fg);font-weight:700;display:flex;align-items:center;gap:.5rem}
+.foot-name .mark{width:24px;height:24px}
 .foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.15rem 0 .35rem}
 .foot-nav a{min-height:44px;display:inline-flex;align-items:center}
 footer p{margin:.3rem 0}
-@media print{.ad-slot,button{display:none}.site-bar{background:none;color:#000}.site-bar a{color:#000}body,.card,.result-grid > div{background:#fff;color:#000;box-shadow:none}}
+@media print{.ad-slot,button,.facts,.onpage{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card,.result-grid > div{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
 </style>
 </head>
 <body>
@@ -96,8 +108,9 @@ footer p{margin:.3rem 0}
   <div class="bar-inner">
     <a class="brand" href="./">
       <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
-        <rect width="32" height="32" rx="8" fill="#f4efe6"/>
-        <text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#1e4d3a">RM</text>
+        <rect width="32" height="32" rx="8" fill="#f6f1e6"/>
+        <rect x="7" y="10" width="18" height="3.5" rx="1.75" fill="#1e4d3a"/>
+        <rect x="7" y="18.5" width="18" height="3.5" rx="1.75" fill="#c9963a"/>
       </svg>
       Retirement Math
     </a>
@@ -112,7 +125,17 @@ footer p{margin:.3rem 0}
   <div class="page-intro">
     <p class="eyebrow">Old Age Security</p>
     <h1>OAS clawback calculator for 2026</h1>
-    <p class="lede">Estimate how much of your Old Age Security pension you would repay (the OAS recovery tax) based on your net world income. Nothing you type leaves your browser.</p>
+    <p class="lede">Estimate your Old Age Security clawback, also called the recovery tax, from your net world income. For payments from July 2026 to June 2028, it uses your 2025 or 2026 income. The numbers come from canada.ca. Nothing you type leaves your browser.</p>
+    <ul class="facts">
+      <li>15% of income over the line</li>
+      <li>2025 income starts at $93,454</li>
+      <li>Stays in your browser</li>
+    </ul>
+    <nav class="onpage" aria-label="On this page">
+      <a href="#who">Who it is for</a>
+      <a href="#how">How it works</a>
+      <a href="#questions">Questions</a>
+    </nav>
   </div>
 <form id="calc-form" class="card" novalidate>
   <label for="income">Net world income for the year
@@ -173,7 +196,13 @@ footer p{margin:.3rem 0}
 <!-- AD SLOT PLACEHOLDER: in-content, below results. No ad code. -->
 <div class="ad-slot" role="presentation" aria-hidden="true">Ad slot placeholder (in-content)</div>
 
-<section class="reading">
+<section class="reading" id="who">
+  <h2>Who this calculator is for</h2>
+  <p>Use this if you live in Canada and you receive Old Age Security, or you expect to. It helps when your income is near the clawback line and you want an estimate of the recovery tax.</p>
+  <p>The result is not a tax assessment. The CRA and Service Canada decide the amount you repay.</p>
+</section>
+
+<section class="reading" id="how">
   <h2>How the OAS clawback works</h2>
   <p>If your net world income is above the yearly threshold, you repay 15% of the amount over the threshold. The repayment cannot be more than the OAS you receive. The Canada Revenue Agency takes it off your monthly OAS cheques from July of the next year to June of the year after.</p>
   <p>Example from canada.ca: income of $100,000 in 2025, threshold $93,454. $100,000 minus $93,454 is $6,546. 15% of that is $981.90 to repay from July 2026 to June 2027.</p>
@@ -190,7 +219,7 @@ footer p{margin:.3rem 0}
     <a href="https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-october-december.html">ESDC quarterly amounts, October to December 2026</a>.</p>
 </section>
 
-<section class="reading">
+<section class="reading" id="questions">
   <h2>Frequently asked questions</h2>
   <details><summary>What is the OAS clawback threshold for 2026?</summary>
   <p>For OAS paid from July 2026 to June 2027, the clawback is based on your 2025 income and starts at $93,454. For July 2027 to June 2028, it is based on your 2026 income and starts at $95,323. The upper limits for 2026 income are still estimates on canada.ca until later in the year.</p></details>
@@ -204,11 +233,15 @@ footer p{margin:.3rem 0}
   <p>Yes. Net world income includes the OAS pension itself.</p></details>
   <details><summary>Is this calculator official?</summary>
   <p>No. It is an estimate. Your notice from the CRA and Service Canada is what counts.</p></details>
+  <details><summary>When is the OAS clawback taken off my payments?</summary>
+  <p>The Canada Revenue Agency takes it off your monthly OAS from July of the year after the income year, through to June of the following year. Income from 2025 changes payments from July 2026 to June 2027.</p></details>
+  <details><summary>How do you calculate the OAS clawback?</summary>
+  <p>Subtract the yearly threshold from your net world income. If that amount is above zero, you repay 15% of it. The repayment cannot be more than the OAS you receive.</p></details>
 </section>
 
 <section class="reading">
   <h2>Disclaimer</h2>
-  <p>This tool gives a general estimate for education only. It is not tax, legal or financial advice and is not from the Government of Canada, the CRA or Service Canada. Partial pension and deferral math is simplified. Check with the CRA, Service Canada or a qualified professional before making decisions. Figures can change; see the date and sources above.</p>
+  <p>This tool gives a general estimate for education only. It is not tax, legal or financial advice and is not from the Government of Canada, the CRA or Service Canada. Partial pension and deferral math is simplified. Check with the CRA, Service Canada or a qualified professional before making decisions. Figures can change; see the date and sources above. Read the <a href="disclaimer.html">disclaimer</a> and <a href="privacy.html">privacy policy</a>.</p>
 </section>
 </main>
 
@@ -217,7 +250,7 @@ footer p{margin:.3rem 0}
 
 <footer>
   <div class="wrap foot-inner">
-    <p class="foot-name">Retirement Math</p>
+    <p class="foot-name"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false" width="24" height="24"><rect width="32" height="32" rx="8" fill="#1e4d3a"/><rect x="7" y="10" width="18" height="3.5" rx="1.75" fill="#f6f1e6"/><rect x="7" y="18.5" width="18" height="3.5" rx="1.75" fill="#e2b15a"/></svg> Retirement Math</p>
     <nav class="foot-nav" aria-label="Site">
       <a href="./" aria-current="page">OAS clawback calculator</a>
       <a href="privacy.html">Privacy</a>
@@ -233,7 +266,13 @@ footer p{margin:.3rem 0}
 <!-- RULES:END -->
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Retirement Math","url":"https://retirementmath.ca/"}
+{"@context":"https://schema.org","@type":"WebSite","name":"Retirement Math","url":"https://retirementmath.ca/","publisher":{"@type":"Organization","name":"Retirement Math","url":"https://retirementmath.ca/","logo":"https://retirementmath.ca/logo.svg","email":"privacy@retirementmath.ca","address":{"@type":"PostalAddress","addressLocality":"Scarborough","addressRegion":"ON","addressCountry":"CA"}}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"OAS clawback calculator 2026 (Canada)","url":"https://retirementmath.ca/","inLanguage":"en-CA","dateModified":"2026-10-22","description":"Free Canadian OAS clawback calculator for 2026. Estimate the recovery tax from your net world income using official canada.ca thresholds.","isPartOf":{"@type":"WebSite","name":"Retirement Math","url":"https://retirementmath.ca/"},"about":{"@type":"Thing","name":"Old Age Security recovery tax"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"OAS clawback calculator","url":"https://retirementmath.ca/","applicationCategory":"FinanceApplication","operatingSystem":"Any","isAccessibleForFree":true,"areaServed":{"@type":"Country","name":"Canada"},"offers":{"@type":"Offer","price":"0","priceCurrency":"CAD"},"publisher":{"@type":"Organization","name":"Retirement Math","url":"https://retirementmath.ca/"},"description":"Free Canadian calculator for the Old Age Security clawback, also called the recovery tax."}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
@@ -242,7 +281,9 @@ footer p{margin:.3rem 0}
 {"@type":"Question","name":"At what income is OAS fully clawed back?","acceptedAnswer":{"@type":"Answer","text":"For 2025 income, canada.ca lists $152,062 for ages 65 to 74 and $157,923 for 75 and over. The exact point depends on OAS amounts during the year, so this calculator's estimate can differ slightly."}},
 {"@type":"Question","name":"Does the clawback use household income?","acceptedAnswer":{"@type":"Answer","text":"No. It uses your individual net world income. Pension income splitting can move income between spouses and may lower one person's clawback."}},
 {"@type":"Question","name":"Is my OAS pension counted in net income?","acceptedAnswer":{"@type":"Answer","text":"Yes. Net world income includes the OAS pension itself."}},
-{"@type":"Question","name":"Is this calculator official?","acceptedAnswer":{"@type":"Answer","text":"No. It is an estimate. Your notice from the CRA and Service Canada is what counts."}}
+{"@type":"Question","name":"Is this calculator official?","acceptedAnswer":{"@type":"Answer","text":"No. It is an estimate. Your notice from the CRA and Service Canada is what counts."}},
+{"@type":"Question","name":"When is the OAS clawback taken off my payments?","acceptedAnswer":{"@type":"Answer","text":"The Canada Revenue Agency takes it off your monthly OAS from July of the year after the income year, through to June of the following year. Income from 2025 changes payments from July 2026 to June 2027."}},
+{"@type":"Question","name":"How do you calculate the OAS clawback?","acceptedAnswer":{"@type":"Answer","text":"Subtract the yearly threshold from your net world income. If that amount is above zero, you repay 15% of it. The repayment cannot be more than the OAS you receive."}}
 ]}
 </script>
 

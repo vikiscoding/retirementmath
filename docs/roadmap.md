@@ -3,8 +3,10 @@
 ## Before launch (owner decisions, nothing done yet)
 - [x] Register retirementmath.ca on the main Cloudflare account (vikrant.singh1@outlook.com).
 - [x] Host on Cloudflare Pages free tier, account retirementmathai@gmail.com. Project `retirementmath`. Live at https://retirementmath.pages.dev.
-- [ ] On the main account, add proxied CNAME records so the domain serves the Pages site: `@` and `www` both point at `retirementmath.pages.dev`.
-- [ ] Create a Cloudflare API token on the gmail account (Account, Cloudflare Pages, Edit) and store it as the GitHub secret `CLOUDFLARE_API_TOKEN`. Until then, a push cannot publish.
+- [x] Point retirementmath.ca at the Pages site. https://retirementmath.ca/ serves the calculator.
+- [x] Store a Cloudflare Pages API token as the GitHub secret `CLOUDFLARE_API_TOKEN`.
+- [x] Verify retirementmath.ca in Google Search Console.
+- [x] Point sitemap and canonicals at the URLs Pages serves (`/privacy` and `/disclaimer` return 200; the `.html` paths redirect).
 - [ ] Lawyer or accountant read of disclaimer and privacy page
 - [x] Use retirementmath.ca in canonical, robots.txt, and sitemap.xml
 - [ ] French version (needed for Quebec reach and Law 25 good practice)
