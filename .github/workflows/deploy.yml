@@ -34,7 +34,7 @@ jobs:
       - name: Stage the public site
         run: |
           mkdir site
-          cp index.html privacy.html disclaimer.html robots.txt sitemap.xml ads.txt _redirects googlea9324d5b76946cff.html site/
+          cp index.html privacy.html disclaimer.html robots.txt sitemap.xml ads.txt _redirects googlea9324d5b76946cff.html.html site/
 
       - name: Create the Pages project if it is missing
         uses: cloudflare/wrangler-action@v3
