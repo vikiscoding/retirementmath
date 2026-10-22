@@ -1,9 +1,10 @@
 # Roadmap
 
 ## Before launch (owner decisions, nothing done yet)
-- [x] Register retirementmath.ca. It is on the main Cloudflare account (vikrant.singh1@outlook.com).
-- [ ] Point retirementmath.ca at Cloudflare Pages on the retirementmathai@gmail.com account (free plan)
-- [x] Host choice: Cloudflare Pages free tier, published by GitHub Actions on vikiscoding
+- [x] Register retirementmath.ca on the main Cloudflare account (vikrant.singh1@outlook.com).
+- [x] Host on Cloudflare Pages free tier, account retirementmathai@gmail.com. Project `retirementmath`. Live at https://retirementmath.pages.dev.
+- [ ] On the main account, add proxied CNAME records so the domain serves the Pages site: `@` and `www` both point at `retirementmath.pages.dev`.
+- [ ] Create a Cloudflare API token on the gmail account (Account, Cloudflare Pages, Edit) and store it as the GitHub secret `CLOUDFLARE_API_TOKEN`. Until then, a push cannot publish.
 - [ ] Lawyer or accountant read of disclaimer and privacy page
 - [x] Use retirementmath.ca in canonical, robots.txt, and sitemap.xml
 - [ ] French version (needed for Quebec reach and Law 25 good practice)

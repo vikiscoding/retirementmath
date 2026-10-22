@@ -3,7 +3,7 @@
 Read this first before changing anything in this project.
 
 ## Project
-Static utility site for Canadians, named Retirement Math (retirementmath.ca). First page: OAS clawback (recovery tax) calculator, `index.html`. Owner: Vikrant, Scarborough ON. Domain is registered on the main Cloudflare account (vikrant.singh1@outlook.com). Pages hosting is the free plan on retirementmathai@gmail.com. GitHub repo is under vikiscoding. Auto-deploy is `.github/workflows/deploy.yml`.
+Static utility site for Canadians, named Retirement Math (retirementmath.ca). First page: OAS clawback (recovery tax) calculator, `index.html`. Owner: Vikrant, Scarborough ON. Domain DNS is on the main Cloudflare account (vikrant.singh1@outlook.com). Pages hosting is the free plan on retirementmathai@gmail.com, project `retirementmath`, currently https://retirementmath.pages.dev. GitHub repo: `vikiscoding/retirementmath`. Auto-deploy is `.github/workflows/deploy.yml` and needs the `CLOUDFLARE_API_TOKEN` secret.
 
 ## Doc map (read in order)
 1. This file

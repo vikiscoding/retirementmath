@@ -2,7 +2,7 @@
 
 Static utility site for Canadian retirement money questions, at retirementmath.ca. Page one estimates the Old Age Security clawback (recovery tax).
 
-Status (2026-10-22): first page built locally and branded for retirementmath.ca. Domain name chosen, not bought here. Not deployed. No ads, no analytics.
+Status (2026-10-22): live at https://retirementmath.pages.dev. GitHub repo https://github.com/vikiscoding/retirementmath. Pushing `main` tests the calculator and deploys to Cloudflare Pages on the retirementmathai@gmail.com account. The custom domain retirementmath.ca is registered on the main Cloudflare account and still needs the DNS records in `docs/roadmap.md`. No ads, no analytics.
 
 ## Layout
 ```
@@ -10,7 +10,7 @@ index.html                 OAS clawback calculator (self-contained, data inlined
 privacy.html               Privacy policy draft
 disclaimer.html            Disclaimer page
 ads.txt                    Placeholder, not live
-robots.txt, sitemap.xml    Point at retirementmath.ca (not deployed)
+robots.txt, sitemap.xml    Point at retirementmath.ca
 data/oas-rules.json        Every figure with source URL and date
 scripts/build.py           Inlines JSON into index.html
 scripts/check_rules.py     Fetches canada.ca, diffs thresholds, optional --update
