@@ -1,1 +1,2 @@
-https://www.retirementmath.ca/* https://retirementmath.ca/:splat 301
+# www.retirementmath.ca is redirected in functions/_middleware.js.
+# Pages _redirects cannot redirect one domain to another, so a www rule here is ignored.

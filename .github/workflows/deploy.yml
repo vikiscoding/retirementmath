@@ -34,7 +34,7 @@ jobs:
       - name: Stage the public site
         run: |
           mkdir site
-          cp index.html privacy.html disclaimer.html robots.txt sitemap.xml ads.txt _redirects logo.svg googlea9324d5b76946cff.html.html site/
+          cp index.html about.html privacy.html disclaimer.html 404.html robots.txt sitemap.xml ads.txt _redirects logo.svg googlea9324d5b76946cff.html.html site/
 
       - name: Create the Pages project if it is missing
         uses: cloudflare/wrangler-action@v3
@@ -49,4 +49,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy site --project-name=retirementmath --branch=main --commit-dirty=true
+          command: pages deploy site --project-name=retirementmath --branch=main --commit-dirty=true --functions=functions

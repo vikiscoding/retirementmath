@@ -119,7 +119,7 @@ footer p{margin:.3rem 0}
 </header>
 
 <!-- AD SLOT PLACEHOLDER: top-leaderboard. No ad code. Do not add until consent and AdSense approval are in place. See docs/panel-review.md -->
-<div class="ad-slot" role="presentation" aria-hidden="true">Ad slot placeholder (top)</div>
+<div class="ad-slot" role="presentation" aria-hidden="true"></div>
 
 <main id="main" class="wrap">
   <div class="page-intro">
@@ -185,7 +185,8 @@ footer p{margin:.3rem 0}
       <tbody>
         <tr><th scope="row">Estimated OAS before clawback (per year)</th><td class="num" id="r-oas"></td></tr>
         <tr><th scope="row">Clawback starts at</th><td class="num" id="r-min"></td></tr>
-        <tr><th scope="row">Full clawback at about</th><td class="num" id="r-full"></td></tr>
+        <tr><th scope="row">Full clawback on canada.ca</th><td class="num" id="r-official"></td></tr>
+        <tr><th scope="row">Full clawback in this estimate</th><td class="num" id="r-full"></td></tr>
       </tbody>
     </table>
     <p id="r-explain"></p>
@@ -194,12 +195,13 @@ footer p{margin:.3rem 0}
 </section>
 
 <!-- AD SLOT PLACEHOLDER: in-content, below results. No ad code. -->
-<div class="ad-slot" role="presentation" aria-hidden="true">Ad slot placeholder (in-content)</div>
+<div class="ad-slot" role="presentation" aria-hidden="true"></div>
 
 <section class="reading" id="who">
   <h2>Who this calculator is for</h2>
   <p>Use this if you live in Canada and you receive Old Age Security, or you expect to. It helps when your income is near the clawback line and you want an estimate of the recovery tax.</p>
   <p>The result is not a tax assessment. The CRA and Service Canada decide the amount you repay.</p>
+  <p>Who runs the site, and how the figures are checked, is on the <a href="about.html">about page</a>.</p>
 </section>
 
 <section class="reading" id="how">
@@ -213,7 +215,7 @@ footer p{margin:.3rem 0}
     <tbody></tbody>
   </table>
   </div>
-  <p class="hint">Rules last verified: <strong id="verified"></strong>. Sources:
+  <p class="hint">Rules last verified: <strong id="verified">2026-10-22</strong>. Sources:
     <a href="https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html">canada.ca OAS recovery tax</a>,
     <a href="https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/payments.html">canada.ca OAS payment amounts</a>,
     <a href="https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-october-december.html">ESDC quarterly amounts, October to December 2026</a>.</p>
@@ -241,18 +243,19 @@ footer p{margin:.3rem 0}
 
 <section class="reading">
   <h2>Disclaimer</h2>
-  <p>This tool gives a general estimate for education only. It is not tax, legal or financial advice and is not from the Government of Canada, the CRA or Service Canada. Partial pension and deferral math is simplified. Check with the CRA, Service Canada or a qualified professional before making decisions. Figures can change; see the date and sources above. Read the <a href="disclaimer.html">disclaimer</a> and <a href="privacy.html">privacy policy</a>.</p>
+  <p>This tool gives a general estimate for education only. It is not tax, legal or financial advice and is not from the Government of Canada, the CRA or Service Canada. Partial pension and deferral math is simplified. Check with the CRA, Service Canada or a qualified professional before making decisions. Figures can change; see the date and sources above. Read the <a href="about.html">about page</a>, the <a href="disclaimer.html">disclaimer</a>, and the <a href="privacy.html">privacy policy</a>.</p>
 </section>
 </main>
 
 <!-- AD SLOT PLACEHOLDER: footer. No ad code. -->
-<div class="ad-slot" role="presentation" aria-hidden="true">Ad slot placeholder (footer)</div>
+<div class="ad-slot" role="presentation" aria-hidden="true"></div>
 
 <footer>
   <div class="wrap foot-inner">
     <p class="foot-name"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false" width="24" height="24"><rect width="32" height="32" rx="8" fill="#1e4d3a"/><rect x="7" y="10" width="18" height="3.5" rx="1.75" fill="#f6f1e6"/><rect x="7" y="18.5" width="18" height="3.5" rx="1.75" fill="#e2b15a"/></svg> Retirement Math</p>
     <nav class="foot-nav" aria-label="Site">
       <a href="./" aria-current="page">OAS clawback calculator</a>
+      <a href="about.html">About</a>
       <a href="privacy.html">Privacy</a>
       <a href="disclaimer.html">Disclaimer</a>
     </nav>
@@ -361,14 +364,15 @@ function round2(n) { return Math.round(n * 100) / 100; }
     set("r-keep", fmt.format(r.keptAnnual));
     set("r-keep-m", fmt.format(r.keptMonthly));
     set("r-min", fmt0.format(r.thresholdMin));
+    set("r-official", fmt0.format(r.officialMax) + (r.period.status === "estimate" ? " (estimate)" : ""));
     set("r-full", fmt0.format(r.fullClawbackAt));
     var ex;
     if (!r.eligible) ex = "You need at least 10 years in Canada after age 18 to get OAS, so there is nothing to claw back.";
     else if (r.annualRepayment === 0) ex = "Your income is at or below the " + fmt0.format(r.thresholdMin) + " threshold, so you keep your full OAS.";
-    else if (r.keptAnnual === 0) ex = "Your income is above the full clawback point, so the whole OAS pension is repaid.";
+    else if (r.keptAnnual === 0) ex = "Your income is above this estimate's full clawback line, so the whole OAS pension is repaid.";
     else ex = "Your income is " + fmt.format(income - r.thresholdMin) + " over the threshold. 15% of that is " + fmt.format(r.annualRepayment) + ", taken as about " + fmt.format(r.monthlyRepayment) + " a month from " + r.period.payment_period + ".";
     set("r-explain", ex);
-    set("r-note", "OAS amount uses the " + rules.current_quarter.replace("2026-Q", "Q") + " 2026 maximum and is indexed every quarter, so the real figure will differ a little. canada.ca lists the official full clawback point as " + fmt0.format(r.officialMax) + (r.period.status === "estimate" ? " (estimate)." : "."));
+    set("r-note", "The first full clawback line is the canada.ca figure" + (r.period.status === "estimate" ? " (estimate)." : ".") + " This calculator uses the " + rules.current_quarter.replace("2026-Q", "Q") + " 2026 maximum OAS. That amount changes every quarter, so this estimate's full clawback line can be a few thousand dollars different.");
     var res = document.getElementById("results"); res.hidden = false; res.focus();
   });
 })();

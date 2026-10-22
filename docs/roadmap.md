@@ -5,7 +5,9 @@
 - [x] Host on Cloudflare Pages free tier, account retirementmathai@gmail.com. Project `retirementmath`. Live at https://retirementmath.pages.dev.
 - [x] Point retirementmath.ca at the Pages site. https://retirementmath.ca/ serves the calculator.
 - [x] Store a Cloudflare Pages API token as the GitHub secret `CLOUDFLARE_API_TOKEN`.
-- [x] Verify retirementmath.ca in Google Search Console.
+- [x] Verify retirementmath.ca in Google Search Console. Bing Webmaster Tools is not connected. The owner has to sign in and add the site.
+- [x] About page names the owner and how figures are checked. No job title or designation is claimed.
+- [x] Unknown URLs return 404.html. www.retirementmath.ca redirects to the apex.
 - [x] Point sitemap and canonicals at the URLs Pages serves (`/privacy` and `/disclaimer` return 200; the `.html` paths redirect).
 - [ ] Lawyer or accountant read of disclaimer and privacy page
 - [x] Use retirementmath.ca in canonical, robots.txt, and sitemap.xml

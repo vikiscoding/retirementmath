@@ -74,3 +74,23 @@ Search: the title leads with the query people type, "OAS clawback calculator 202
 Canonicals for privacy and disclaimer use `/privacy` and `/disclaimer`, because Cloudflare Pages returns 200 there and redirects the `.html` paths. The sitemap lists those same URLs. The homepage canonical stays `https://retirementmath.ca/`.
 
 The mark is an equals sign: a spruce tile, a cream bar, and a gold bar of the same length. `logo.svg` is the file. The header uses a cream tile so the mark shows on the spruce bar. Favicon and footer use the spruce tile. No extra fonts, no photos, no third-party scripts.
+
+## Truth-seeking pass on a monetization review (2026-10-22)
+
+Checked against the live site and Cloudflare's docs.
+
+Agreed and built:
+- Removed the words "Ad slot placeholder" from the page. They were already hidden with CSS, so a normal visit did not show them. They were still in the HTML.
+- Added an About page. It names Vikrant in Scarborough and explains the source check. It does not invent a job, a credential, or years of experience.
+- Added `404.html`. Without that file, Pages treats the site as a single-page app and serves the homepage with status 200 for missing addresses.
+- www.retirementmath.ca was serving its own copy. A `_redirects` rule cannot change the hostname. `functions/_middleware.js` sends www to the apex.
+- The result now shows the canada.ca full clawback figure first, then this calculator's own line. The math is unchanged. Hiding our line would make the repayment disagree with the label, because the estimate uses the current quarter's maximum OAS.
+- "Rules last verified" is in the HTML. `scripts/build.py` stamps it from `last_verified`.
+
+Not built, on purpose:
+- Search Console is already verified. Bing Webmaster Tools needs the owner to sign in. No account was created.
+- No email form. A signup would send personal information off the browser and needs a provider, CASL consent, and a privacy update the owner approves first.
+- No affiliate links and no applications to Questrade, Qtrade, or Wealthsimple. Payout ranges in the review were not re-checked, and they are not a reason to add links.
+- No AdSense. The earlier decision stands: more useful pages, then a consent tool, then an application.
+- No RRIF calculator in this change. It needs CRA factors with sources, tests, and its own page. Income guesses of $50 to $300 a month, or $10 to $50 from ads, are not forecasts and are not on the site.
+- No emails to planners.
