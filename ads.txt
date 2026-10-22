@@ -1,0 +1,3 @@
+# ads.txt placeholder. Not live.
+# After AdSense approval, replace with the line Google gives you, e.g.:
+# google.com, pub-XXXXXXXXXXXXXXXX, DIRECT, f08c47fec0942fa0

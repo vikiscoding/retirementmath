@@ -1,0 +1,52 @@
+# Test, then publish the public HTML to Cloudflare Pages on every push to main.
+# Secrets (set on the repo, never committed):
+#   CLOUDFLARE_API_TOKEN  Pages edit on the retirementmathai@gmail.com account
+#   CLOUDFLARE_ACCOUNT_ID That account's ID
+name: deploy
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Rebuild inline rules and test
+        run: |
+          python3 scripts/build.py
+          node tests/test_calc.js
+
+      - name: Stage the public site
+        run: |
+          mkdir site
+          cp index.html privacy.html disclaimer.html robots.txt sitemap.xml ads.txt _redirects site/
+
+      - name: Create the Pages project if it is missing
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages project create retirementmath --production-branch main
+        continue-on-error: true
+
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          command: pages deploy site --project-name=retirementmath --branch=main --commit-dirty=true

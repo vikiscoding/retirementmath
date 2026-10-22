@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "last_verified": "2026-10-22",
+  "recovery_rate": 0.15,
+  "rate_source": "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html",
+  "periods": [
+    {
+      "id": "2025-income",
+      "income_year": 2025,
+      "payment_period": "July 2026 to June 2027",
+      "threshold_min": 93454,
+      "threshold_max_65_74": 152062,
+      "threshold_max_75_plus": 157923,
+      "status": "final",
+      "source": "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html"
+    },
+    {
+      "id": "2026-income",
+      "income_year": 2026,
+      "payment_period": "July 2027 to June 2028",
+      "threshold_min": 95323,
+      "threshold_max_65_74": 155320,
+      "threshold_max_75_plus": 161320,
+      "status": "estimate",
+      "status_note": "canada.ca marks the 2026 maximum thresholds as estimates until October to December of the tax year. ESDC's April to June 2026 quarterly report lists a different upper range ($154,753 age 65 to 74, $160,696 age 75+). The minimum threshold of $95,323 matches on both pages.",
+      "source": "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html",
+      "alt_source": "https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"
+    },
+    {
+      "id": "2024-income",
+      "income_year": 2024,
+      "payment_period": "July 2025 to June 2026",
+      "threshold_min": 90997,
+      "threshold_max_65_74": 148451,
+      "threshold_max_75_plus": 154196,
+      "status": "final",
+      "source": "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html"
+    }
+  ],
+  "max_monthly_oas_2026": [
+    {"quarter": "2026-Q1", "months": "January to March 2026", "age_65_74": 742.31, "age_75_plus": 816.54, "source": "https://publications.gc.ca/collections/collection_2026/edsc-esdc/SG3-3-2026-1.pdf"},
+    {"quarter": "2026-Q2", "months": "April to June 2026", "age_65_74": 743.05, "age_75_plus": 817.36, "source": "https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"},
+    {"quarter": "2026-Q3", "months": "July to September 2026", "age_65_74": 751.97, "age_75_plus": 827.17, "source": "https://open.canada.ca/data/dataset/dfa4daf1-669e-4514-82cd-982f27707ed0/resource/f015e958-829b-44bb-b201-641584b818dd/download/july-september-2026-table-of-rates.pdf"},
+    {"quarter": "2026-Q4", "months": "October to December 2026", "age_65_74": 762.50, "age_75_plus": 838.75, "source": "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/payments.html"}
+  ],
+  "current_quarter": "2026-Q4",
+  "residency": {"full_years": 40, "min_years": 10, "note": "Partial pension is years in Canada after age 18 divided by 40. Simplified; Service Canada decides actual entitlement."},
+  "deferral": {"monthly_increase": 0.006, "max_increase": 0.36, "source": "https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"}
+}

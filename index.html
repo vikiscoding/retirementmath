@@ -1,0 +1,320 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OAS clawback calculator for 2026 | Retirement Math</title>
+<meta name="description" content="Estimate your Old Age Security clawback (recovery tax) for July 2026 to June 2027. Uses official canada.ca thresholds. Free, in your browser, from Retirement Math.">
+<link rel="canonical" href="https://retirementmath.ca/">
+<meta name="theme-color" content="#1e4d3a" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#143528" media="(prefers-color-scheme: dark)">
+<meta property="og:site_name" content="Retirement Math">
+<meta property="og:title" content="OAS clawback calculator for 2026 | Retirement Math">
+<meta property="og:description" content="Estimate your Old Age Security clawback (recovery tax). Uses official canada.ca thresholds. Free, and it runs in your browser.">
+<meta property="og:url" content="https://retirementmath.ca/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_CA">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e4d3a'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial,sans-serif' font-size='12' font-weight='700' fill='%23f4efe6'%3ERM%3C/text%3E%3C/svg%3E" type="image/svg+xml">
+<style>
+:root{--bg:#f4f0e8;--fg:#1c1915;--muted:#514c44;--line:#e4dcd0;--input:#6f695f;--accent:#1e4d3a;--accent-fg:#f7f3eb;--card:#fffcf7;--warn:#7a4b00;--warnbg:#fff6e0;--focus:#ffbf47;--bar:#1e4d3a;--bar-fg:#f7f3eb;--shadow:0 1px 2px rgba(28,25,21,.06);color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#141210;--fg:#f3efe8;--muted:#c8c0b4;--line:#3d372f;--input:#a39888;--accent:#8fceb0;--accent-fg:#10241b;--card:#211e1a;--warn:#ffd27a;--warnbg:#2c2410;--bar:#143528;--bar-fg:#f3efe8;--shadow:none;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;font:1.0625rem/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;color:#1c1915;padding:.55rem .8rem;z-index:10;border-radius:6px;text-decoration:none}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1rem}
+.site-bar{background:var(--bar);color:var(--bar-fg)}
+.bar-inner{max-width:46rem;margin:0 auto;padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;flex-wrap:wrap;min-height:60px}
+.brand{display:flex;align-items:center;gap:.65rem;color:inherit;font-weight:700;text-decoration:none;min-height:44px;letter-spacing:-.01em}
+.brand:hover{text-decoration:underline}
+.mark{width:32px;height:32px;display:block;flex:none}
+.bar-domain{font-size:.9rem;opacity:.92}
+main{padding-bottom:.5rem}
+.page-intro{padding-top:1.75rem}
+h1{font-size:1.85rem;line-height:1.2;margin:0 0 .6rem;letter-spacing:-.02em}
+h2{font-size:1.3rem;margin-top:2.25rem}
+.eyebrow{margin:0 0 .35rem;color:var(--accent);font-weight:700;font-size:.95rem}
+.lede{color:var(--muted);margin:0}
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem 1.25rem;margin:1.25rem 0;box-shadow:var(--shadow)}
+label{display:block;font-weight:600;margin-top:1rem}
+.hint{display:block;font-weight:400;color:var(--muted);font-size:.95rem}
+input,select{font:inherit;width:100%;max-width:100%;padding:.6rem .7rem;border:1px solid var(--input);border-radius:8px;background:var(--bg);color:var(--fg);min-height:44px;accent-color:var(--accent)}
+input[aria-invalid="true"]{border-color:#b00020}
+fieldset{border:0;padding:0;margin:1rem 0 0}
+legend{font-weight:600}
+.radio{display:flex;gap:.5rem 1.5rem;flex-wrap:wrap}
+.radio label{font-weight:400;margin:0;display:flex;align-items:center;gap:.45rem;min-height:44px}
+.radio input{width:1.15rem;height:1.15rem;min-height:0}
+button{font:inherit;font-weight:700;margin-top:1.35rem;padding:.7rem 1.4rem;border:0;border-radius:8px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:44px;width:100%}
+button:hover{filter:brightness(1.08)}
+.error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
+#calc-form > label:first-of-type{margin-top:0}
+@media (prefers-color-scheme:dark){.error{color:#ff8a8a}input[aria-invalid="true"]{border-color:#ff8a8a}}
+.table-wrap{overflow-x:auto;margin:.5rem 0 1rem}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:.55rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
+td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+#rules-table th:nth-child(n+3),#rules-table td:nth-child(n+3){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.result-grid{display:grid;gap:1rem 1.5rem;margin:0 0 1rem}
+@media (min-width:36rem){.result-grid{grid-template-columns:1fr 1fr}}
+.kicker{margin:0;color:var(--muted);font-weight:600;font-size:.95rem}
+.big{font-size:2rem;font-weight:700;line-height:1.15;margin:.15rem 0;font-variant-numeric:tabular-nums}
+.keep{font-size:1.65rem;font-weight:700;line-height:1.15;margin:.2rem 0 .15rem;font-variant-numeric:tabular-nums}
+.note{background:var(--warnbg);color:var(--warn);border-radius:8px;padding:.75rem 1rem;font-size:.95rem}
+.ad-slot{display:none}
+details{border-bottom:1px solid var(--line);padding:.15rem 0}
+summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
+footer{color:var(--muted);font-size:.95rem;margin-top:2.5rem;border-top:1px solid var(--line);background:var(--card)}
+.foot-inner{padding:1.25rem 0 2rem}
+.foot-name{margin:0 0 .25rem;color:var(--fg);font-weight:700}
+.foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.25rem 0 .5rem}
+.foot-nav a{min-height:44px;display:inline-flex;align-items:center}
+footer p{margin:.35rem 0}
+@media print{.ad-slot,button{display:none}.site-bar{background:none;color:#000}.site-bar a{color:#000}body{background:#fff;color:#000}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to calculator</a>
+<header class="site-bar">
+  <div class="bar-inner">
+    <a class="brand" href="./">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="8" fill="#f4efe6"/>
+        <text x="16" y="21" text-anchor="middle" font-family="Arial, sans-serif" font-size="12" font-weight="700" fill="#1e4d3a">RM</text>
+      </svg>
+      Retirement Math
+    </a>
+    <span class="bar-domain">retirementmath.ca</span>
+  </div>
+</header>
+
+<!-- AD SLOT PLACEHOLDER: top-leaderboard. No ad code. Do not add until consent and AdSense approval are in place. See docs/panel-review.md -->
+<div class="ad-slot" role="presentation" aria-hidden="true">Ad slot placeholder (top)</div>
+
+<main id="main" class="wrap">
+  <div class="page-intro">
+    <p class="eyebrow">Old Age Security</p>
+    <h1>OAS clawback calculator for 2026</h1>
+    <p class="lede">Estimate how much of your Old Age Security pension you would repay (the OAS recovery tax) based on your net world income. Nothing you type leaves your browser.</p>
+  </div>
+<form id="calc-form" class="card" novalidate>
+  <label for="income">Net world income for the year
+    <span class="hint">Line 23400 of your return, before the OAS repayment. Includes your OAS pension.</span></label>
+  <input id="income" name="income" inputmode="decimal" autocomplete="off" placeholder="e.g. 110000" aria-describedby="income-err" required>
+  <p id="income-err" class="error" aria-live="polite"></p>
+
+  <fieldset>
+    <legend>Your age during the payment period</legend>
+    <div class="radio">
+      <label><input type="radio" name="age" value="65_74" checked> 65 to 74</label>
+      <label><input type="radio" name="age" value="75_plus"> 75 and over</label>
+    </div>
+  </fieldset>
+
+  <label for="period">Income year and repayment period</label>
+  <select id="period" name="period"></select>
+
+  <label for="years">Years lived in Canada after age 18 (optional)
+    <span class="hint">40 or more means a full pension. Between 10 and 39 means a partial pension.</span></label>
+  <input id="years" name="years" type="number" min="10" max="40" step="1" value="40">
+
+  <label for="defer">Months you deferred OAS past 65 (optional)
+    <span class="hint">0.6% more per month, up to 60 months (36%).</span></label>
+  <input id="defer" name="defer" type="number" min="0" max="60" step="1" value="0">
+
+  <button type="submit">Calculate</button>
+</form>
+
+<section id="results" aria-live="polite" tabindex="-1" hidden>
+  <h2>Your estimate</h2>
+  <div class="card">
+    <div class="result-grid">
+      <div>
+        <p class="kicker">Estimated annual repayment</p>
+        <p class="big" id="r-annual"></p>
+        <p class="hint">About <span id="r-monthly"></span> a month withheld</p>
+      </div>
+      <div>
+        <p class="kicker">OAS you keep</p>
+        <p class="keep" id="r-keep"></p>
+        <p class="hint"><span id="r-keep-m"></span> a month</p>
+      </div>
+    </div>
+    <table>
+      <caption class="hint" style="text-align:left">Estimate details</caption>
+      <tbody>
+        <tr><th scope="row">Estimated OAS before clawback (per year)</th><td class="num" id="r-oas"></td></tr>
+        <tr><th scope="row">Clawback starts at</th><td class="num" id="r-min"></td></tr>
+        <tr><th scope="row">Full clawback at about</th><td class="num" id="r-full"></td></tr>
+      </tbody>
+    </table>
+    <p id="r-explain"></p>
+    <p class="note" id="r-note"></p>
+  </div>
+</section>
+
+<!-- AD SLOT PLACEHOLDER: in-content, below results. No ad code. -->
+<div class="ad-slot" role="presentation" aria-hidden="true">Ad slot placeholder (in-content)</div>
+
+<section>
+  <h2>How the OAS clawback works</h2>
+  <p>If your net world income is above the yearly threshold, you repay 15% of the amount over the threshold. The repayment cannot be more than the OAS you receive. The Canada Revenue Agency takes it off your monthly OAS cheques from July of the next year to June of the year after.</p>
+  <p>Example from canada.ca: income of $100,000 in 2025, threshold $93,454. $100,000 minus $93,454 is $6,546. 15% of that is $981.90 to repay from July 2026 to June 2027.</p>
+  <h3>Official figures used</h3>
+  <div class="table-wrap" tabindex="0">
+  <table id="rules-table">
+    <thead><tr><th scope="col">Income year</th><th scope="col">Repayment period</th><th scope="col">Starts at</th><th scope="col">Full clawback 65-74</th><th scope="col">Full clawback 75+</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  </div>
+  <p class="hint">Rules last verified: <strong id="verified"></strong>. Sources:
+    <a href="https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html">canada.ca OAS recovery tax</a>,
+    <a href="https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/payments.html">canada.ca OAS payment amounts</a>,
+    <a href="https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-october-december.html">ESDC quarterly amounts, October to December 2026</a>.</p>
+</section>
+
+<section>
+  <h2>Frequently asked questions</h2>
+  <details><summary>What is the OAS clawback threshold for 2026?</summary>
+  <p>For OAS paid from July 2026 to June 2027, the clawback is based on your 2025 income and starts at $93,454. For July 2027 to June 2028, it is based on your 2026 income and starts at $95,323. The upper limits for 2026 income are still estimates on canada.ca until later in the year.</p></details>
+  <details><summary>How much is the OAS clawback?</summary>
+  <p>15% of your net world income above the threshold, up to the full amount of OAS you get.</p></details>
+  <details><summary>At what income is OAS fully clawed back?</summary>
+  <p>For 2025 income, canada.ca lists $152,062 for ages 65 to 74 and $157,923 for 75 and over. The exact point depends on OAS amounts during the year, so this calculator's estimate can differ slightly.</p></details>
+  <details><summary>Does the clawback use household income?</summary>
+  <p>No. It uses your individual net world income. Pension income splitting can move income between spouses and may lower one person's clawback.</p></details>
+  <details><summary>Is my OAS pension counted in net income?</summary>
+  <p>Yes. Net world income includes the OAS pension itself.</p></details>
+  <details><summary>Is this calculator official?</summary>
+  <p>No. It is an estimate. Your notice from the CRA and Service Canada is what counts.</p></details>
+</section>
+
+<section>
+  <h2>Disclaimer</h2>
+  <p>This tool gives a general estimate for education only. It is not tax, legal or financial advice and is not from the Government of Canada, the CRA or Service Canada. Partial pension and deferral math is simplified. Check with the CRA, Service Canada or a qualified professional before making decisions. Figures can change; see the date and sources above.</p>
+</section>
+</main>
+
+<!-- AD SLOT PLACEHOLDER: footer. No ad code. -->
+<div class="ad-slot" role="presentation" aria-hidden="true">Ad slot placeholder (footer)</div>
+
+<footer>
+  <div class="wrap foot-inner">
+    <p class="foot-name">Retirement Math</p>
+    <nav class="foot-nav" aria-label="Site">
+      <a href="./" aria-current="page">OAS clawback calculator</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </nav>
+    <p>retirementmath.ca · Made in Scarborough, Ontario.</p>
+    <p>This page does not use cookies or collect what you type. It is not a Government of Canada site.</p>
+  </div>
+</footer>
+
+<!-- RULES:BEGIN (generated from data/oas-rules.json by scripts/build.py; do not hand edit) -->
+<script id="oas-rules" type="application/json">{"schema_version":1,"last_verified":"2026-10-22","recovery_rate":0.15,"rate_source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html","periods":[{"id":"2025-income","income_year":2025,"payment_period":"July 2026 to June 2027","threshold_min":93454,"threshold_max_65_74":152062,"threshold_max_75_plus":157923,"status":"final","source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html"},{"id":"2026-income","income_year":2026,"payment_period":"July 2027 to June 2028","threshold_min":95323,"threshold_max_65_74":155320,"threshold_max_75_plus":161320,"status":"estimate","status_note":"canada.ca marks the 2026 maximum thresholds as estimates until October to December of the tax year. ESDC's April to June 2026 quarterly report lists a different upper range ($154,753 age 65 to 74, $160,696 age 75+). The minimum threshold of $95,323 matches on both pages.","source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html","alt_source":"https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"},{"id":"2024-income","income_year":2024,"payment_period":"July 2025 to June 2026","threshold_min":90997,"threshold_max_65_74":148451,"threshold_max_75_plus":154196,"status":"final","source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html"}],"max_monthly_oas_2026":[{"quarter":"2026-Q1","months":"January to March 2026","age_65_74":742.31,"age_75_plus":816.54,"source":"https://publications.gc.ca/collections/collection_2026/edsc-esdc/SG3-3-2026-1.pdf"},{"quarter":"2026-Q2","months":"April to June 2026","age_65_74":743.05,"age_75_plus":817.36,"source":"https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"},{"quarter":"2026-Q3","months":"July to September 2026","age_65_74":751.97,"age_75_plus":827.17,"source":"https://open.canada.ca/data/dataset/dfa4daf1-669e-4514-82cd-982f27707ed0/resource/f015e958-829b-44bb-b201-641584b818dd/download/july-september-2026-table-of-rates.pdf"},{"quarter":"2026-Q4","months":"October to December 2026","age_65_74":762.5,"age_75_plus":838.75,"source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/payments.html"}],"current_quarter":"2026-Q4","residency":{"full_years":40,"min_years":10,"note":"Partial pension is years in Canada after age 18 divided by 40. Simplified; Service Canada decides actual entitlement."},"deferral":{"monthly_increase":0.006,"max_increase":0.36,"source":"https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"}}</script>
+<!-- RULES:END -->
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebSite","name":"Retirement Math","url":"https://retirementmath.ca/"}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the OAS clawback threshold for 2026?","acceptedAnswer":{"@type":"Answer","text":"For OAS paid from July 2026 to June 2027, the clawback is based on your 2025 income and starts at $93,454. For July 2027 to June 2028, it is based on your 2026 income and starts at $95,323. The upper limits for 2026 income are still estimates on canada.ca until later in the year."}},
+{"@type":"Question","name":"How much is the OAS clawback?","acceptedAnswer":{"@type":"Answer","text":"15% of your net world income above the threshold, up to the full amount of OAS you get."}},
+{"@type":"Question","name":"At what income is OAS fully clawed back?","acceptedAnswer":{"@type":"Answer","text":"For 2025 income, canada.ca lists $152,062 for ages 65 to 74 and $157,923 for 75 and over. The exact point depends on OAS amounts during the year, so this calculator's estimate can differ slightly."}},
+{"@type":"Question","name":"Does the clawback use household income?","acceptedAnswer":{"@type":"Answer","text":"No. It uses your individual net world income. Pension income splitting can move income between spouses and may lower one person's clawback."}},
+{"@type":"Question","name":"Is my OAS pension counted in net income?","acceptedAnswer":{"@type":"Answer","text":"Yes. Net world income includes the OAS pension itself."}},
+{"@type":"Question","name":"Is this calculator official?","acceptedAnswer":{"@type":"Answer","text":"No. It is an estimate. Your notice from the CRA and Service Canada is what counts."}}
+]}
+</script>
+
+<script id="calc">
+// CALC:BEGIN pure function, tested by tests/test_calc.js
+function computeClawback(rules, input) {
+  var period = rules.periods.filter(function (p) { return p.id === input.periodId; })[0];
+  if (!period) throw new Error("unknown period");
+  var q = rules.max_monthly_oas_2026.filter(function (x) { return x.quarter === rules.current_quarter; })[0];
+  var key = input.age === "75_plus" ? "age_75_plus" : "age_65_74";
+  var years = Math.min(Math.max(Math.floor(input.years || 40), 0), 40);
+  var defer = Math.min(Math.max(Math.floor(input.deferMonths || 0), 0), 60);
+  var residencyFactor = years < rules.residency.min_years ? 0 : years / rules.residency.full_years;
+  var deferFactor = 1 + Math.min(defer * rules.deferral.monthly_increase, rules.deferral.max_increase);
+  var annualOas = round2(q[key] * 12 * residencyFactor * deferFactor);
+  var over = Math.max(0, input.income - period.threshold_min);
+  var annual = round2(Math.min(over * rules.recovery_rate, annualOas));
+  return {
+    period: period,
+    annualOas: annualOas,
+    annualRepayment: annual,
+    monthlyRepayment: round2(annual / 12),
+    keptAnnual: round2(annualOas - annual),
+    keptMonthly: round2((annualOas - annual) / 12),
+    thresholdMin: period.threshold_min,
+    fullClawbackAt: round2(period.threshold_min + annualOas / rules.recovery_rate),
+    officialMax: period[key === "age_75_plus" ? "threshold_max_75_plus" : "threshold_max_65_74"],
+    eligible: residencyFactor > 0
+  };
+}
+function round2(n) { return Math.round(n * 100) / 100; }
+// CALC:END
+
+(function () {
+  if (typeof document === "undefined") return;
+  var rules = JSON.parse(document.getElementById("oas-rules").textContent);
+  var fmt = new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD" });
+  var fmt0 = new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 });
+  var sel = document.getElementById("period");
+  var tbody = document.querySelector("#rules-table tbody");
+  rules.periods.forEach(function (p) {
+    var o = document.createElement("option");
+    o.value = p.id;
+    o.textContent = p.income_year + " income, repaid " + p.payment_period + (p.status === "estimate" ? " (upper limits are estimates)" : "");
+    sel.appendChild(o);
+    var tr = document.createElement("tr");
+    [p.income_year + (p.status === "estimate" ? " (estimate)" : ""), p.payment_period, fmt0.format(p.threshold_min), fmt0.format(p.threshold_max_65_74), fmt0.format(p.threshold_max_75_plus)]
+      .forEach(function (t) { var td = document.createElement("td"); td.textContent = t; tr.appendChild(td); });
+    tbody.appendChild(tr);
+  });
+  document.getElementById("verified").textContent = rules.last_verified;
+
+  document.getElementById("calc-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var raw = document.getElementById("income").value.replace(/[$,\s]/g, "");
+    var income = Number(raw);
+    var err = document.getElementById("income-err");
+    var field = document.getElementById("income");
+    if (raw === "" || !isFinite(income) || income < 0) {
+      err.textContent = "Enter your net income as a number, for example 110000.";
+      field.setAttribute("aria-invalid", "true"); field.focus(); return;
+    }
+    err.textContent = ""; field.removeAttribute("aria-invalid");
+    var r = computeClawback(rules, {
+      income: income,
+      age: document.querySelector("input[name=age]:checked").value,
+      periodId: sel.value,
+      years: Number(document.getElementById("years").value) || 40,
+      deferMonths: Number(document.getElementById("defer").value) || 0
+    });
+    var set = function (id, v) { document.getElementById(id).textContent = v; };
+    set("r-annual", fmt.format(r.annualRepayment));
+    set("r-monthly", fmt.format(r.monthlyRepayment));
+    set("r-oas", fmt.format(r.annualOas));
+    set("r-keep", fmt.format(r.keptAnnual));
+    set("r-keep-m", fmt.format(r.keptMonthly));
+    set("r-min", fmt0.format(r.thresholdMin));
+    set("r-full", fmt0.format(r.fullClawbackAt));
+    var ex;
+    if (!r.eligible) ex = "You need at least 10 years in Canada after age 18 to get OAS, so there is nothing to claw back.";
+    else if (r.annualRepayment === 0) ex = "Your income is at or below the " + fmt0.format(r.thresholdMin) + " threshold, so you keep your full OAS.";
+    else if (r.keptAnnual === 0) ex = "Your income is above the full clawback point, so the whole OAS pension is repaid.";
+    else ex = "Your income is " + fmt.format(income - r.thresholdMin) + " over the threshold. 15% of that is " + fmt.format(r.annualRepayment) + ", taken as about " + fmt.format(r.monthlyRepayment) + " a month from " + r.period.payment_period + ".";
+    set("r-explain", ex);
+    set("r-note", "OAS amount uses the " + rules.current_quarter.replace("2026-Q", "Q") + " 2026 maximum and is indexed every quarter, so the real figure will differ a little. canada.ca lists the official full clawback point as " + fmt0.format(r.officialMax) + (r.period.status === "estimate" ? " (estimate)." : "."));
+    var res = document.getElementById("results"); res.hidden = false; res.focus();
+  });
+})();
+</script>
+</body>
+</html>
