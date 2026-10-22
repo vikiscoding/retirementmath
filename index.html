@@ -16,62 +16,78 @@
 <meta property="og:locale" content="en_CA">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e4d3a'/%3E%3Ctext x='16' y='21' text-anchor='middle' font-family='Arial,sans-serif' font-size='12' font-weight='700' fill='%23f4efe6'%3ERM%3C/text%3E%3C/svg%3E" type="image/svg+xml">
 <style>
-:root{--bg:#f4f0e8;--fg:#1c1915;--muted:#514c44;--line:#e4dcd0;--input:#6f695f;--accent:#1e4d3a;--accent-fg:#f7f3eb;--card:#fffcf7;--warn:#7a4b00;--warnbg:#fff6e0;--focus:#ffbf47;--bar:#1e4d3a;--bar-fg:#f7f3eb;--shadow:0 1px 2px rgba(28,25,21,.06);color-scheme:light}
-@media (prefers-color-scheme:dark){:root{--bg:#141210;--fg:#f3efe8;--muted:#c8c0b4;--line:#3d372f;--input:#a39888;--accent:#8fceb0;--accent-fg:#10241b;--card:#211e1a;--warn:#ffd27a;--warnbg:#2c2410;--bar:#143528;--bar-fg:#f3efe8;--shadow:none;color-scheme:dark}}
+:root{--bg:#f3efe6;--fg:#1c1915;--muted:#514c44;--line:#e3dacd;--input:#6f695f;--field:#fff;--accent:#1e4d3a;--accent-hover:#173d2e;--accent-fg:#f7f3eb;--card:#fffcf7;--choice:#e7f2eb;--repay:#f6efe4;--keep:#e7f2eb;--warn:#7a4b00;--warnbg:#fff6e0;--focus:#ffbf47;--bar:#1e4d3a;--bar-fg:#f7f3eb;--placeholder:#5e584f;--shadow:0 1px 2px rgba(28,25,21,.05),0 8px 24px rgba(28,25,21,.04);color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#141210;--fg:#f3efe8;--muted:#c8c0b4;--line:#3d372f;--input:#a39888;--field:#1c1916;--accent:#8fceb0;--accent-hover:#a9dcc2;--accent-fg:#10241b;--card:#211e1a;--choice:#1a3328;--repay:#2a241c;--keep:#1a3328;--warn:#ffd27a;--warnbg:#2c2410;--bar:#143528;--bar-fg:#f3efe8;--placeholder:#c4bbb0;--shadow:none;color-scheme:dark}}
 *{box-sizing:border-box}
-body{margin:0;font:1.0625rem/1.6 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
-a{color:var(--accent)}
+body{margin:0;font:1.0625rem/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+a{color:var(--accent);text-underline-offset:.16em}
 :focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;color:#1c1915;padding:.55rem .8rem;z-index:10;border-radius:6px;text-decoration:none}
+.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;color:#1c1915;padding:.55rem .8rem;z-index:10;border-radius:8px;text-decoration:none}
 .wrap{max-width:46rem;margin:0 auto;padding:0 1rem}
 .site-bar{background:var(--bar);color:var(--bar-fg)}
-.bar-inner{max-width:46rem;margin:0 auto;padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;flex-wrap:wrap;min-height:60px}
-.brand{display:flex;align-items:center;gap:.65rem;color:inherit;font-weight:700;text-decoration:none;min-height:44px;letter-spacing:-.01em}
+.bar-inner{max-width:46rem;margin:0 auto;padding:.7rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;flex-wrap:wrap;min-height:64px}
+.brand{display:flex;align-items:center;gap:.65rem;color:inherit;font-weight:700;text-decoration:none;min-height:44px;letter-spacing:-.015em}
 .brand:hover{text-decoration:underline}
 .mark{width:32px;height:32px;display:block;flex:none}
-.bar-domain{font-size:.9rem;opacity:.92}
-main{padding-bottom:.5rem}
-.page-intro{padding-top:1.75rem}
-h1{font-size:1.85rem;line-height:1.2;margin:0 0 .6rem;letter-spacing:-.02em}
-h2{font-size:1.3rem;margin-top:2.25rem}
-.eyebrow{margin:0 0 .35rem;color:var(--accent);font-weight:700;font-size:.95rem}
-.lede{color:var(--muted);margin:0}
-.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.1rem 1.2rem 1.25rem;margin:1.25rem 0;box-shadow:var(--shadow)}
-label{display:block;font-weight:600;margin-top:1rem}
-.hint{display:block;font-weight:400;color:var(--muted);font-size:.95rem}
-input,select{font:inherit;width:100%;max-width:100%;padding:.6rem .7rem;border:1px solid var(--input);border-radius:8px;background:var(--bg);color:var(--fg);min-height:44px;accent-color:var(--accent)}
+.bar-domain{font-size:.9rem;letter-spacing:.01em}
+main{padding-bottom:1rem}
+.page-intro{padding-top:2rem}
+h1{font-size:2rem;line-height:1.15;margin:0 0 .55rem;letter-spacing:-.03em}
+h2{font-size:1.35rem;line-height:1.25;margin:0 0 .75rem;letter-spacing:-.02em}
+h3{font-size:1.05rem;margin:1.35rem 0 .45rem}
+.eyebrow{margin:0 0 .4rem;color:var(--accent);font-weight:700;font-size:.92rem}
+.lede{color:var(--muted);margin:0;max-width:38rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.2rem 1.35rem;margin:1.35rem 0 0;box-shadow:var(--shadow)}
+label{display:block;font-weight:600;margin-top:1.15rem}
+.hint{display:block;font-weight:400;color:var(--muted);font-size:.95rem;margin-top:.15rem}
+input,select{font:inherit;font-variant-numeric:tabular-nums;display:block;width:100%;padding:.65rem .75rem;border:1px solid var(--input);border-radius:10px;background:var(--field);color:var(--fg);min-height:48px;accent-color:var(--accent)}
+input::placeholder{color:var(--placeholder);opacity:1}
+input[type="number"],input[inputmode="decimal"]{max-width:16rem}
 input[aria-invalid="true"]{border-color:#b00020}
-fieldset{border:0;padding:0;margin:1rem 0 0}
-legend{font-weight:600}
-.radio{display:flex;gap:.5rem 1.5rem;flex-wrap:wrap}
-.radio label{font-weight:400;margin:0;display:flex;align-items:center;gap:.45rem;min-height:44px}
-.radio input{width:1.15rem;height:1.15rem;min-height:0}
-button{font:inherit;font-weight:700;margin-top:1.35rem;padding:.7rem 1.4rem;border:0;border-radius:8px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:44px;width:100%}
-button:hover{filter:brightness(1.08)}
+fieldset{border:0;padding:0;margin:1.15rem 0 0}
+legend{font-weight:600;padding:0}
+.radio{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.45rem}
+.radio label{font-weight:600;margin:0;display:flex;align-items:center;gap:.5rem;min-height:48px;padding:.4rem .75rem;border:1px solid var(--line);border-radius:10px;background:var(--field)}
+.radio label:has(input:checked){border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--choice)}
+.radio label:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}
+.radio input{width:1.15rem;height:1.15rem;min-height:0;margin:0;padding:0;accent-color:var(--accent)}
+button{font:inherit;font-weight:700;display:block;margin-top:1.4rem;padding:.75rem 1.4rem;border:0;border-radius:10px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:48px;width:100%;max-width:16rem}
+button:hover{background:var(--accent-hover)}
+@media (max-width:40rem){h1{font-size:1.7rem}button,input[type="number"],input[inputmode="decimal"]{max-width:none}}
 .error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
 #calc-form > label:first-of-type{margin-top:0}
 @media (prefers-color-scheme:dark){.error{color:#ff8a8a}input[aria-invalid="true"]{border-color:#ff8a8a}}
-.table-wrap{overflow-x:auto;margin:.5rem 0 1rem}
+.table-wrap{overflow-x:auto;margin:.35rem 0 1rem;border:1px solid var(--line);border-radius:12px;background:var(--card)}
 table{border-collapse:collapse;width:100%}
-th,td{text-align:left;padding:.55rem .5rem;border-bottom:1px solid var(--line);vertical-align:top}
-td.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--field);font-size:.92rem}
+tr:last-child td,tr:last-child th{border-bottom:0}
+td.num,caption{font-variant-numeric:tabular-nums}
+td.num{text-align:right;white-space:nowrap}
+caption{text-align:left;caption-side:top;padding:0 0 .45rem;color:var(--muted)}
 #rules-table th:nth-child(n+3),#rules-table td:nth-child(n+3){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
-.result-grid{display:grid;gap:1rem 1.5rem;margin:0 0 1rem}
-@media (min-width:36rem){.result-grid{grid-template-columns:1fr 1fr}}
-.kicker{margin:0;color:var(--muted);font-weight:600;font-size:.95rem}
-.big{font-size:2rem;font-weight:700;line-height:1.15;margin:.15rem 0;font-variant-numeric:tabular-nums}
-.keep{font-size:1.65rem;font-weight:700;line-height:1.15;margin:.2rem 0 .15rem;font-variant-numeric:tabular-nums}
-.note{background:var(--warnbg);color:var(--warn);border-radius:8px;padding:.75rem 1rem;font-size:.95rem}
+.result-grid{display:grid;gap:.75rem;margin:0 0 1.1rem}
+@media (min-width:36rem){.result-grid{grid-template-columns:1.15fr .85fr}}
+.result-grid > div{padding:.95rem 1rem;border-radius:12px}
+.result-grid > div:first-child{background:var(--repay)}
+.result-grid > div:last-child{background:var(--keep)}
+.kicker{margin:0;color:var(--muted);font-weight:600;font-size:.92rem}
+.big{font-size:2.15rem;font-weight:700;line-height:1.1;margin:.2rem 0 .15rem;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.keep{font-size:1.7rem;font-weight:700;line-height:1.1;margin:.25rem 0 .15rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.note{background:var(--warnbg);color:var(--warn);border-radius:10px;padding:.8rem 1rem;font-size:.95rem}
 .ad-slot{display:none}
-details{border-bottom:1px solid var(--line);padding:.15rem 0}
-summary{cursor:pointer;font-weight:600;min-height:44px;display:flex;align-items:center}
-footer{color:var(--muted);font-size:.95rem;margin-top:2.5rem;border-top:1px solid var(--line);background:var(--card)}
-.foot-inner{padding:1.25rem 0 2rem}
-.foot-name{margin:0 0 .25rem;color:var(--fg);font-weight:700}
-.foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.25rem 0 .5rem}
+.reading{border-top:1px solid var(--line);margin-top:2.75rem;padding-top:1.6rem}
+.reading p{max-width:40rem}
+details{border-bottom:1px solid var(--line)}
+details p{margin:.15rem 0 .9rem}
+summary{cursor:pointer;font-weight:600;min-height:48px;padding:.7rem 0}
+footer{color:var(--muted);font-size:.95rem;margin-top:2.75rem;border-top:1px solid var(--line);background:var(--card)}
+.foot-inner{padding:1.35rem 0 2rem}
+.foot-name{margin:0 0 .15rem;color:var(--fg);font-weight:700}
+.foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.15rem 0 .35rem}
 .foot-nav a{min-height:44px;display:inline-flex;align-items:center}
-footer p{margin:.35rem 0}
-@media print{.ad-slot,button{display:none}.site-bar{background:none;color:#000}.site-bar a{color:#000}body{background:#fff;color:#000}}
+footer p{margin:.3rem 0}
+@media print{.ad-slot,button{display:none}.site-bar{background:none;color:#000}.site-bar a{color:#000}body,.card,.result-grid > div{background:#fff;color:#000;box-shadow:none}}
 </style>
 </head>
 <body>
@@ -142,7 +158,7 @@ footer p{margin:.35rem 0}
       </div>
     </div>
     <table>
-      <caption class="hint" style="text-align:left">Estimate details</caption>
+      <caption class="hint">Estimate details</caption>
       <tbody>
         <tr><th scope="row">Estimated OAS before clawback (per year)</th><td class="num" id="r-oas"></td></tr>
         <tr><th scope="row">Clawback starts at</th><td class="num" id="r-min"></td></tr>
@@ -157,7 +173,7 @@ footer p{margin:.35rem 0}
 <!-- AD SLOT PLACEHOLDER: in-content, below results. No ad code. -->
 <div class="ad-slot" role="presentation" aria-hidden="true">Ad slot placeholder (in-content)</div>
 
-<section>
+<section class="reading">
   <h2>How the OAS clawback works</h2>
   <p>If your net world income is above the yearly threshold, you repay 15% of the amount over the threshold. The repayment cannot be more than the OAS you receive. The Canada Revenue Agency takes it off your monthly OAS cheques from July of the next year to June of the year after.</p>
   <p>Example from canada.ca: income of $100,000 in 2025, threshold $93,454. $100,000 minus $93,454 is $6,546. 15% of that is $981.90 to repay from July 2026 to June 2027.</p>
@@ -174,7 +190,7 @@ footer p{margin:.35rem 0}
     <a href="https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-october-december.html">ESDC quarterly amounts, October to December 2026</a>.</p>
 </section>
 
-<section>
+<section class="reading">
   <h2>Frequently asked questions</h2>
   <details><summary>What is the OAS clawback threshold for 2026?</summary>
   <p>For OAS paid from July 2026 to June 2027, the clawback is based on your 2025 income and starts at $93,454. For July 2027 to June 2028, it is based on your 2026 income and starts at $95,323. The upper limits for 2026 income are still estimates on canada.ca until later in the year.</p></details>
@@ -190,7 +206,7 @@ footer p{margin:.35rem 0}
   <p>No. It is an estimate. Your notice from the CRA and Service Canada is what counts.</p></details>
 </section>
 
-<section>
+<section class="reading">
   <h2>Disclaimer</h2>
   <p>This tool gives a general estimate for education only. It is not tax, legal or financial advice and is not from the Government of Canada, the CRA or Service Canada. Partial pension and deferral math is simplified. Check with the CRA, Service Canada or a qualified professional before making decisions. Figures can change; see the date and sources above.</p>
 </section>
