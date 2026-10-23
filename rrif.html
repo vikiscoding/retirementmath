@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>RRIF minimum withdrawal calculator (Canada) | Retirement Math</title>
+<meta name="description" content="Free Canadian RRIF minimum withdrawal calculator. Use the CRA prescribed factor for your age and the value of the RRIF on January 1.">
+<link rel="canonical" href="https://retirementmath.ca/rrif">
+<meta name="theme-color" content="#1e4d3a" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#143528" media="(prefers-color-scheme: dark)">
+<meta property="og:site_name" content="Retirement Math">
+<meta property="og:title" content="RRIF minimum withdrawal calculator (Canada) | Retirement Math">
+<meta property="og:description" content="Free Canadian RRIF minimum withdrawal calculator. Use the CRA prescribed factor for your age and the value of the RRIF on January 1.">
+<meta property="og:url" content="https://retirementmath.ca/rrif">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="en_CA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="RRIF minimum withdrawal calculator (Canada) | Retirement Math">
+<meta name="twitter:description" content="Free Canadian RRIF minimum withdrawal calculator. Use the CRA prescribed factor for your age and the value of the RRIF on January 1.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e4d3a'/%3E%3Crect x='7' y='10' width='18' height='3.5' rx='1.75' fill='%23f6f1e6'/%3E%3Crect x='7' y='18.5' width='18' height='3.5' rx='1.75' fill='%23e2b15a'/%3E%3C/svg%3E" type="image/svg+xml">
+<style>
+:root{--bg:#f3efe6;--fg:#1c1915;--muted:#514c44;--line:#e3dacd;--input:#6f695f;--field:#fff;--accent:#1e4d3a;--accent-hover:#173d2e;--accent-fg:#f7f3eb;--card:#fffcf7;--warn:#7a4b00;--warnbg:#fff6e0;--focus:#ffbf47;--bar:#1e4d3a;--bar-fg:#f7f3eb;--placeholder:#5e584f;--shadow:0 1px 2px rgba(28,25,21,.05),0 8px 24px rgba(28,25,21,.04);color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#141210;--fg:#f3efe8;--muted:#c8c0b4;--line:#3d372f;--input:#a39888;--field:#1c1916;--accent:#8fceb0;--accent-hover:#a9dcc2;--accent-fg:#10241b;--card:#211e1a;--warn:#ffd27a;--warnbg:#2c2410;--bar:#143528;--bar-fg:#f3efe8;--placeholder:#c4bbb0;--shadow:none;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;font:1.0625rem/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);background-image:radial-gradient(1100px 420px at 50% -160px,#fff8ec 0%,transparent 70%);color:var(--fg)}
+a{color:var(--accent);text-underline-offset:.16em}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;color:#1c1915;padding:.55rem .8rem;z-index:10;border-radius:8px;text-decoration:none}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1rem}
+.site-bar{background:var(--bar);color:var(--bar-fg);box-shadow:inset 0 -3px 0 #e2b15a}
+.bar-inner{max-width:46rem;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;flex-wrap:wrap;min-height:72px}
+.brand{display:flex;align-items:center;gap:.7rem;color:inherit;font-weight:700;text-decoration:none;min-height:44px;letter-spacing:-.02em}
+.brand:hover{text-decoration:underline}
+.mark{width:40px;height:40px;display:block;flex:none}
+.bar-domain{font-size:.9rem;letter-spacing:.01em;color:#e7e0d2}
+main{padding-bottom:1rem}
+.page-intro{padding-top:2rem}
+h1{font-size:2.35rem;line-height:1.15;margin:0 0 .55rem;letter-spacing:-.03em}
+h2{font-size:1.35rem;line-height:1.25;margin:0 0 .75rem;letter-spacing:-.02em}
+.eyebrow{display:flex;align-items:center;gap:.5rem;margin:0 0 .45rem;color:var(--accent);font-weight:700;font-size:.92rem}
+.eyebrow::before{content:"";width:1.25rem;height:3px;border-radius:2px;background:#e2b15a;flex:none}
+.lede{color:var(--muted);margin:0;max-width:40rem}
+.facts{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0;padding:0;list-style:none}
+.facts li{margin:0;max-width:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:.45rem .75rem;font-size:.92rem;line-height:1.35}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.2rem 1.35rem;margin:1.35rem 0 0;box-shadow:var(--shadow)}
+#calc-form{border-top:4px solid #e2b15a}
+label{display:block;font-weight:600;margin-top:1.15rem}
+.hint{display:block;font-weight:400;color:var(--muted);font-size:.95rem;margin-top:.15rem}
+input{font:inherit;font-variant-numeric:tabular-nums;display:block;width:100%;max-width:16rem;padding:.65rem .75rem;border:1px solid var(--input);border-radius:10px;background:var(--field);color:var(--fg);min-height:48px}
+input::placeholder{color:var(--placeholder);opacity:1}
+input[aria-invalid="true"]{border-color:#b00020}
+.check{display:flex;align-items:center;gap:.6rem;font-weight:600;margin-top:1.15rem;min-height:48px}
+.check input{width:1.15rem;height:1.15rem;min-height:0;max-width:none;margin:0;padding:0}
+button{font:inherit;font-weight:700;display:block;margin-top:1.4rem;padding:.75rem 1.4rem;border:0;border-radius:10px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:48px;width:100%;max-width:16rem}
+button:hover{background:var(--accent-hover)}
+@media (max-width:40rem){h1{font-size:1.75rem}button,input{max-width:none}}
+.error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
+#calc-form > label:first-of-type{margin-top:0}
+@media (prefers-color-scheme:dark){.error{color:#ff8a8a}input[aria-invalid="true"]{border-color:#ff8a8a}body{background-image:radial-gradient(900px 380px at 50% -160px,#1c3329 0%,transparent 70%)}}
+.table-wrap{overflow-x:auto;margin:.35rem 0 1rem;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--field);font-size:.92rem}
+tr:last-child td,tr:last-child th{border-bottom:0}
+td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+caption{text-align:left;caption-side:top;padding:0 0 .45rem;color:var(--muted)}
+.kicker{margin:0;color:var(--muted);font-weight:600;font-size:.92rem}
+.big{font-size:2.15rem;font-weight:700;line-height:1.1;margin:.2rem 0 .15rem;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.note{background:var(--warnbg);color:var(--warn);border-radius:10px;padding:.8rem 1rem;font-size:.95rem}
+.reading{border-top:1px solid var(--line);margin-top:2.75rem;padding-top:1.6rem}
+.reading h2{display:flex;align-items:center;gap:.55rem}
+.reading h2::before{content:"";width:.5rem;height:.5rem;border-radius:2px;background:#e2b15a;flex:none}
+.reading p{max-width:40rem}
+details{border-bottom:1px solid var(--line)}
+details p{margin:.15rem 0 .9rem}
+summary{cursor:pointer;font-weight:600;min-height:48px;padding:.7rem 0}
+footer{color:var(--muted);font-size:.95rem;margin-top:2.75rem;border-top:0;box-shadow:inset 0 3px 0 #e2b15a;background:var(--card)}
+.foot-inner{padding:1.35rem 0 2rem}
+.foot-name{margin:0 0 .15rem;color:var(--fg);font-weight:700;display:flex;align-items:center;gap:.5rem}
+.foot-name .mark{width:24px;height:24px}
+.foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.15rem 0 .35rem}
+.foot-nav a{min-height:44px;display:inline-flex;align-items:center}
+footer p{margin:.3rem 0}
+@media print{button{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to calculator</a>
+<header class="site-bar">
+  <div class="bar-inner">
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="8" fill="#f6f1e6"/>
+        <rect x="7" y="10" width="18" height="3.5" rx="1.75" fill="#1e4d3a"/>
+        <rect x="7" y="18.5" width="18" height="3.5" rx="1.75" fill="#c9963a"/>
+      </svg>
+      Retirement Math
+    </a>
+    <span class="bar-domain">retirementmath.ca</span>
+  </div>
+</header>
+<main id="main" class="wrap">
+  <div class="page-intro">
+    <p class="eyebrow">Registered retirement income fund</p>
+    <h1>RRIF minimum withdrawal calculator</h1>
+    <p class="lede">Estimate the yearly minimum payment from a RRIF. The factor comes from the CRA chart for all other RRIFs. Nothing you type leaves your browser.</p>
+    <ul class="facts">
+      <li>Age 71 factor is 5.28%</li>
+      <li>No minimum in the year you open it</li>
+      <li>You can take more, not less</li>
+    </ul>
+  </div>
+  <form id="calc-form" class="card" novalidate>
+    <label for="value">Value of the RRIF on January 1
+      <span class="hint">Fair market value at the start of the year. Your carrier uses this.</span></label>
+    <input id="value" name="value" inputmode="decimal" autocomplete="off" placeholder="e.g. 100000" aria-describedby="value-err" required>
+    <p id="value-err" class="error" aria-live="polite"></p>
+
+    <label for="age">Your age on January 1
+      <span class="hint">Whole years. If you are 95 or older, enter 95.</span></label>
+    <input id="age" name="age" type="number" inputmode="numeric" min="0" max="130" step="1" value="71" required aria-describedby="age-err">
+    <p id="age-err" class="error" aria-live="polite"></p>
+
+    <label for="spouse">Spouse or common-law partner age on January 1 (optional)
+      <span class="hint">Fill this in only if you elected their age when the RRIF was set up, before any payments. The carrier then uses their age, even if they are older.</span></label>
+    <input id="spouse" name="spouse" type="number" inputmode="numeric" min="0" max="130" step="1" aria-describedby="spouse-err">
+    <p id="spouse-err" class="error" aria-live="polite"></p>
+
+    <label class="check"><input id="opened" type="checkbox"> The RRIF was opened this year</label>
+    <span class="hint">There is no minimum in the year it is set up.</span>
+
+    <button type="submit">Calculate</button>
+  </form>
+
+  <section id="results" aria-live="polite" tabindex="-1" hidden>
+    <h2>Your estimate</h2>
+    <div class="card">
+      <p class="kicker">Yearly minimum</p>
+      <p class="big" id="r-min"></p>
+      <p class="hint" id="r-month"></p>
+      <p id="r-factor"></p>
+      <p id="r-explain"></p>
+      <p class="note" id="r-note"></p>
+    </div>
+  </section>
+
+  <section class="reading" id="how">
+    <h2>How the RRIF minimum works</h2>
+    <p>Starting the year after you set up a RRIF, the carrier must pay you a yearly minimum. There is no minimum in the year it is opened. You can withdraw more. You cannot withdraw less.</p>
+    <p>The minimum is the fair market value on January 1 multiplied by a prescribed factor. The factor uses your age in whole years on January 1. If you elected your spouse's or common-law partner's age when the RRIF was set up, before payments started, the carrier uses that age instead.</p>
+    <p>For age 70 or younger, the factor is 1 divided by (90 minus the age). From 71 on, this page uses the CRA column called "All other RRIFs".</p>
+    <p>Example from a CRA page about the current factors: age 71 and a RRIF worth $100,000 on January 1. 5.28% of that is a $5,280 minimum.</p>
+    <h2>Factors from age 71</h2>
+    <div class="table-wrap" tabindex="0">
+      <table id="factor-table">
+        <caption>All other RRIFs. Source: CRA prescribed factors chart.</caption>
+        <thead><tr><th scope="col">Age on January 1</th><th scope="col">Factor</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="hint">Rules last verified: <strong id="verified">2026-10-22</strong>. The CRA chart page details say 2025-10-01. Sources:
+      <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/completing-slips-summaries/t4rsp-t4rif-information-returns/payments/chart-prescribed-factors.html">CRA prescribed factors</a>,
+      <a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/completing-slips-summaries/t4rsp-t4rif-information-returns/payments/minimum-amount-a-rrif.html">CRA minimum amount from a RRIF</a>,
+      <a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/registered-retirement-income-fund-rrif/receiving-income-a-rrif.html">Receiving income from a RRIF</a>.</p>
+  </section>
+
+  <section class="reading" id="questions">
+    <h2>Frequently asked questions</h2>
+    <details><summary>What is the RRIF minimum at age 71?</summary>
+    <p>For all other RRIFs, the CRA factor at age 71 is 5.28% of the value on January 1. On $100,000, the minimum is $5,280.</p></details>
+    <details><summary>How is the RRIF minimum calculated?</summary>
+    <p>Multiply the fair market value at the start of the year by the prescribed factor for the age on January 1. If you elected your spouse's or common-law partner's age when the RRIF was set up, the carrier uses that age.</p></details>
+    <details><summary>Is there a minimum in the year I open the RRIF?</summary>
+    <p>No. The minimum starts the year after the RRIF is set up.</p></details>
+    <details><summary>Can I take more than the minimum?</summary>
+    <p>Yes. You cannot take less. Amounts paid out of a RRIF are taxable. This page does not estimate the tax.</p></details>
+    <details><summary>What if my RRIF was set up before 1993?</summary>
+    <p>It may be a qualifying RRIF. At age 71 the CRA chart shows 5.26% instead of 5.28%. From age 72, the qualifying column matches the all other column. A pre-March 1986 RRIF uses another column. This calculator uses the all other column.</p></details>
+  </section>
+
+  <section class="reading">
+    <h2>What this calculator leaves out</h2>
+    <p>It does not estimate income tax or the tax withheld on amounts above the minimum. It does not cover a qualifying RRIF, a pre-March 1986 RRIF, or a trusteed RRIF that holds an annuity contract. Those use other CRA calculations. Your carrier's statement is the amount that counts.</p>
+    <p>Read the <a href="about.html">about page</a>, the <a href="disclaimer.html">disclaimer</a>, and the <a href="privacy.html">privacy policy</a>.</p>
+  </section>
+</main>
+<footer>
+  <div class="wrap foot-inner">
+    <p class="foot-name"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false" width="24" height="24"><rect width="32" height="32" rx="8" fill="#1e4d3a"/><rect x="7" y="10" width="18" height="3.5" rx="1.75" fill="#f6f1e6"/><rect x="7" y="18.5" width="18" height="3.5" rx="1.75" fill="#e2b15a"/></svg> Retirement Math</p>
+    <nav class="foot-nav" aria-label="Site">
+      <a href="index.html">OAS clawback calculator</a>
+      <a href="rrif.html" aria-current="page">RRIF minimum</a>
+      <a href="about.html">About</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="disclaimer.html">Disclaimer</a>
+    </nav>
+    <p>retirementmath.ca · Made in Scarborough, Ontario.</p>
+    <p>This page does not use cookies or collect what you type. It is not a Government of Canada site.</p>
+  </div>
+</footer>
+
+<!-- RRIF_RULES:BEGIN (generated from data/rrif-rules.json by scripts/build.py; do not hand edit) -->
+<script id="rrif-rules" type="application/json">{"schema_version":1,"last_verified":"2026-10-22","source_page_date":"2025-10-01","kind":"all_other","under_71":{"max_age":70,"formula":"1 / (90 - age)"},"factors_from_71":[{"age":71,"factor":0.0528},{"age":72,"factor":0.054},{"age":73,"factor":0.0553},{"age":74,"factor":0.0567},{"age":75,"factor":0.0582},{"age":76,"factor":0.0598},{"age":77,"factor":0.0617},{"age":78,"factor":0.0636},{"age":79,"factor":0.0658},{"age":80,"factor":0.0682},{"age":81,"factor":0.0708},{"age":82,"factor":0.0738},{"age":83,"factor":0.0771},{"age":84,"factor":0.0808},{"age":85,"factor":0.0851},{"age":86,"factor":0.0899},{"age":87,"factor":0.0955},{"age":88,"factor":0.1021},{"age":89,"factor":0.1099},{"age":90,"factor":0.1192},{"age":91,"factor":0.1306},{"age":92,"factor":0.1449},{"age":93,"factor":0.1634},{"age":94,"factor":0.1879},{"age":95,"factor":0.2}],"sources":{"factors":"https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/completing-slips-summaries/t4rsp-t4rif-information-returns/payments/chart-prescribed-factors.html","minimum":"https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/completing-slips-summaries/t4rsp-t4rif-information-returns/payments/minimum-amount-a-rrif.html","when_it_starts":"https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/registered-retirement-income-fund-rrif/receiving-income-a-rrif.html","age_71_example":"https://www.canada.ca/en/revenue-agency/programs/about-canada-revenue-agency-cra/federal-government-budgets/budget-2015-strong-leadership/minimum-withdrawal-factors-registered-retirement-income-funds.html"}}</script>
+<!-- RRIF_RULES:END -->
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"RRIF minimum withdrawal calculator","url":"https://retirementmath.ca/rrif","applicationCategory":"FinanceApplication","operatingSystem":"Any","isAccessibleForFree":true,"areaServed":{"@type":"Country","name":"Canada"},"offers":{"@type":"Offer","price":"0","priceCurrency":"CAD"},"publisher":{"@type":"Organization","name":"Retirement Math","url":"https://retirementmath.ca/"},"description":"Free Canadian calculator for the yearly RRIF minimum withdrawal."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is the RRIF minimum at age 71?","acceptedAnswer":{"@type":"Answer","text":"For all other RRIFs, the CRA factor at age 71 is 5.28% of the value on January 1. On $100,000, the minimum is $5,280."}},
+{"@type":"Question","name":"How is the RRIF minimum calculated?","acceptedAnswer":{"@type":"Answer","text":"Multiply the fair market value at the start of the year by the prescribed factor for the age on January 1. If you elected your spouse's or common-law partner's age when the RRIF was set up, the carrier uses that age."}},
+{"@type":"Question","name":"Is there a minimum in the year I open the RRIF?","acceptedAnswer":{"@type":"Answer","text":"No. The minimum starts the year after the RRIF is set up."}},
+{"@type":"Question","name":"Can I take more than the minimum?","acceptedAnswer":{"@type":"Answer","text":"Yes. You cannot take less. Amounts paid out of a RRIF are taxable. This page does not estimate the tax."}},
+{"@type":"Question","name":"What if my RRIF was set up before 1993?","acceptedAnswer":{"@type":"Answer","text":"It may be a qualifying RRIF. At age 71 the CRA chart shows 5.26% instead of 5.28%. From age 72, the qualifying column matches the all other column. A pre-March 1986 RRIF uses another column. This calculator uses the all other column."}}
+]}
+</script>
+
+<script id="calc">
+// CALC:BEGIN pure function, tested by tests/test_rrif.js
+function computeRrifMinimum(rules, input) {
+  var age = Math.floor(Number(input.age));
+  var value = Number(input.value);
+  if (!isFinite(age) || age < 0 || age > 130) throw new Error("bad age");
+  if (!isFinite(value) || value < 0) throw new Error("bad value");
+  var useAge = input.spouseAge === null || input.spouseAge === undefined || input.spouseAge === ""
+    ? age
+    : Math.floor(Number(input.spouseAge));
+  if (!isFinite(useAge) || useAge < 0 || useAge > 130) throw new Error("bad spouse age");
+  var factor = rrifFactor(rules, useAge);
+  var minimum = input.openedThisYear ? 0 : round2(value * factor);
+  return {
+    ageUsed: useAge,
+    factor: factor,
+    minimum: minimum,
+    monthly: round2(minimum / 12),
+    openedThisYear: !!input.openedThisYear
+  };
+}
+function rrifFactor(rules, age) {
+  if (age <= rules.under_71.max_age) return 1 / (90 - age);
+  var capped = age >= 95 ? 95 : age;
+  var row = rules.factors_from_71.filter(function (r) { return r.age === capped; })[0];
+  if (!row) throw new Error("missing factor");
+  return row.factor;
+}
+function round2(n) { return Math.round(n * 100) / 100; }
+// CALC:END
+
+(function () {
+  if (typeof document === "undefined") return;
+  var rules = JSON.parse(document.getElementById("rrif-rules").textContent);
+  var fmt = new Intl.NumberFormat("en-CA", { style: "currency", currency: "CAD" });
+  var tbody = document.querySelector("#factor-table tbody");
+  rules.factors_from_71.forEach(function (row) {
+    var tr = document.createElement("tr");
+    var age = document.createElement("td");
+    age.textContent = row.age >= 95 ? "95 or older" : String(row.age);
+    var factor = document.createElement("td");
+    factor.className = "num";
+    factor.textContent = (row.factor * 100).toFixed(2) + "%";
+    tr.appendChild(age);
+    tr.appendChild(factor);
+    tbody.appendChild(tr);
+  });
+  document.getElementById("verified").textContent = rules.last_verified;
+
+  function factorText(age, factor) {
+    if (age <= rules.under_71.max_age) return "1 / " + (90 - age);
+    return (factor * 100).toFixed(2) + "%";
+  }
+
+  document.getElementById("calc-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var valueRaw = document.getElementById("value").value.replace(/[$,\s]/g, "");
+    var value = Number(valueRaw);
+    var age = Number(document.getElementById("age").value);
+    var spouseRaw = document.getElementById("spouse").value.trim();
+    var valueErr = document.getElementById("value-err");
+    var ageErr = document.getElementById("age-err");
+    var spouseErr = document.getElementById("spouse-err");
+    var valueField = document.getElementById("value");
+    var ageField = document.getElementById("age");
+    var spouseField = document.getElementById("spouse");
+    valueErr.textContent = "";
+    ageErr.textContent = "";
+    spouseErr.textContent = "";
+    valueField.removeAttribute("aria-invalid");
+    ageField.removeAttribute("aria-invalid");
+    spouseField.removeAttribute("aria-invalid");
+    if (valueRaw === "" || !isFinite(value) || value < 0) {
+      valueErr.textContent = "Enter the January 1 value as a number, for example 100000.";
+      valueField.setAttribute("aria-invalid", "true");
+      valueField.focus();
+      return;
+    }
+    if (!isFinite(age) || age < 0 || age > 130 || Math.floor(age) !== age) {
+      ageErr.textContent = "Enter your age in whole years, from 0 to 130.";
+      ageField.setAttribute("aria-invalid", "true");
+      ageField.focus();
+      return;
+    }
+    if (spouseRaw !== "") {
+      var spouse = Number(spouseRaw);
+      if (!isFinite(spouse) || spouse < 0 || spouse > 130 || Math.floor(spouse) !== spouse) {
+        spouseErr.textContent = "Enter the spouse or partner age in whole years, or leave it blank.";
+        spouseField.setAttribute("aria-invalid", "true");
+        spouseField.focus();
+        return;
+      }
+    }
+    var r = computeRrifMinimum(rules, {
+      value: value,
+      age: age,
+      spouseAge: spouseRaw,
+      openedThisYear: document.getElementById("opened").checked
+    });
+    document.getElementById("r-min").textContent = fmt.format(r.minimum);
+    document.getElementById("r-month").textContent = r.openedThisYear
+      ? "No minimum is due this year."
+      : "About " + fmt.format(r.monthly) + " a month if it is paid in 12 equal amounts.";
+    document.getElementById("r-factor").textContent = "Factor for age " + r.ageUsed + ": " + factorText(r.ageUsed, r.factor) + ".";
+    document.getElementById("r-explain").textContent = r.openedThisYear
+      ? "The minimum starts the year after the RRIF is set up. Next year's minimum will use the value on January 1 of that year."
+      : "This is " + factorText(r.ageUsed, r.factor) + " of " + fmt.format(value) + ", rounded to the nearest cent.";
+    document.getElementById("r-note").textContent = "This uses the CRA factors for all other RRIFs. It is not a tax estimate and it is not your carrier's statement.";
+    var res = document.getElementById("results");
+    res.hidden = false;
+    res.focus();
+  });
+})();
+</script>
+</body>
+</html>

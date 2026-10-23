@@ -2,11 +2,12 @@
 
 Static utility site for Canadian retirement money questions, at retirementmath.ca. Page one estimates the Old Age Security clawback (recovery tax).
 
-Status (2026-10-22): live at https://retirementmath.ca/ and https://retirementmath.pages.dev. GitHub repo https://github.com/vikiscoding/retirementmath. Pushing `main` tests the calculator and deploys to Cloudflare Pages. Search Console ownership is verified. The public title is the 2026 OAS clawback calculator, and the mark is `logo.svg`. Unknown addresses return `404.html`. `www` redirects to the apex in `functions/_middleware.js`. No ads, no analytics, no email list.
+Status (2026-10-22): live at https://retirementmath.ca/ and https://retirementmath.pages.dev. GitHub repo https://github.com/vikiscoding/retirementmath. Pushing `main` tests the calculator and deploys to Cloudflare Pages. Search Console ownership is verified. The public title is the 2026 OAS clawback calculator, and the mark is `logo.svg`. The RRIF minimum calculator is in `rrif.html` and is not on the live site until `main` is pushed. Unknown addresses return `404.html`. `www` redirects to the apex in `functions/_middleware.js`. No ads, no analytics, no email list.
 
 ## Layout
 ```
 index.html                 OAS clawback calculator (self-contained, data inlined)
+rrif.html                  RRIF minimum withdrawal calculator (self-contained, data inlined)
 about.html                 Who runs the site and how figures are checked
 privacy.html               Privacy policy draft
 disclaimer.html            Disclaimer page
@@ -14,8 +15,9 @@ disclaimer.html            Disclaimer page
 ads.txt                    Placeholder, not live
 robots.txt, sitemap.xml    Point at retirementmath.ca
 logo.svg                   Mark: spruce tile, cream bar, gold bar
-data/oas-rules.json        Every figure with source URL and date
-scripts/build.py           Inlines JSON into index.html
+data/oas-rules.json        Every OAS figure with source URL and date
+data/rrif-rules.json       CRA RRIF factors with source URL and date
+scripts/build.py           Inlines JSON into index.html and rrif.html
 scripts/check_rules.py     Fetches canada.ca, diffs thresholds, optional --update
 tests/test_calc.js         Math tests, also checks inline data is fresh
 functions/_middleware.js              Redirect www.retirementmath.ca to the apex

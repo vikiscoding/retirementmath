@@ -27,7 +27,7 @@
 | --- | --- | --- |
 | CPP start age calculator (60 vs 65 vs 70) | High search volume | canada.ca CPP amounts |
 | GIS eligibility estimator | Low income seniors, pairs with OAS | ESDC quarterly tables |
-| RRIF minimum withdrawal calculator | Every RRIF holder at 71+ | CRA prescribed factors |
+| RRIF minimum withdrawal calculator | Built in rrif.html. All other RRIFs only. No tax estimate. | CRA prescribed factors |
 | OAS deferral break-even | Natural next step from this page | OAS deferral rules |
 | Pension income splitting estimator | Cuts clawback for couples | CRA T1032 rules |
 | RRSP to RRIF meltdown planner | Clawback planning | CRA + OAS rules |

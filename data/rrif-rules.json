@@ -1,0 +1,43 @@
+{
+  "schema_version": 1,
+  "last_verified": "2026-10-22",
+  "source_page_date": "2025-10-01",
+  "kind": "all_other",
+  "under_71": {
+    "max_age": 70,
+    "formula": "1 / (90 - age)"
+  },
+  "factors_from_71": [
+    {"age": 71, "factor": 0.0528},
+    {"age": 72, "factor": 0.054},
+    {"age": 73, "factor": 0.0553},
+    {"age": 74, "factor": 0.0567},
+    {"age": 75, "factor": 0.0582},
+    {"age": 76, "factor": 0.0598},
+    {"age": 77, "factor": 0.0617},
+    {"age": 78, "factor": 0.0636},
+    {"age": 79, "factor": 0.0658},
+    {"age": 80, "factor": 0.0682},
+    {"age": 81, "factor": 0.0708},
+    {"age": 82, "factor": 0.0738},
+    {"age": 83, "factor": 0.0771},
+    {"age": 84, "factor": 0.0808},
+    {"age": 85, "factor": 0.0851},
+    {"age": 86, "factor": 0.0899},
+    {"age": 87, "factor": 0.0955},
+    {"age": 88, "factor": 0.1021},
+    {"age": 89, "factor": 0.1099},
+    {"age": 90, "factor": 0.1192},
+    {"age": 91, "factor": 0.1306},
+    {"age": 92, "factor": 0.1449},
+    {"age": 93, "factor": 0.1634},
+    {"age": 94, "factor": 0.1879},
+    {"age": 95, "factor": 0.2}
+  ],
+  "sources": {
+    "factors": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/completing-slips-summaries/t4rsp-t4rif-information-returns/payments/chart-prescribed-factors.html",
+    "minimum": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/completing-slips-summaries/t4rsp-t4rif-information-returns/payments/minimum-amount-a-rrif.html",
+    "when_it_starts": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/registered-retirement-income-fund-rrif/receiving-income-a-rrif.html",
+    "age_71_example": "https://www.canada.ca/en/revenue-agency/programs/about-canada-revenue-agency-cra/federal-government-budgets/budget-2015-strong-leadership/minimum-withdrawal-factors-registered-retirement-income-funds.html"
+  }
+}

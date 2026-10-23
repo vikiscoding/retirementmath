@@ -31,3 +31,4 @@ for (const [name, inp, want] of cases) {
   pass++;
 }
 console.log(`${pass}/${cases.length} passed`);
+require("./test_rrif.js");
