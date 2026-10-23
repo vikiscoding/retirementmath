@@ -2,7 +2,7 @@
 
 Static utility site for Canadian retirement money questions, at retirementmath.ca. Page one estimates the Old Age Security clawback (recovery tax).
 
-Status (2026-10-22): live at https://retirementmath.ca/ and https://retirementmath.pages.dev. GitHub repo https://github.com/vikiscoding/retirementmath. Pushing `main` tests the calculator and deploys to Cloudflare Pages. Search Console ownership is verified. The public title is the 2026 OAS clawback calculator, and the mark is `logo.svg`. The RRIF minimum calculator is in `rrif.html` and is not on the live site until `main` is pushed. Unknown addresses return `404.html`. `www` redirects to the apex in `functions/_middleware.js`. No ads, no analytics, no email list.
+Status (2026-10-22): live at https://retirementmath.ca/ and https://retirementmath.pages.dev. GitHub repo https://github.com/vikiscoding/retirementmath. Pushing `main` tests the calculator and deploys to Cloudflare Pages. Search Console ownership is verified. The public title is the 2026 OAS clawback calculator, and the mark is `logo.svg`. The RRIF minimum calculator is at https://retirementmath.ca/rrif. Unknown addresses return `404.html`. `www` redirects to the apex in `functions/_middleware.js`. No ads, no analytics, no email list.
 
 ## Layout
 ```

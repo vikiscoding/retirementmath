@@ -49,4 +49,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy site --project-name=retirementmath --branch=main --commit-dirty=true --functions=functions
+          command: pages deploy site --project-name=retirementmath --branch=main --commit-dirty=true
