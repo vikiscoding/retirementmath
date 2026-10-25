@@ -31,4 +31,28 @@ for (const [name, inp, want] of cases) {
   pass++;
 }
 console.log(`${pass}/${cases.length} passed`);
+
+const frHtml = fs.readFileSync(path.join(root, "fr/index.html"), "utf8");
+const frInline = JSON.parse(frHtml.match(/<script id="oas-rules" type="application\/json">([\s\S]*?)<\/script>/)[1]);
+assert.deepStrictEqual(frInline, rules, "inline rules in fr/index.html are stale: run python3 scripts/build.py");
+assert.strictEqual(frHtml.match(/\/\/ CALC:BEGIN[\s\S]*?\/\/ CALC:END/)[0], src, "French OAS calc drifted from index.html");
+
+const pages = [
+  ["index.html", "fr/index.html"],
+  ["rrif.html", "fr/rrif.html"],
+  ["about.html", "fr/about.html"],
+  ["privacy.html", "fr/privacy.html"],
+  ["disclaimer.html", "fr/disclaimer.html"],
+];
+for (const [en, fr] of pages) {
+  const enHtml = en === "index.html" ? html : fs.readFileSync(path.join(root, en), "utf8");
+  const frPage = en === "index.html" ? frHtml : fs.readFileSync(path.join(root, fr), "utf8");
+  assert.ok(enHtml.includes('lang="en-CA"'), en + " lang");
+  assert.ok(frPage.includes('lang="fr-CA"'), fr + " lang");
+  assert.ok(enHtml.includes('hreflang="fr-CA"'), en + " hreflang");
+  assert.ok(frPage.includes('hreflang="en-CA"'), fr + " hreflang");
+  assert.ok(enHtml.includes('class="skip"'), en + " skip");
+  assert.ok(frPage.includes('class="skip"'), fr + " skip");
+}
+console.log("language links ok");
 require("./test_rrif.js");

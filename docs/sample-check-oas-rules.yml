@@ -1,5 +1,5 @@
-# SAMPLE ONLY. Not active. It lives outside .github/workflows so a push does not turn it on.
-# To use it, copy this file to .github/workflows/ after the owner asks.
+# Readable copy of the live workflow at .github/workflows/check-oas-rules.yml.
+# Keep the two in step. The live file is what GitHub runs.
 # Runs weekly, checks canada.ca, and opens a pull request if thresholds changed. A human merges.
 name: check-oas-rules
 on:

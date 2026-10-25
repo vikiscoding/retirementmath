@@ -9,11 +9,11 @@
 - [x] About page names the owner and how figures are checked. No job title or designation is claimed.
 - [x] Unknown URLs return 404.html. www.retirementmath.ca redirects to the apex.
 - [x] Point sitemap and canonicals at the URLs Pages serves (`/privacy` and `/disclaimer` return 200; the `.html` paths redirect).
-- [ ] Lawyer or accountant read of disclaimer and privacy page
+- [x] Lawyer or accountant read of disclaimer and privacy page (2026-10-25). The privacy page no longer says the text is an unread draft.
 - [x] Use retirementmath.ca in canonical, robots.txt, and sitemap.xml
-- [ ] French version (needed for Quebec reach and Law 25 good practice)
-- [ ] Manual accessibility pass: keyboard only, NVDA, 200% zoom, 320px width
-- [ ] Turn on the rules check workflow in the real repo
+- [x] French version at /fr/ (calculator, RRIF, about, privacy, disclaimer), with hreflang
+- [x] Manual accessibility pass (2026-10-25): keyboard skip target, focus contrast, 320px width, 200% zoom. Checked in a browser with axe. NVDA is not installed on this PC, so a screen reader was not run.
+- [x] Weekly rules check is on: `.github/workflows/check-oas-rules.yml`
 
 ## Monetization order (see panel review)
 1. Launch with no ads. Build content and traffic.

@@ -1,0 +1,415 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculatrice de récupération de la SV 2026 (Canada) | Retirement Math</title>
+<meta name="description" content="Estimez l'impôt de récupération de la Sécurité de la vieillesse (clawback de la SV) à partir de votre revenu net de toutes provenances. Seuils officiels de canada.ca.">
+<link rel="canonical" href="https://retirementmath.ca/fr/">
+<link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/">
+<link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/">
+<link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/">
+<meta name="theme-color" content="#1e4d3a" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#143528" media="(prefers-color-scheme: dark)">
+<meta property="og:site_name" content="Retirement Math">
+<meta property="og:title" content="Calculatrice de récupération de la SV 2026 (Canada) | Retirement Math">
+<meta property="og:description" content="Estimez l'impôt de récupération de la Sécurité de la vieillesse (clawback de la SV) à partir de votre revenu net de toutes provenances. Seuils officiels de canada.ca.">
+<meta property="og:url" content="https://retirementmath.ca/fr/">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:locale:alternate" content="en_CA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculatrice de récupération de la SV 2026 (Canada) | Retirement Math">
+<meta name="twitter:description" content="Estimez l'impôt de récupération de la Sécurité de la vieillesse (clawback de la SV) à partir de votre revenu net de toutes provenances. Seuils officiels de canada.ca.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e4d3a'/%3E%3Crect x='7' y='10' width='18' height='3.5' rx='1.75' fill='%23f6f1e6'/%3E%3Crect x='7' y='18.5' width='18' height='3.5' rx='1.75' fill='%23e2b15a'/%3E%3C/svg%3E" type="image/svg+xml">
+<style>
+:root{--bg:#f3efe6;--fg:#1c1915;--muted:#514c44;--line:#e3dacd;--input:#6f695f;--field:#fff;--accent:#1e4d3a;--accent-hover:#173d2e;--accent-fg:#f7f3eb;--card:#fffcf7;--choice:#e7f2eb;--repay:#f6efe4;--keep:#e7f2eb;--warn:#7a4b00;--warnbg:#fff6e0;--bar:#1e4d3a;--bar-fg:#f7f3eb;--placeholder:#5e584f;--shadow:0 1px 2px rgba(28,25,21,.05),0 8px 24px rgba(28,25,21,.04);color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#141210;--fg:#f3efe8;--muted:#c8c0b4;--line:#3d372f;--input:#a39888;--field:#1c1916;--accent:#8fceb0;--accent-hover:#a9dcc2;--accent-fg:#10241b;--card:#211e1a;--choice:#1a3328;--repay:#2a241c;--keep:#1a3328;--warn:#ffd27a;--warnbg:#2c2410;--bar:#143528;--bar-fg:#f3efe8;--placeholder:#c4bbb0;--shadow:none;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;font:1.0625rem/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);background-image:radial-gradient(1100px 420px at 50% -160px,#fff8ec 0%,transparent 70%);color:var(--fg);overflow-wrap:break-word}
+a{color:var(--accent);text-underline-offset:.16em}
+:focus-visible{outline:3px solid #1c1915;outline-offset:2px}
+.site-bar :focus-visible{outline-color:#ffbf47}
+@media (prefers-color-scheme:dark){:focus-visible,.site-bar :focus-visible{outline-color:#ffbf47}}
+.skip{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0}
+.skip:focus{position:fixed;left:1rem;top:1rem;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;background:#fff;color:#1c1915;padding:.55rem .8rem;z-index:20;border-radius:8px;text-decoration:none}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1rem}
+.site-bar{background:var(--bar);color:var(--bar-fg);box-shadow:inset 0 -3px 0 #e2b15a}
+.bar-inner{max-width:46rem;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;flex-wrap:wrap;min-height:72px}
+.brand{display:flex;align-items:center;gap:.7rem;color:inherit;font-weight:700;text-decoration:none;min-height:44px;letter-spacing:-.02em}
+.brand:hover{text-decoration:underline}
+.mark{width:40px;height:40px;display:block;flex:none}
+.bar-domain{font-size:.9rem;letter-spacing:.01em;color:#e7e0d2}
+.lang{display:flex;flex-wrap:wrap;gap:.15rem .85rem;align-items:center}
+.lang a,.lang [aria-current]{color:var(--bar-fg);min-height:44px;display:inline-flex;align-items:center;font-weight:700}
+.lang a{text-decoration:underline;text-underline-offset:.16em}
+main{padding-bottom:1rem}
+.page-intro{padding-top:2rem}
+h1{font-size:2.35rem;line-height:1.15;margin:0 0 .55rem;letter-spacing:-.03em}
+h2{font-size:1.35rem;line-height:1.25;margin:0 0 .75rem;letter-spacing:-.02em}
+h3{font-size:1.05rem;margin:1.35rem 0 .45rem}
+.eyebrow{display:flex;align-items:center;gap:.5rem;margin:0 0 .45rem;color:var(--accent);font-weight:700;font-size:.92rem}
+.eyebrow::before{content:"";width:1.25rem;height:3px;border-radius:2px;background:#e2b15a;flex:none}
+.lede{color:var(--muted);margin:0;max-width:40rem}
+.facts{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0;padding:0;list-style:none}
+.facts li{margin:0;max-width:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:.45rem .75rem;font-size:.92rem;line-height:1.35}
+.onpage{display:flex;flex-wrap:wrap;gap:.15rem 1.1rem;margin:.35rem 0 0;padding:0}
+.onpage a{min-height:44px;display:inline-flex;align-items:center}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.2rem 1.35rem;margin:1.35rem 0 0;box-shadow:var(--shadow)}
+#calc-form{border-top:4px solid #e2b15a}
+label{display:block;font-weight:600;margin-top:1.15rem}
+.hint{display:block;font-weight:400;color:var(--muted);font-size:.95rem;margin-top:.15rem}
+input,select{font:inherit;font-variant-numeric:tabular-nums;display:block;width:100%;padding:.65rem .75rem;border:1px solid var(--input);border-radius:10px;background:var(--field);color:var(--fg);min-height:48px;accent-color:var(--accent)}
+input::placeholder{color:var(--placeholder);opacity:1}
+input[type="number"],input[inputmode="decimal"]{max-width:16rem}
+input[aria-invalid="true"]{border-color:#b00020}
+fieldset{border:0;padding:0;margin:1.15rem 0 0}
+legend{font-weight:600;padding:0}
+.radio{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.45rem}
+.radio label{font-weight:600;margin:0;display:flex;align-items:center;gap:.5rem;min-height:48px;padding:.4rem .75rem;border:1px solid var(--line);border-radius:10px;background:var(--field)}
+.radio label:has(input:checked){border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--choice)}
+.radio input:focus-visible{outline:none}
+.radio label:has(input:focus-visible){outline:3px solid #1c1915;outline-offset:2px}
+@media (prefers-color-scheme:dark){.radio label:has(input:focus-visible){outline-color:#ffbf47}}
+.radio input{width:1.15rem;height:1.15rem;min-height:0;margin:0;padding:0;accent-color:var(--accent)}
+button{font:inherit;font-weight:700;display:block;margin-top:1.4rem;padding:.75rem 1.4rem;border:0;border-radius:10px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:48px;width:100%;max-width:16rem}
+button:hover{background:var(--accent-hover)}
+@media (max-width:40rem){h1{font-size:1.75rem}button,input[type="number"],input[inputmode="decimal"]{max-width:none}}
+@media (max-width:22.5rem){.radio{grid-template-columns:1fr}}
+.error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
+#calc-form > label:first-of-type{margin-top:0}
+@media (prefers-color-scheme:dark){.error{color:#ff8a8a}input[aria-invalid="true"]{border-color:#ff8a8a}body{background-image:radial-gradient(900px 380px at 50% -160px,#1c3329 0%,transparent 70%)}}
+.table-wrap{overflow-x:auto;margin:.35rem 0 1rem;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--field);font-size:.92rem}
+tr:last-child td,tr:last-child th{border-bottom:0}
+td.num,caption{font-variant-numeric:tabular-nums}
+td.num{text-align:right;white-space:nowrap}
+caption{text-align:left;caption-side:top;padding:0 0 .45rem;color:var(--muted)}
+#rules-table th:nth-child(n+3),#rules-table td:nth-child(n+3){text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.result-grid{display:grid;gap:.75rem;margin:0 0 1.1rem}
+@media (min-width:36rem){.result-grid{grid-template-columns:1.15fr .85fr}}
+.result-grid > div{padding:.95rem 1rem;border-radius:12px}
+.result-grid > div:first-child{background:var(--repay)}
+.result-grid > div:last-child{background:var(--keep)}
+.kicker{margin:0;color:var(--muted);font-weight:600;font-size:.92rem}
+.big{font-size:2.15rem;font-weight:700;line-height:1.1;margin:.2rem 0 .15rem;font-variant-numeric:tabular-nums;letter-spacing:-.03em;overflow-wrap:anywhere}
+.keep{font-size:1.7rem;font-weight:700;line-height:1.1;margin:.25rem 0 .15rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em;overflow-wrap:anywhere}
+.note{background:var(--warnbg);color:var(--warn);border-radius:10px;padding:.8rem 1rem;font-size:.95rem}
+.ad-slot{display:none}
+.reading{border-top:1px solid var(--line);margin-top:2.75rem;padding-top:1.6rem}
+.reading h2{display:flex;align-items:center;gap:.55rem}
+.reading h2::before{content:"";width:.5rem;height:.5rem;border-radius:2px;background:#e2b15a;flex:none}
+.reading p{max-width:40rem}
+details{border-bottom:1px solid var(--line)}
+details p{margin:.15rem 0 .9rem}
+summary{cursor:pointer;font-weight:600;min-height:48px;padding:.7rem 0}
+footer{color:var(--muted);font-size:.95rem;margin-top:2.75rem;border-top:0;box-shadow:inset 0 3px 0 #e2b15a;background:var(--card)}
+.foot-inner{padding:1.35rem 0 2rem}
+.foot-name{margin:0 0 .15rem;color:var(--fg);font-weight:700;display:flex;align-items:center;gap:.5rem}
+.foot-name .mark{width:24px;height:24px}
+.foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.15rem 0 .35rem}
+.foot-nav a{min-height:44px;display:inline-flex;align-items:center}
+footer p{margin:.3rem 0}
+@media print{.ad-slot,button,.facts,.onpage{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card,.result-grid > div{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#calc-form">Aller à la calculatrice</a>
+<header class="site-bar">
+  <div class="bar-inner">
+    <a class="brand" href="./">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="8" fill="#f6f1e6"/>
+        <rect x="7" y="10" width="18" height="3.5" rx="1.75" fill="#1e4d3a"/>
+        <rect x="7" y="18.5" width="18" height="3.5" rx="1.75" fill="#c9963a"/>
+      </svg>
+      <span lang="en">Retirement Math</span>
+    </a>
+    <nav class="lang" aria-label="Langue">
+      <a href="../index.html" hreflang="en-CA" lang="en-CA">English</a>
+      <span lang="fr-CA" aria-current="true">Français</span>
+    </nav>
+    <span class="bar-domain">retirementmath.ca</span>
+  </div>
+</header>
+
+<div class="ad-slot" role="presentation" aria-hidden="true"></div>
+
+<main id="main" class="wrap">
+  <div class="page-intro">
+    <p class="eyebrow">Sécurité de la vieillesse</p>
+    <h1>Calculatrice de récupération de la SV pour 2026</h1>
+    <p class="lede">Estimez l'impôt de récupération de la Sécurité de la vieillesse, aussi appelé clawback, à partir de votre revenu net de toutes provenances. Pour les paiements de juillet 2026 à juin 2028, le calcul utilise votre revenu de 2025 ou de 2026. Les chiffres viennent de canada.ca. Rien de ce que vous écrivez ne quitte votre navigateur.</p>
+    <ul class="facts">
+      <li>15 % du revenu au-dessus du seuil</li>
+      <li>Le revenu de 2025 commence à 93 454 $</li>
+      <li>Le calcul reste dans votre navigateur</li>
+    </ul>
+    <nav class="onpage" aria-label="Sur cette page">
+      <a href="#who">À qui ça s'adresse</a>
+      <a href="#how">Comment ça marche</a>
+      <a href="#questions">Questions</a>
+    </nav>
+  </div>
+<form id="calc-form" class="card" tabindex="-1" novalidate>
+  <label for="income">Revenu net de toutes provenances pour l'année
+    <span class="hint">Ligne 23400 de votre déclaration, avant le remboursement de la SV. Comprend votre pension de la SV.</span></label>
+  <input id="income" name="income" inputmode="decimal" autocomplete="off" placeholder="p. ex. 110000" aria-describedby="income-err" required>
+  <p id="income-err" class="error" aria-live="polite"></p>
+
+  <fieldset>
+    <legend>Votre âge pendant la période de paiement</legend>
+    <div class="radio">
+      <label><input type="radio" name="age" value="65_74" checked> 65 à 74 ans</label>
+      <label><input type="radio" name="age" value="75_plus"> 75 ans et plus</label>
+    </div>
+  </fieldset>
+
+  <label for="period">Année de revenu et période de remboursement</label>
+  <select id="period" name="period"></select>
+
+  <label for="years">Années vécues au Canada après 18 ans (facultatif)
+    <span class="hint">40 ans ou plus, c'est une pleine pension. De 10 à 39 ans, c'est une pension partielle.</span></label>
+  <input id="years" name="years" type="number" min="10" max="40" step="1" value="40">
+
+  <label for="defer">Mois de report de la SV après 65 ans (facultatif)
+    <span class="hint">0,6 % de plus par mois, jusqu'à 60 mois (36 %).</span></label>
+  <input id="defer" name="defer" type="number" min="0" max="60" step="1" value="0">
+
+  <button type="submit">Calculer</button>
+</form>
+
+<section id="results" aria-live="polite" tabindex="-1" hidden>
+  <h2>Votre estimation</h2>
+  <div class="card">
+    <div class="result-grid">
+      <div>
+        <p class="kicker">Remboursement annuel estimé</p>
+        <p class="big" id="r-annual"></p>
+        <p class="hint">Environ <span id="r-monthly"></span> par mois retenus</p>
+      </div>
+      <div>
+        <p class="kicker">SV que vous gardez</p>
+        <p class="keep" id="r-keep"></p>
+        <p class="hint"><span id="r-keep-m"></span> par mois</p>
+      </div>
+    </div>
+    <table>
+      <caption class="hint">Détails de l'estimation</caption>
+      <tbody>
+        <tr><th scope="row">SV estimée avant récupération (par année)</th><td class="num" id="r-oas"></td></tr>
+        <tr><th scope="row">La récupération commence à</th><td class="num" id="r-min"></td></tr>
+        <tr><th scope="row">Pleine récupération sur canada.ca</th><td class="num" id="r-official"></td></tr>
+        <tr><th scope="row">Pleine récupération dans cette estimation</th><td class="num" id="r-full"></td></tr>
+      </tbody>
+    </table>
+    <p id="r-explain"></p>
+    <p class="note" id="r-note"></p>
+  </div>
+</section>
+
+<div class="ad-slot" role="presentation" aria-hidden="true"></div>
+
+<section class="reading" id="who">
+  <h2>À qui s'adresse cette calculatrice</h2>
+  <p>Utilisez-la si vous vivez au Canada et que vous recevez la Sécurité de la vieillesse, ou si vous allez la recevoir. Elle aide quand votre revenu est près du seuil et que vous voulez une estimation de l'impôt de récupération.</p>
+  <p>Le résultat n'est pas un avis de cotisation. L'ARC et Service Canada décident du montant à rembourser.</p>
+  <p>Qui tient le site, et comment les chiffres sont vérifiés, se trouve sur la <a href="about.html">page À propos</a>.</p>
+</section>
+
+<section class="reading" id="how">
+  <h2>Comment fonctionne la récupération de la SV</h2>
+  <p>Si votre revenu net de toutes provenances dépasse le seuil annuel, vous remboursez 15 % du montant au-dessus du seuil. Le remboursement ne peut pas dépasser la SV que vous recevez. L'Agence du revenu du Canada le retient sur vos versements mensuels de la SV, de juillet de l'année suivante à juin de l'année d'après.</p>
+  <p>Exemple de canada.ca : revenu de 100 000 $ en 2025, seuil de 93 454 $. 100 000 $ moins 93 454 $ font 6 546 $. 15 % de ce montant font 981,90 $ à rembourser de juillet 2026 à juin 2027.</p>
+  <h3 id="official-figures">Chiffres officiels utilisés</h3>
+  <div class="table-wrap" tabindex="0" role="region" aria-labelledby="official-figures">
+  <table id="rules-table">
+    <thead><tr><th scope="col">Année de revenu</th><th scope="col">Période de remboursement</th><th scope="col">Le seuil</th><th scope="col">Pleine récupération, 65 à 74 ans</th><th scope="col">Pleine récupération, 75 ans et plus</th></tr></thead>
+    <tbody></tbody>
+  </table>
+  </div>
+  <p class="hint">Règles vérifiées le : <strong id="verified">2026-10-22</strong>. Sources :
+    <a href="https://www.canada.ca/fr/services/prestations/pensionspubliques/securite-vieillesse/impot-recuperation.html">canada.ca, impôt de récupération de la SV</a>,
+    <a href="https://www.canada.ca/fr/services/prestations/pensionspubliques/securite-vieillesse/paiements.html">canada.ca, montant des paiements de la SV</a>.</p>
+</section>
+
+<section class="reading" id="questions">
+  <h2>Questions fréquentes</h2>
+  <details><summary>Quel est le seuil de récupération de la SV pour 2026?</summary>
+  <p>Pour la SV versée de juillet 2026 à juin 2027, la récupération se base sur votre revenu de 2025 et commence à 93 454 $. Pour juillet 2027 à juin 2028, elle se base sur votre revenu de 2026 et commence à 95 323 $. Les plafonds du revenu de 2026 restent des estimations sur canada.ca jusqu'à plus tard dans l'année.</p></details>
+  <details><summary>Quel est le montant de la récupération de la SV?</summary>
+  <p>15 % de votre revenu net de toutes provenances au-dessus du seuil, jusqu'à concurrence de la pleine SV que vous recevez.</p></details>
+  <details><summary>À quel revenu la SV est-elle entièrement récupérée?</summary>
+  <p>Pour le revenu de 2025, canada.ca indique 152 062 $ pour les 65 à 74 ans et 157 923 $ pour les 75 ans et plus. Le point exact dépend des montants de SV pendant l'année. L'estimation de cette calculatrice peut donc différer un peu.</p></details>
+  <details><summary>La récupération utilise-t-elle le revenu du ménage?</summary>
+  <p>Non. Elle utilise votre revenu net de toutes provenances, à vous seul. Le fractionnement du revenu de pension peut déplacer du revenu entre conjoints et peut réduire la récupération d'une personne.</p></details>
+  <details><summary>Ma pension de la SV compte-t-elle dans le revenu net?</summary>
+  <p>Oui. Le revenu net de toutes provenances comprend la pension de la SV.</p></details>
+  <details><summary>Cette calculatrice est-elle officielle?</summary>
+  <p>Non. C'est une estimation. C'est l'avis de l'ARC et de Service Canada qui compte.</p></details>
+  <details><summary>Quand la récupération est-elle retenue sur mes paiements?</summary>
+  <p>L'Agence du revenu du Canada la retient sur votre SV mensuelle de juillet de l'année qui suit l'année de revenu, jusqu'en juin de l'année d'après. Le revenu de 2025 change les paiements de juillet 2026 à juin 2027.</p></details>
+  <details><summary>Comment calcule-t-on la récupération de la SV?</summary>
+  <p>Soustrayez le seuil annuel de votre revenu net de toutes provenances. Si le résultat est plus grand que zéro, vous remboursez 15 % de cet écart. Le remboursement ne peut pas dépasser la SV que vous recevez.</p></details>
+</section>
+
+<section class="reading">
+  <h2>Avis</h2>
+  <p>Cet outil donne une estimation générale, à titre d'information seulement. Ce n'est pas un conseil fiscal, juridique ou financier, et ce n'est pas un outil du gouvernement du Canada, de l'ARC ou de Service Canada. Le calcul de la pension partielle et du report est simplifié. Vérifiez auprès de l'ARC, de Service Canada ou d'une personne qualifiée avant de décider. Les chiffres peuvent changer. Voyez la date et les sources ci-dessus. Lisez la <a href="about.html">page À propos</a>, l'<a href="disclaimer.html">avis</a> et la <a href="privacy.html">politique de confidentialité</a>.</p>
+</section>
+</main>
+
+<div class="ad-slot" role="presentation" aria-hidden="true"></div>
+
+<footer>
+  <div class="wrap foot-inner">
+    <p class="foot-name"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false" width="24" height="24"><rect width="32" height="32" rx="8" fill="#1e4d3a"/><rect x="7" y="10" width="18" height="3.5" rx="1.75" fill="#f6f1e6"/><rect x="7" y="18.5" width="18" height="3.5" rx="1.75" fill="#e2b15a"/></svg> <span lang="en">Retirement Math</span></p>
+    <nav class="foot-nav" aria-label="Pages du site">
+      <a href="./" aria-current="page">Récupération de la SV</a>
+      <a href="rrif.html">Minimum du FERR</a>
+      <a href="about.html">À propos</a>
+      <a href="privacy.html">Confidentialité</a>
+      <a href="disclaimer.html">Avis</a>
+    </nav>
+    <p>retirementmath.ca · Fait à Scarborough, en Ontario.</p>
+    <p>Cette page n'utilise pas de cookies et ne recueille pas ce que vous écrivez. Ce n'est pas un site du gouvernement du Canada.</p>
+  </div>
+</footer>
+
+<!-- RULES:BEGIN (generated from data/oas-rules.json by scripts/build.py; do not hand edit) -->
+<script id="oas-rules" type="application/json">{"schema_version":1,"last_verified":"2026-10-22","recovery_rate":0.15,"rate_source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html","periods":[{"id":"2025-income","income_year":2025,"payment_period":"July 2026 to June 2027","threshold_min":93454,"threshold_max_65_74":152062,"threshold_max_75_plus":157923,"status":"final","source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html"},{"id":"2026-income","income_year":2026,"payment_period":"July 2027 to June 2028","threshold_min":95323,"threshold_max_65_74":155320,"threshold_max_75_plus":161320,"status":"estimate","status_note":"canada.ca marks the 2026 maximum thresholds as estimates until October to December of the tax year. ESDC's April to June 2026 quarterly report lists a different upper range ($154,753 age 65 to 74, $160,696 age 75+). The minimum threshold of $95,323 matches on both pages.","source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html","alt_source":"https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"},{"id":"2024-income","income_year":2024,"payment_period":"July 2025 to June 2026","threshold_min":90997,"threshold_max_65_74":148451,"threshold_max_75_plus":154196,"status":"final","source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html"}],"max_monthly_oas_2026":[{"quarter":"2026-Q1","months":"January to March 2026","age_65_74":742.31,"age_75_plus":816.54,"source":"https://publications.gc.ca/collections/collection_2026/edsc-esdc/SG3-3-2026-1.pdf"},{"quarter":"2026-Q2","months":"April to June 2026","age_65_74":743.05,"age_75_plus":817.36,"source":"https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"},{"quarter":"2026-Q3","months":"July to September 2026","age_65_74":751.97,"age_75_plus":827.17,"source":"https://open.canada.ca/data/dataset/dfa4daf1-669e-4514-82cd-982f27707ed0/resource/f015e958-829b-44bb-b201-641584b818dd/download/july-september-2026-table-of-rates.pdf"},{"quarter":"2026-Q4","months":"October to December 2026","age_65_74":762.5,"age_75_plus":838.75,"source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/payments.html"}],"current_quarter":"2026-Q4","residency":{"full_years":40,"min_years":10,"note":"Partial pension is years in Canada after age 18 divided by 40. Simplified; Service Canada decides actual entitlement."},"deferral":{"monthly_increase":0.006,"max_increase":0.36,"source":"https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"}}</script>
+<!-- RULES:END -->
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Calculatrice de récupération de la SV 2026 (Canada)","url":"https://retirementmath.ca/fr/","inLanguage":"fr-CA","dateModified":"2026-10-25","description":"Estimez l'impôt de récupération de la Sécurité de la vieillesse à partir de votre revenu net de toutes provenances. Seuils officiels de canada.ca.","isPartOf":{"@type":"WebSite","name":"Retirement Math","url":"https://retirementmath.ca/"},"about":{"@type":"Thing","name":"Impôt de récupération de la Sécurité de la vieillesse"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculatrice de récupération de la SV","url":"https://retirementmath.ca/fr/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"fr-CA","isAccessibleForFree":true,"areaServed":{"@type":"Country","name":"Canada"},"offers":{"@type":"Offer","price":"0","priceCurrency":"CAD"},"publisher":{"@type":"Organization","name":"Retirement Math","url":"https://retirementmath.ca/"},"description":"Calculatrice canadienne gratuite pour l'impôt de récupération de la Sécurité de la vieillesse."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr-CA","mainEntity":[
+{"@type":"Question","name":"Quel est le seuil de récupération de la SV pour 2026?","acceptedAnswer":{"@type":"Answer","text":"Pour la SV versée de juillet 2026 à juin 2027, la récupération se base sur votre revenu de 2025 et commence à 93 454 $. Pour juillet 2027 à juin 2028, elle se base sur votre revenu de 2026 et commence à 95 323 $. Les plafonds du revenu de 2026 restent des estimations sur canada.ca jusqu'à plus tard dans l'année."}},
+{"@type":"Question","name":"Quel est le montant de la récupération de la SV?","acceptedAnswer":{"@type":"Answer","text":"15 % de votre revenu net de toutes provenances au-dessus du seuil, jusqu'à concurrence de la pleine SV que vous recevez."}},
+{"@type":"Question","name":"À quel revenu la SV est-elle entièrement récupérée?","acceptedAnswer":{"@type":"Answer","text":"Pour le revenu de 2025, canada.ca indique 152 062 $ pour les 65 à 74 ans et 157 923 $ pour les 75 ans et plus. Le point exact dépend des montants de SV pendant l'année. L'estimation de cette calculatrice peut donc différer un peu."}},
+{"@type":"Question","name":"La récupération utilise-t-elle le revenu du ménage?","acceptedAnswer":{"@type":"Answer","text":"Non. Elle utilise votre revenu net de toutes provenances, à vous seul. Le fractionnement du revenu de pension peut déplacer du revenu entre conjoints et peut réduire la récupération d'une personne."}},
+{"@type":"Question","name":"Ma pension de la SV compte-t-elle dans le revenu net?","acceptedAnswer":{"@type":"Answer","text":"Oui. Le revenu net de toutes provenances comprend la pension de la SV."}},
+{"@type":"Question","name":"Cette calculatrice est-elle officielle?","acceptedAnswer":{"@type":"Answer","text":"Non. C'est une estimation. C'est l'avis de l'ARC et de Service Canada qui compte."}},
+{"@type":"Question","name":"Quand la récupération est-elle retenue sur mes paiements?","acceptedAnswer":{"@type":"Answer","text":"L'Agence du revenu du Canada la retient sur votre SV mensuelle de juillet de l'année qui suit l'année de revenu, jusqu'en juin de l'année d'après. Le revenu de 2025 change les paiements de juillet 2026 à juin 2027."}},
+{"@type":"Question","name":"Comment calcule-t-on la récupération de la SV?","acceptedAnswer":{"@type":"Answer","text":"Soustrayez le seuil annuel de votre revenu net de toutes provenances. Si le résultat est plus grand que zéro, vous remboursez 15 % de cet écart. Le remboursement ne peut pas dépasser la SV que vous recevez."}}
+]}
+</script>
+
+<script id="calc">
+// CALC:BEGIN pure function, tested by tests/test_calc.js
+function computeClawback(rules, input) {
+  var period = rules.periods.filter(function (p) { return p.id === input.periodId; })[0];
+  if (!period) throw new Error("unknown period");
+  var q = rules.max_monthly_oas_2026.filter(function (x) { return x.quarter === rules.current_quarter; })[0];
+  var key = input.age === "75_plus" ? "age_75_plus" : "age_65_74";
+  var years = Math.min(Math.max(Math.floor(input.years || 40), 0), 40);
+  var defer = Math.min(Math.max(Math.floor(input.deferMonths || 0), 0), 60);
+  var residencyFactor = years < rules.residency.min_years ? 0 : years / rules.residency.full_years;
+  var deferFactor = 1 + Math.min(defer * rules.deferral.monthly_increase, rules.deferral.max_increase);
+  var annualOas = round2(q[key] * 12 * residencyFactor * deferFactor);
+  var over = Math.max(0, input.income - period.threshold_min);
+  var annual = round2(Math.min(over * rules.recovery_rate, annualOas));
+  return {
+    period: period,
+    annualOas: annualOas,
+    annualRepayment: annual,
+    monthlyRepayment: round2(annual / 12),
+    keptAnnual: round2(annualOas - annual),
+    keptMonthly: round2((annualOas - annual) / 12),
+    thresholdMin: period.threshold_min,
+    fullClawbackAt: round2(period.threshold_min + annualOas / rules.recovery_rate),
+    officialMax: period[key === "age_75_plus" ? "threshold_max_75_plus" : "threshold_max_65_74"],
+    eligible: residencyFactor > 0
+  };
+}
+function round2(n) { return Math.round(n * 100) / 100; }
+// CALC:END
+
+(function () {
+  if (typeof document === "undefined") return;
+  var rules = JSON.parse(document.getElementById("oas-rules").textContent);
+  var fmt = new Intl.NumberFormat("fr-CA", { style: "currency", currency: "CAD" });
+  var fmt0 = new Intl.NumberFormat("fr-CA", { style: "currency", currency: "CAD", maximumFractionDigits: 0 });
+  var months = {January:"janvier",February:"février",March:"mars",April:"avril",May:"mai",June:"juin",July:"juillet",August:"août",September:"septembre",October:"octobre",November:"novembre",December:"décembre"};
+  function periodFr(s) {
+    return String(s).replace(/\b[A-Z][a-z]+\b/g, function (w) { return months[w] || w; }).replace(" to ", " à ");
+  }
+  function quarterFr(q) {
+    var m = /^(\d{4})-Q([1-4])$/.exec(q);
+    if (!m) return q;
+    return (m[2] === "1" ? "1er" : m[2] + "e") + " trimestre de " + m[1];
+  }
+  function parseMoney(s) {
+    var t = String(s).replace(/[\s\u00a0\u202f$]/g, "");
+    if (t.indexOf(",") !== -1 && t.indexOf(".") !== -1) {
+      if (t.lastIndexOf(",") > t.lastIndexOf(".")) t = t.replace(/\./g, "").replace(",", ".");
+      else t = t.replace(/,/g, "");
+    } else if (/,\d{1,2}$/.test(t)) t = t.replace(",", ".");
+    else t = t.replace(/,/g, "");
+    return t;
+  }
+  var sel = document.getElementById("period");
+  var tbody = document.querySelector("#rules-table tbody");
+  rules.periods.forEach(function (p) {
+    var o = document.createElement("option");
+    o.value = p.id;
+    o.textContent = "Revenu de " + p.income_year + ", remboursé de " + periodFr(p.payment_period) + (p.status === "estimate" ? " (les plafonds sont des estimations)" : "");
+    sel.appendChild(o);
+    var tr = document.createElement("tr");
+    [p.income_year + (p.status === "estimate" ? " (estimation)" : ""), periodFr(p.payment_period), fmt0.format(p.threshold_min), fmt0.format(p.threshold_max_65_74), fmt0.format(p.threshold_max_75_plus)]
+      .forEach(function (t, i) {
+        var cell = document.createElement(i === 0 ? "th" : "td");
+        if (i === 0) cell.scope = "row";
+        cell.textContent = t;
+        tr.appendChild(cell);
+      });
+    tbody.appendChild(tr);
+  });
+  document.getElementById("verified").textContent = rules.last_verified;
+
+  document.getElementById("calc-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var raw = parseMoney(document.getElementById("income").value);
+    var income = Number(raw);
+    var err = document.getElementById("income-err");
+    var field = document.getElementById("income");
+    if (raw === "" || !isFinite(income) || income < 0) {
+      err.textContent = "Entrez votre revenu net en chiffres, par exemple 110000.";
+      field.setAttribute("aria-invalid", "true"); field.focus(); return;
+    }
+    err.textContent = ""; field.removeAttribute("aria-invalid");
+    var r = computeClawback(rules, {
+      income: income,
+      age: document.querySelector("input[name=age]:checked").value,
+      periodId: sel.value,
+      years: Number(document.getElementById("years").value) || 40,
+      deferMonths: Number(document.getElementById("defer").value) || 0
+    });
+    var set = function (id, v) { document.getElementById(id).textContent = v; };
+    set("r-annual", fmt.format(r.annualRepayment));
+    set("r-monthly", fmt.format(r.monthlyRepayment));
+    set("r-oas", fmt.format(r.annualOas));
+    set("r-keep", fmt.format(r.keptAnnual));
+    set("r-keep-m", fmt.format(r.keptMonthly));
+    set("r-min", fmt0.format(r.thresholdMin));
+    set("r-official", fmt0.format(r.officialMax) + (r.period.status === "estimate" ? " (estimation)" : ""));
+    set("r-full", fmt0.format(r.fullClawbackAt));
+    var ex;
+    if (!r.eligible) ex = "Il faut au moins 10 ans au Canada après 18 ans pour recevoir la SV. Il n'y a donc rien à récupérer.";
+    else if (r.annualRepayment === 0) ex = "Votre revenu est égal ou inférieur au seuil de " + fmt0.format(r.thresholdMin) + ". Vous gardez toute votre SV.";
+    else if (r.keptAnnual === 0) ex = "Votre revenu dépasse la ligne de pleine récupération de cette estimation. Toute la pension de SV est remboursée.";
+    else ex = "Votre revenu dépasse le seuil de " + fmt.format(income - r.thresholdMin) + ". 15 % de cet écart font " + fmt.format(r.annualRepayment) + ", soit environ " + fmt.format(r.monthlyRepayment) + " par mois, de " + periodFr(r.period.payment_period) + ".";
+    set("r-explain", ex);
+    set("r-note", "La première ligne de pleine récupération est le chiffre de canada.ca" + (r.period.status === "estimate" ? " (estimation)." : ".") + " Cette calculatrice utilise la SV maximale du " + quarterFr(rules.current_quarter) + ". Ce montant change chaque trimestre, donc la ligne de pleine récupération de cette estimation peut différer de quelques milliers de dollars.");
+    var res = document.getElementById("results"); res.hidden = false; res.focus();
+  });
+})();
+</script>
+</body>
+</html>

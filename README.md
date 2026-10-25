@@ -2,16 +2,17 @@
 
 Static utility site for Canadian retirement money questions, at retirementmath.ca. Page one estimates the Old Age Security clawback (recovery tax).
 
-Status (2026-10-22): live at https://retirementmath.ca/ and https://retirementmath.pages.dev. GitHub repo https://github.com/vikiscoding/retirementmath. Pushing `main` tests the calculator and deploys to Cloudflare Pages. Search Console ownership is verified. The public title is the 2026 OAS clawback calculator, and the mark is `logo.svg`. The RRIF minimum calculator is at https://retirementmath.ca/rrif. Unknown addresses return `404.html`. `www` redirects to the apex in `functions/_middleware.js`. No ads, no analytics, no email list.
+Status (2026-10-25): live at https://retirementmath.ca/ and https://retirementmath.pages.dev. French pages are at https://retirementmath.ca/fr/. GitHub repo https://github.com/vikiscoding/retirementmath. Pushing `main` tests the calculator and deploys to Cloudflare Pages. Search Console ownership is verified. The public title is the 2026 OAS clawback calculator, and the mark is `logo.svg`. The RRIF minimum calculator is at https://retirementmath.ca/rrif. Unknown addresses return `404.html`. `www` redirects to the apex in `functions/_middleware.js`. A lawyer or accountant has read the disclaimer and privacy page. The weekly canada.ca rules check is `.github/workflows/check-oas-rules.yml`. No ads, no analytics, no email list.
 
 ## Layout
 ```
 index.html                 OAS clawback calculator (self-contained, data inlined)
 rrif.html                  RRIF minimum withdrawal calculator (self-contained, data inlined)
 about.html                 Who runs the site and how figures are checked
-privacy.html               Privacy policy draft
+privacy.html               Privacy policy
 disclaimer.html            Disclaimer page
 404.html                   Not found page (also turns off Pages SPA fallback)
+fr/                        French pages: calculator, RRIF, about, privacy, disclaimer
 ads.txt                    Placeholder, not live
 robots.txt, sitemap.xml    Point at retirementmath.ca
 logo.svg                   Mark: spruce tile, cream bar, gold bar
@@ -22,7 +23,8 @@ scripts/check_rules.py     Fetches canada.ca, diffs thresholds, optional --updat
 tests/test_calc.js         Math tests, also checks inline data is fresh
 functions/_middleware.js              Redirect www.retirementmath.ca to the apex
 .github/workflows/deploy.yml          Test and publish to Cloudflare Pages on push to main
-docs/sample-check-oas-rules.yml         Weekly canada.ca check sample, not enabled
+.github/workflows/check-oas-rules.yml Weekly canada.ca check. Opens a pull request if a figure changed
+docs/sample-check-oas-rules.yml         Readable copy of that workflow
 docs/panel-review.md       Expert panel review and decisions
 docs/roadmap.md            Next pages and launch checklist
 docs/disclaimer.md         Disclaimer source text

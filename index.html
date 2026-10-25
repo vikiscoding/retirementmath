@@ -6,6 +6,9 @@
 <title>OAS clawback calculator 2026 (Canada) | Retirement Math</title>
 <meta name="description" content="Free Canadian OAS clawback calculator for 2026. Estimate the recovery tax from your net world income using official canada.ca thresholds.">
 <link rel="canonical" href="https://retirementmath.ca/">
+<link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/">
+<link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/">
+<link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/">
 <meta name="theme-color" content="#1e4d3a" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#143528" media="(prefers-color-scheme: dark)">
 <meta property="og:site_name" content="Retirement Math">
@@ -14,6 +17,7 @@
 <meta property="og:url" content="https://retirementmath.ca/">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en_CA">
+<meta property="og:locale:alternate" content="fr_CA">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="OAS clawback calculator 2026 (Canada) | Retirement Math">
 <meta name="twitter:description" content="Free Canadian OAS clawback calculator for 2026. Estimate the recovery tax from your net world income using official canada.ca thresholds.">
@@ -22,10 +26,13 @@
 :root{--bg:#f3efe6;--fg:#1c1915;--muted:#514c44;--line:#e3dacd;--input:#6f695f;--field:#fff;--accent:#1e4d3a;--accent-hover:#173d2e;--accent-fg:#f7f3eb;--card:#fffcf7;--choice:#e7f2eb;--repay:#f6efe4;--keep:#e7f2eb;--warn:#7a4b00;--warnbg:#fff6e0;--focus:#ffbf47;--bar:#1e4d3a;--bar-fg:#f7f3eb;--placeholder:#5e584f;--shadow:0 1px 2px rgba(28,25,21,.05),0 8px 24px rgba(28,25,21,.04);color-scheme:light}
 @media (prefers-color-scheme:dark){:root{--bg:#141210;--fg:#f3efe8;--muted:#c8c0b4;--line:#3d372f;--input:#a39888;--field:#1c1916;--accent:#8fceb0;--accent-hover:#a9dcc2;--accent-fg:#10241b;--card:#211e1a;--choice:#1a3328;--repay:#2a241c;--keep:#1a3328;--warn:#ffd27a;--warnbg:#2c2410;--bar:#143528;--bar-fg:#f3efe8;--placeholder:#c4bbb0;--shadow:none;color-scheme:dark}}
 *{box-sizing:border-box}
-body{margin:0;font:1.0625rem/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);background-image:radial-gradient(1100px 420px at 50% -160px,#fff8ec 0%,transparent 70%);color:var(--fg)}
+body{margin:0;font:1.0625rem/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);background-image:radial-gradient(1100px 420px at 50% -160px,#fff8ec 0%,transparent 70%);color:var(--fg);overflow-wrap:break-word}
 a{color:var(--accent);text-underline-offset:.16em}
-:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
-.skip{position:absolute;left:-999px}.skip:focus{left:1rem;top:1rem;background:#fff;color:#1c1915;padding:.55rem .8rem;z-index:10;border-radius:8px;text-decoration:none}
+:focus-visible{outline:3px solid #1c1915;outline-offset:2px}
+.site-bar :focus-visible{outline-color:#ffbf47}
+@media (prefers-color-scheme:dark){:focus-visible,.site-bar :focus-visible{outline-color:#ffbf47}}
+.skip{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0}
+.skip:focus{position:fixed;left:1rem;top:1rem;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;background:#fff;color:#1c1915;padding:.55rem .8rem;z-index:20;border-radius:8px;text-decoration:none}
 .wrap{max-width:46rem;margin:0 auto;padding:0 1rem}
 .site-bar{background:var(--bar);color:var(--bar-fg);box-shadow:inset 0 -3px 0 #e2b15a}
 .bar-inner{max-width:46rem;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;flex-wrap:wrap;min-height:72px}
@@ -33,6 +40,9 @@ a{color:var(--accent);text-underline-offset:.16em}
 .brand:hover{text-decoration:underline}
 .mark{width:40px;height:40px;display:block;flex:none}
 .bar-domain{font-size:.9rem;letter-spacing:.01em;color:#e7e0d2}
+.lang{display:flex;flex-wrap:wrap;gap:.15rem .85rem;align-items:center}
+.lang a,.lang [aria-current]{color:var(--bar-fg);min-height:44px;display:inline-flex;align-items:center;font-weight:700}
+.lang a{text-decoration:underline;text-underline-offset:.16em}
 main{padding-bottom:1rem}
 .page-intro{padding-top:2rem}
 h1{font-size:2.35rem;line-height:1.15;margin:0 0 .55rem;letter-spacing:-.03em}
@@ -58,11 +68,14 @@ legend{font-weight:600;padding:0}
 .radio{display:grid;grid-template-columns:1fr 1fr;gap:.5rem;margin-top:.45rem}
 .radio label{font-weight:600;margin:0;display:flex;align-items:center;gap:.5rem;min-height:48px;padding:.4rem .75rem;border:1px solid var(--line);border-radius:10px;background:var(--field)}
 .radio label:has(input:checked){border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent);background:var(--choice)}
-.radio label:has(input:focus-visible){outline:3px solid var(--focus);outline-offset:2px}
+.radio input:focus-visible{outline:none}
+.radio label:has(input:focus-visible){outline:3px solid #1c1915;outline-offset:2px}
+@media (prefers-color-scheme:dark){.radio label:has(input:focus-visible){outline-color:#ffbf47}}
 .radio input{width:1.15rem;height:1.15rem;min-height:0;margin:0;padding:0;accent-color:var(--accent)}
 button{font:inherit;font-weight:700;display:block;margin-top:1.4rem;padding:.75rem 1.4rem;border:0;border-radius:10px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:48px;width:100%;max-width:16rem}
 button:hover{background:var(--accent-hover)}
 @media (max-width:40rem){h1{font-size:1.75rem}button,input[type="number"],input[inputmode="decimal"]{max-width:none}}
+@media (max-width:22.5rem){.radio{grid-template-columns:1fr}}
 .error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
 #calc-form > label:first-of-type{margin-top:0}
 @media (prefers-color-scheme:dark){.error{color:#ff8a8a}input[aria-invalid="true"]{border-color:#ff8a8a}body{background-image:radial-gradient(900px 380px at 50% -160px,#1c3329 0%,transparent 70%)}}
@@ -81,8 +94,8 @@ caption{text-align:left;caption-side:top;padding:0 0 .45rem;color:var(--muted)}
 .result-grid > div:first-child{background:var(--repay)}
 .result-grid > div:last-child{background:var(--keep)}
 .kicker{margin:0;color:var(--muted);font-weight:600;font-size:.92rem}
-.big{font-size:2.15rem;font-weight:700;line-height:1.1;margin:.2rem 0 .15rem;font-variant-numeric:tabular-nums;letter-spacing:-.03em}
-.keep{font-size:1.7rem;font-weight:700;line-height:1.1;margin:.25rem 0 .15rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+.big{font-size:2.15rem;font-weight:700;line-height:1.1;margin:.2rem 0 .15rem;font-variant-numeric:tabular-nums;letter-spacing:-.03em;overflow-wrap:anywhere}
+.keep{font-size:1.7rem;font-weight:700;line-height:1.1;margin:.25rem 0 .15rem;font-variant-numeric:tabular-nums;letter-spacing:-.02em;overflow-wrap:anywhere}
 .note{background:var(--warnbg);color:var(--warn);border-radius:10px;padding:.8rem 1rem;font-size:.95rem}
 .ad-slot{display:none}
 .reading{border-top:1px solid var(--line);margin-top:2.75rem;padding-top:1.6rem}
@@ -103,7 +116,7 @@ footer p{margin:.3rem 0}
 </style>
 </head>
 <body>
-<a class="skip" href="#main">Skip to calculator</a>
+<a class="skip" href="#calc-form">Skip to calculator</a>
 <header class="site-bar">
   <div class="bar-inner">
     <a class="brand" href="./">
@@ -114,6 +127,10 @@ footer p{margin:.3rem 0}
       </svg>
       Retirement Math
     </a>
+    <nav class="lang" aria-label="Language">
+      <span lang="en-CA" aria-current="true">English</span>
+      <a href="fr/index.html" hreflang="fr-CA" lang="fr-CA">Français</a>
+    </nav>
     <span class="bar-domain">retirementmath.ca</span>
   </div>
 </header>
@@ -137,7 +154,7 @@ footer p{margin:.3rem 0}
       <a href="#questions">Questions</a>
     </nav>
   </div>
-<form id="calc-form" class="card" novalidate>
+<form id="calc-form" class="card" tabindex="-1" novalidate>
   <label for="income">Net world income for the year
     <span class="hint">Line 23400 of your return, before the OAS repayment. Includes your OAS pension.</span></label>
   <input id="income" name="income" inputmode="decimal" autocomplete="off" placeholder="e.g. 110000" aria-describedby="income-err" required>
@@ -208,8 +225,8 @@ footer p{margin:.3rem 0}
   <h2>How the OAS clawback works</h2>
   <p>If your net world income is above the yearly threshold, you repay 15% of the amount over the threshold. The repayment cannot be more than the OAS you receive. The Canada Revenue Agency takes it off your monthly OAS cheques from July of the next year to June of the year after.</p>
   <p>Example from canada.ca: income of $100,000 in 2025, threshold $93,454. $100,000 minus $93,454 is $6,546. 15% of that is $981.90 to repay from July 2026 to June 2027.</p>
-  <h3>Official figures used</h3>
-  <div class="table-wrap" tabindex="0">
+  <h3 id="official-figures">Official figures used</h3>
+  <div class="table-wrap" tabindex="0" role="region" aria-labelledby="official-figures">
   <table id="rules-table">
     <thead><tr><th scope="col">Income year</th><th scope="col">Repayment period</th><th scope="col">Starts at</th><th scope="col">Full clawback 65-74</th><th scope="col">Full clawback 75+</th></tr></thead>
     <tbody></tbody>
@@ -335,7 +352,12 @@ function round2(n) { return Math.round(n * 100) / 100; }
     sel.appendChild(o);
     var tr = document.createElement("tr");
     [p.income_year + (p.status === "estimate" ? " (estimate)" : ""), p.payment_period, fmt0.format(p.threshold_min), fmt0.format(p.threshold_max_65_74), fmt0.format(p.threshold_max_75_plus)]
-      .forEach(function (t) { var td = document.createElement("td"); td.textContent = t; tr.appendChild(td); });
+      .forEach(function (t, i) {
+        var cell = document.createElement(i === 0 ? "th" : "td");
+        if (i === 0) cell.scope = "row";
+        cell.textContent = t;
+        tr.appendChild(cell);
+      });
     tbody.appendChild(tr);
   });
   document.getElementById("verified").textContent = rules.last_verified;

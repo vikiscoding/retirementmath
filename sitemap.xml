@@ -1,8 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://retirementmath.ca/</loc><lastmod>2026-10-22</lastmod></url>
-  <url><loc>https://retirementmath.ca/rrif</loc><lastmod>2026-10-22</lastmod></url>
-  <url><loc>https://retirementmath.ca/about</loc><lastmod>2026-10-22</lastmod></url>
-  <url><loc>https://retirementmath.ca/privacy</loc><lastmod>2026-10-22</lastmod></url>
-  <url><loc>https://retirementmath.ca/disclaimer</loc><lastmod>2026-10-22</lastmod></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://retirementmath.ca/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/"/>
+  </url>
+  <url>
+    <loc>https://retirementmath.ca/fr/</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/"/>
+  </url>
+  <url>
+    <loc>https://retirementmath.ca/rrif</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/rrif"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/rrif"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/rrif"/>
+  </url>
+  <url>
+    <loc>https://retirementmath.ca/fr/rrif</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/rrif"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/rrif"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/rrif"/>
+  </url>
+  <url>
+    <loc>https://retirementmath.ca/about</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/about"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/about"/>
+  </url>
+  <url>
+    <loc>https://retirementmath.ca/fr/about</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/about"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/about"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/about"/>
+  </url>
+  <url>
+    <loc>https://retirementmath.ca/privacy</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/privacy"/>
+  </url>
+  <url>
+    <loc>https://retirementmath.ca/fr/privacy</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/privacy"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/privacy"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/privacy"/>
+  </url>
+  <url>
+    <loc>https://retirementmath.ca/disclaimer</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/disclaimer"/>
+  </url>
+  <url>
+    <loc>https://retirementmath.ca/fr/disclaimer</loc>
+    <lastmod>2026-10-25</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/disclaimer"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/disclaimer"/>
+  </url>
 </urlset>

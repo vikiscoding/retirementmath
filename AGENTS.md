@@ -3,7 +3,7 @@
 Read this first before changing anything in this project.
 
 ## Project
-Static utility site for Canadians, named Retirement Math (retirementmath.ca). First page: OAS clawback (recovery tax) calculator, `index.html`. Owner: Vikrant, Scarborough ON. Domain DNS is on the main Cloudflare account (vikrant.singh1@outlook.com). Pages hosting is the free plan on retirementmathai@gmail.com, project `retirementmath`, currently https://retirementmath.pages.dev. GitHub repo: `vikiscoding/retirementmath`. Auto-deploy is `.github/workflows/deploy.yml` and needs the `CLOUDFLARE_API_TOKEN` secret.
+Static utility site for Canadians, named Retirement Math (retirementmath.ca). First page: OAS clawback (recovery tax) calculator, `index.html`. French pages are in `fr/` and served at `/fr/`. Owner: Vikrant, Scarborough ON. Domain DNS is on the main Cloudflare account (vikrant.singh1@outlook.com). Pages hosting is the free plan on retirementmathai@gmail.com, project `retirementmath`, currently https://retirementmath.pages.dev. GitHub repo: `vikiscoding/retirementmath`. Auto-deploy is `.github/workflows/deploy.yml` and needs the `CLOUDFLARE_API_TOKEN` secret. The weekly canada.ca check is `.github/workflows/check-oas-rules.yml`.
 
 ## Doc map (read in order)
 1. This file
@@ -41,7 +41,7 @@ A change is done when all are true:
 
 ## Boundaries
 - Always: run the tests, cite sources, keep `last_verified` honest.
-- Ask first: adding any third-party script, changing the formula, adding a new data field, enabling the weekly canada.ca rules-check workflow (`docs/sample-check-oas-rules.yml`).
+- Ask first: adding any third-party script, changing the formula, adding a new data field. The weekly canada.ca rules-check workflow is already on.
 - Deploy: pushing `main` runs `.github/workflows/deploy.yml` and publishes the public HTML to Cloudflare Pages. That is the owner's chosen setup.
 - Never: buy domains, sign up for ad or affiliate accounts, spend money, commit secrets, weaken or delete a failing test to make it pass.
 

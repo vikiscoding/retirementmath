@@ -80,11 +80,13 @@ def main():
         print("OK: data/oas-rules.json matches canada.ca")
     for d in diffs:
         print("DIFF:", d)
-    if args.update:
+    if args.update and diffs:
         rules["last_verified"] = datetime.date.today().isoformat()
         RULES.write_text(json.dumps(rules, indent=2) + "\n")
         subprocess.run([sys.executable, str(ROOT / "scripts/build.py")], check=True)
         print("Updated thresholds and last_verified. Review the diff, run node tests/test_calc.js, then commit.")
+    elif args.update:
+        print("No file changes.")
     return 1 if diffs and not args.update else 0
 
 if __name__ == "__main__":

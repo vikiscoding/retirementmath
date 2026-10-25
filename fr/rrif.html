@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculatrice du minimum d'un FERR (Canada) | Retirement Math</title>
+<meta name="description" content="Calculatrice gratuite du retrait minimum d'un FERR. Utilisez le facteur prescrit de l'ARC selon votre âge et la valeur du FERR au 1er janvier.">
+<link rel="canonical" href="https://retirementmath.ca/fr/rrif">
+<link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/rrif">
+<link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/rrif">
+<link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/rrif">
+<meta name="theme-color" content="#1e4d3a" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#143528" media="(prefers-color-scheme: dark)">
+<meta property="og:site_name" content="Retirement Math">
+<meta property="og:title" content="Calculatrice du minimum d'un FERR (Canada) | Retirement Math">
+<meta property="og:description" content="Calculatrice gratuite du retrait minimum d'un FERR. Utilisez le facteur prescrit de l'ARC selon votre âge et la valeur du FERR au 1er janvier.">
+<meta property="og:url" content="https://retirementmath.ca/fr/rrif">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:locale:alternate" content="en_CA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Calculatrice du minimum d'un FERR (Canada) | Retirement Math">
+<meta name="twitter:description" content="Calculatrice gratuite du retrait minimum d'un FERR. Utilisez le facteur prescrit de l'ARC selon votre âge et la valeur du FERR au 1er janvier.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e4d3a'/%3E%3Crect x='7' y='10' width='18' height='3.5' rx='1.75' fill='%23f6f1e6'/%3E%3Crect x='7' y='18.5' width='18' height='3.5' rx='1.75' fill='%23e2b15a'/%3E%3C/svg%3E" type="image/svg+xml">
+<style>
+:root{--bg:#f3efe6;--fg:#1c1915;--muted:#514c44;--line:#e3dacd;--input:#6f695f;--field:#fff;--accent:#1e4d3a;--accent-hover:#173d2e;--accent-fg:#f7f3eb;--card:#fffcf7;--warn:#7a4b00;--warnbg:#fff6e0;--bar:#1e4d3a;--bar-fg:#f7f3eb;--placeholder:#5e584f;--shadow:0 1px 2px rgba(28,25,21,.05),0 8px 24px rgba(28,25,21,.04);color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#141210;--fg:#f3efe8;--muted:#c8c0b4;--line:#3d372f;--input:#a39888;--field:#1c1916;--accent:#8fceb0;--accent-hover:#a9dcc2;--accent-fg:#10241b;--card:#211e1a;--warn:#ffd27a;--warnbg:#2c2410;--bar:#143528;--bar-fg:#f3efe8;--placeholder:#c4bbb0;--shadow:none;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;font:1.0625rem/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);background-image:radial-gradient(1100px 420px at 50% -160px,#fff8ec 0%,transparent 70%);color:var(--fg);overflow-wrap:break-word}
+a{color:var(--accent);text-underline-offset:.16em}
+:focus-visible{outline:3px solid #1c1915;outline-offset:2px}
+.site-bar :focus-visible{outline-color:#ffbf47}
+@media (prefers-color-scheme:dark){:focus-visible,.site-bar :focus-visible{outline-color:#ffbf47}}
+.skip{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0}
+.skip:focus{position:fixed;left:1rem;top:1rem;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;background:#fff;color:#1c1915;padding:.55rem .8rem;z-index:20;border-radius:8px;text-decoration:none}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1rem}
+.site-bar{background:var(--bar);color:var(--bar-fg);box-shadow:inset 0 -3px 0 #e2b15a}
+.bar-inner{max-width:46rem;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;flex-wrap:wrap;min-height:72px}
+.brand{display:flex;align-items:center;gap:.7rem;color:inherit;font-weight:700;text-decoration:none;min-height:44px;letter-spacing:-.02em}
+.brand:hover{text-decoration:underline}
+.mark{width:40px;height:40px;display:block;flex:none}
+.bar-domain{font-size:.9rem;letter-spacing:.01em;color:#e7e0d2}
+.lang{display:flex;flex-wrap:wrap;gap:.15rem .85rem;align-items:center}
+.lang a,.lang [aria-current]{color:var(--bar-fg);min-height:44px;display:inline-flex;align-items:center;font-weight:700}
+.lang a{text-decoration:underline;text-underline-offset:.16em}
+main{padding-bottom:1rem}
+.page-intro{padding-top:2rem}
+h1{font-size:2.35rem;line-height:1.15;margin:0 0 .55rem;letter-spacing:-.03em}
+h2{font-size:1.35rem;line-height:1.25;margin:0 0 .75rem;letter-spacing:-.02em}
+.eyebrow{display:flex;align-items:center;gap:.5rem;margin:0 0 .45rem;color:var(--accent);font-weight:700;font-size:.92rem}
+.eyebrow::before{content:"";width:1.25rem;height:3px;border-radius:2px;background:#e2b15a;flex:none}
+.lede{color:var(--muted);margin:0;max-width:40rem}
+.facts{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0;padding:0;list-style:none}
+.facts li{margin:0;max-width:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:.45rem .75rem;font-size:.92rem;line-height:1.35}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.2rem 1.35rem;margin:1.35rem 0 0;box-shadow:var(--shadow)}
+#calc-form{border-top:4px solid #e2b15a}
+label{display:block;font-weight:600;margin-top:1.15rem}
+.hint{display:block;font-weight:400;color:var(--muted);font-size:.95rem;margin-top:.15rem}
+input{font:inherit;font-variant-numeric:tabular-nums;display:block;width:100%;max-width:16rem;padding:.65rem .75rem;border:1px solid var(--input);border-radius:10px;background:var(--field);color:var(--fg);min-height:48px}
+input::placeholder{color:var(--placeholder);opacity:1}
+input[aria-invalid="true"]{border-color:#b00020}
+.check{display:flex;align-items:center;gap:.6rem;font-weight:600;margin-top:1.15rem;min-height:48px}
+.check input{width:1.15rem;height:1.15rem;min-height:0;max-width:none;margin:0;padding:0}
+.check input:focus-visible{outline:none}
+.check:has(input:focus-visible){outline:3px solid #1c1915;outline-offset:2px;border-radius:8px}
+@media (prefers-color-scheme:dark){.check:has(input:focus-visible){outline-color:#ffbf47}}
+button{font:inherit;font-weight:700;display:block;margin-top:1.4rem;padding:.75rem 1.4rem;border:0;border-radius:10px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:48px;width:100%;max-width:16rem}
+button:hover{background:var(--accent-hover)}
+@media (max-width:40rem){h1{font-size:1.75rem}button,input{max-width:none}}
+.error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
+#calc-form > label:first-of-type{margin-top:0}
+@media (prefers-color-scheme:dark){.error{color:#ff8a8a}input[aria-invalid="true"]{border-color:#ff8a8a}body{background-image:radial-gradient(900px 380px at 50% -160px,#1c3329 0%,transparent 70%)}}
+.table-wrap{overflow-x:auto;margin:.35rem 0 1rem;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--field);font-size:.92rem}
+tr:last-child td,tr:last-child th{border-bottom:0}
+td.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+caption{text-align:left;caption-side:top;padding:0 0 .45rem;color:var(--muted)}
+.kicker{margin:0;color:var(--muted);font-weight:600;font-size:.92rem}
+.big{font-size:2.15rem;font-weight:700;line-height:1.1;margin:.2rem 0 .15rem;font-variant-numeric:tabular-nums;letter-spacing:-.03em;overflow-wrap:anywhere}
+.note{background:var(--warnbg);color:var(--warn);border-radius:10px;padding:.8rem 1rem;font-size:.95rem}
+.reading{border-top:1px solid var(--line);margin-top:2.75rem;padding-top:1.6rem}
+.reading h2{display:flex;align-items:center;gap:.55rem}
+.reading h2::before{content:"";width:.5rem;height:.5rem;border-radius:2px;background:#e2b15a;flex:none}
+.reading p{max-width:40rem}
+details{border-bottom:1px solid var(--line)}
+details p{margin:.15rem 0 .9rem}
+summary{cursor:pointer;font-weight:600;min-height:48px;padding:.7rem 0}
+footer{color:var(--muted);font-size:.95rem;margin-top:2.75rem;border-top:0;box-shadow:inset 0 3px 0 #e2b15a;background:var(--card)}
+.foot-inner{padding:1.35rem 0 2rem}
+.foot-name{margin:0 0 .15rem;color:var(--fg);font-weight:700;display:flex;align-items:center;gap:.5rem}
+.foot-name .mark{width:24px;height:24px}
+.foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.15rem 0 .35rem}
+.foot-nav a{min-height:44px;display:inline-flex;align-items:center}
+footer p{margin:.3rem 0}
+@media print{button{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#calc-form">Aller à la calculatrice</a>
+<header class="site-bar">
+  <div class="bar-inner">
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="8" fill="#f6f1e6"/>
+        <rect x="7" y="10" width="18" height="3.5" rx="1.75" fill="#1e4d3a"/>
+        <rect x="7" y="18.5" width="18" height="3.5" rx="1.75" fill="#c9963a"/>
+      </svg>
+      <span lang="en">Retirement Math</span>
+    </a>
+    <nav class="lang" aria-label="Langue">
+      <a href="../rrif.html" hreflang="en-CA" lang="en-CA">English</a>
+      <span lang="fr-CA" aria-current="true">Français</span>
+    </nav>
+    <span class="bar-domain">retirementmath.ca</span>
+  </div>
+</header>
+<main id="main" class="wrap">
+  <div class="page-intro">
+    <p class="eyebrow">Fonds enregistré de revenu de retraite</p>
+    <h1>Calculatrice du minimum d'un FERR</h1>
+    <p class="lede">Estimez le paiement minimum annuel d'un FERR. Le facteur vient du tableau de l'ARC pour tous les autres FERR. Rien de ce que vous écrivez ne quitte votre navigateur.</p>
+    <ul class="facts">
+      <li>Le facteur à 71 ans est de 5,28 %</li>
+      <li>Pas de minimum l'année de l'ouverture</li>
+      <li>Vous pouvez retirer plus, pas moins</li>
+    </ul>
+  </div>
+  <form id="calc-form" class="card" tabindex="-1" novalidate>
+    <label for="value">Valeur du FERR au 1er janvier
+      <span class="hint">Juste valeur marchande au début de l'année. Votre émetteur utilise ce montant.</span></label>
+    <input id="value" name="value" inputmode="decimal" autocomplete="off" placeholder="p. ex. 100000" aria-describedby="value-err" required>
+    <p id="value-err" class="error" aria-live="polite"></p>
+
+    <label for="age">Votre âge au 1er janvier
+      <span class="hint">Années complètes. Si vous avez 95 ans ou plus, inscrivez 95.</span></label>
+    <input id="age" name="age" type="number" inputmode="numeric" min="0" max="130" step="1" value="71" required aria-describedby="age-err">
+    <p id="age-err" class="error" aria-live="polite"></p>
+
+    <label for="spouse">Âge de l'époux ou du conjoint de fait au 1er janvier (facultatif)
+      <span class="hint">Remplissez ce champ seulement si vous avez choisi son âge à l'établissement du FERR, avant tout paiement. L'émetteur utilise alors cet âge, même s'il est plus élevé.</span></label>
+    <input id="spouse" name="spouse" type="number" inputmode="numeric" min="0" max="130" step="1" aria-describedby="spouse-err">
+    <p id="spouse-err" class="error" aria-live="polite"></p>
+
+    <label class="check"><input id="opened" type="checkbox" aria-describedby="opened-hint"> Le FERR a été établi cette année</label>
+    <span class="hint" id="opened-hint">Il n'y a pas de minimum l'année où il est établi.</span>
+
+    <button type="submit">Calculer</button>
+  </form>
+
+  <section id="results" aria-live="polite" tabindex="-1" hidden>
+    <h2>Votre estimation</h2>
+    <div class="card">
+      <p class="kicker">Minimum annuel</p>
+      <p class="big" id="r-min"></p>
+      <p class="hint" id="r-month"></p>
+      <p id="r-factor"></p>
+      <p id="r-explain"></p>
+      <p class="note" id="r-note"></p>
+    </div>
+  </section>
+
+  <section class="reading" id="how">
+    <h2>Comment fonctionne le minimum du FERR</h2>
+    <p>À partir de l'année qui suit l'établissement du FERR, l'émetteur doit vous verser un minimum annuel. Il n'y a pas de minimum l'année de l'ouverture. Vous pouvez retirer plus. Vous ne pouvez pas retirer moins.</p>
+    <p>Le minimum est la juste valeur marchande au 1er janvier, multipliée par un facteur prescrit. Le facteur utilise votre âge en années complètes au 1er janvier. Si vous avez choisi l'âge de votre époux ou conjoint de fait à l'établissement du FERR, avant le début des paiements, l'émetteur utilise cet âge.</p>
+    <p>Pour 70 ans ou moins, le facteur est 1 divisé par (90 moins l'âge). À partir de 71 ans, cette page utilise la colonne de l'ARC appelée « Tous les autres FERR ».</p>
+    <p>Exemple d'une page de l'ARC sur les facteurs actuels : 71 ans et un FERR de 100 000 $ au 1er janvier. 5,28 % de ce montant donnent un minimum de 5 280 $.</p>
+    <h2 id="factors">Facteurs à partir de 71 ans</h2>
+    <div class="table-wrap" tabindex="0" role="region" aria-labelledby="factors">
+      <table id="factor-table">
+        <caption>Tous les autres FERR. Source : tableau des facteurs prescrits de l'ARC.</caption>
+        <thead><tr><th scope="col">Âge au 1er janvier</th><th scope="col">Facteur</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p class="hint">Règles vérifiées le : <strong id="verified">2026-10-22</strong>. La page du tableau de l'ARC indique 2025-10-01. Sources :
+      <a href="https://www.canada.ca/fr/agence-revenu/services/impot/entreprises/sujets/remplir-feuillets-sommaires/declaration-renseignements-t4rsp-t4rif/paiements/tableau-facteurs-prescrits.html">Facteurs prescrits de l'ARC</a>,
+      <a href="https://www.canada.ca/fr/agence-revenu/services/impot/entreprises/sujets/remplir-feuillets-sommaires/declaration-renseignements-t4rsp-t4rif/paiements/montant-minimum-ferr.html">Montant minimum d'un FERR</a>.</p>
+  </section>
+
+  <section class="reading" id="questions">
+    <h2>Questions fréquentes</h2>
+    <details><summary>Quel est le minimum d'un FERR à 71 ans?</summary>
+    <p>Pour tous les autres FERR, le facteur de l'ARC à 71 ans est de 5,28 % de la valeur au 1er janvier. Sur 100 000 $, le minimum est de 5 280 $.</p></details>
+    <details><summary>Comment le minimum d'un FERR est-il calculé?</summary>
+    <p>Multipliez la juste valeur marchande au début de l'année par le facteur prescrit pour l'âge au 1er janvier. Si vous avez choisi l'âge de votre époux ou conjoint de fait à l'établissement du FERR, l'émetteur utilise cet âge.</p></details>
+    <details><summary>Y a-t-il un minimum l'année où j'ouvre le FERR?</summary>
+    <p>Non. Le minimum commence l'année après l'établissement du FERR.</p></details>
+    <details><summary>Puis-je retirer plus que le minimum?</summary>
+    <p>Oui. Vous ne pouvez pas retirer moins. Les montants versés d'un FERR sont imposables. Cette page n'estime pas l'impôt.</p></details>
+    <details><summary>Que se passe-t-il si mon FERR a été établi avant 1993?</summary>
+    <p>Il peut s'agir d'un FERR admissible. À 71 ans, le tableau de l'ARC indique 5,26 % au lieu de 5,28 %. À partir de 72 ans, la colonne des FERR admissibles correspond à la colonne de tous les autres FERR. Un FERR d'avant mars 1986 utilise une autre colonne. Cette calculatrice utilise la colonne de tous les autres FERR.</p></details>
+  </section>
+
+  <section class="reading">
+    <h2>Ce que cette calculatrice laisse de côté</h2>
+    <p>Elle n'estime pas l'impôt sur le revenu ni l'impôt retenu sur les montants au-dessus du minimum. Elle ne couvre pas un FERR admissible, un FERR d'avant mars 1986, ni un FERR en fiducie qui détient un contrat de rente. Ces cas utilisent d'autres calculs de l'ARC. Le relevé de votre émetteur est le montant qui compte.</p>
+  </section>
+  <section class="reading">
+    <h2>Avis</h2>
+    <p>Cet outil donne une estimation générale, à titre d'information seulement. Ce n'est pas un conseil fiscal, juridique ou financier, et ce n'est pas un outil du gouvernement du Canada, de l'ARC ou de Service Canada. Le calcul de la pension partielle et du report est simplifié. Vérifiez auprès de l'ARC, de Service Canada ou d'une personne qualifiée avant de décider. Les chiffres peuvent changer. Voyez la date et les sources ci-dessus. Lisez la <a href="about.html">page À propos</a>, l'<a href="disclaimer.html">avis</a> et la <a href="privacy.html">politique de confidentialité</a>.</p>
+  </section>
+</main>
+<footer>
+  <div class="wrap foot-inner">
+    <p class="foot-name"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false" width="24" height="24"><rect width="32" height="32" rx="8" fill="#1e4d3a"/><rect x="7" y="10" width="18" height="3.5" rx="1.75" fill="#f6f1e6"/><rect x="7" y="18.5" width="18" height="3.5" rx="1.75" fill="#e2b15a"/></svg> <span lang="en">Retirement Math</span></p>
+    <nav class="foot-nav" aria-label="Pages du site">
+      <a href="index.html">Récupération de la SV</a>
+      <a href="rrif.html" aria-current="page">Minimum du FERR</a>
+      <a href="about.html">À propos</a>
+      <a href="privacy.html">Confidentialité</a>
+      <a href="disclaimer.html">Avis</a>
+    </nav>
+    <p>retirementmath.ca · Fait à Scarborough, en Ontario.</p>
+    <p>Cette page n'utilise pas de cookies et ne recueille pas ce que vous écrivez. Ce n'est pas un site du gouvernement du Canada.</p>
+  </div>
+</footer>
+
+<!-- RRIF_RULES:BEGIN (generated from data/rrif-rules.json by scripts/build.py; do not hand edit) -->
+<script id="rrif-rules" type="application/json">{"schema_version":1,"last_verified":"2026-10-22","source_page_date":"2025-10-01","kind":"all_other","under_71":{"max_age":70,"formula":"1 / (90 - age)"},"factors_from_71":[{"age":71,"factor":0.0528},{"age":72,"factor":0.054},{"age":73,"factor":0.0553},{"age":74,"factor":0.0567},{"age":75,"factor":0.0582},{"age":76,"factor":0.0598},{"age":77,"factor":0.0617},{"age":78,"factor":0.0636},{"age":79,"factor":0.0658},{"age":80,"factor":0.0682},{"age":81,"factor":0.0708},{"age":82,"factor":0.0738},{"age":83,"factor":0.0771},{"age":84,"factor":0.0808},{"age":85,"factor":0.0851},{"age":86,"factor":0.0899},{"age":87,"factor":0.0955},{"age":88,"factor":0.1021},{"age":89,"factor":0.1099},{"age":90,"factor":0.1192},{"age":91,"factor":0.1306},{"age":92,"factor":0.1449},{"age":93,"factor":0.1634},{"age":94,"factor":0.1879},{"age":95,"factor":0.2}],"sources":{"factors":"https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/completing-slips-summaries/t4rsp-t4rif-information-returns/payments/chart-prescribed-factors.html","minimum":"https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/completing-slips-summaries/t4rsp-t4rif-information-returns/payments/minimum-amount-a-rrif.html","when_it_starts":"https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/registered-retirement-income-fund-rrif/receiving-income-a-rrif.html","age_71_example":"https://www.canada.ca/en/revenue-agency/programs/about-canada-revenue-agency-cra/federal-government-budgets/budget-2015-strong-leadership/minimum-withdrawal-factors-registered-retirement-income-funds.html"}}</script>
+<!-- RRIF_RULES:END -->
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Calculatrice du minimum d'un FERR","url":"https://retirementmath.ca/fr/rrif","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"fr-CA","isAccessibleForFree":true,"areaServed":{"@type":"Country","name":"Canada"},"offers":{"@type":"Offer","price":"0","priceCurrency":"CAD"},"publisher":{"@type":"Organization","name":"Retirement Math","url":"https://retirementmath.ca/"},"description":"Calculatrice canadienne gratuite pour le retrait minimum annuel d'un FERR."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr-CA","mainEntity":[
+{"@type":"Question","name":"Quel est le minimum d'un FERR à 71 ans?","acceptedAnswer":{"@type":"Answer","text":"Pour tous les autres FERR, le facteur de l'ARC à 71 ans est de 5,28 % de la valeur au 1er janvier. Sur 100 000 $, le minimum est de 5 280 $."}},
+{"@type":"Question","name":"Comment le minimum d'un FERR est-il calculé?","acceptedAnswer":{"@type":"Answer","text":"Multipliez la juste valeur marchande au début de l'année par le facteur prescrit pour l'âge au 1er janvier. Si vous avez choisi l'âge de votre époux ou conjoint de fait à l'établissement du FERR, l'émetteur utilise cet âge."}},
+{"@type":"Question","name":"Y a-t-il un minimum l'année où j'ouvre le FERR?","acceptedAnswer":{"@type":"Answer","text":"Non. Le minimum commence l'année après l'établissement du FERR."}},
+{"@type":"Question","name":"Puis-je retirer plus que le minimum?","acceptedAnswer":{"@type":"Answer","text":"Oui. Vous ne pouvez pas retirer moins. Les montants versés d'un FERR sont imposables. Cette page n'estime pas l'impôt."}},
+{"@type":"Question","name":"Que se passe-t-il si mon FERR a été établi avant 1993?","acceptedAnswer":{"@type":"Answer","text":"Il peut s'agir d'un FERR admissible. À 71 ans, le tableau de l'ARC indique 5,26 % au lieu de 5,28 %. À partir de 72 ans, la colonne des FERR admissibles correspond à la colonne de tous les autres FERR. Un FERR d'avant mars 1986 utilise une autre colonne. Cette calculatrice utilise la colonne de tous les autres FERR."}}
+]}
+</script>
+
+<script id="calc">
+// CALC:BEGIN pure function, tested by tests/test_rrif.js
+function computeRrifMinimum(rules, input) {
+  var age = Math.floor(Number(input.age));
+  var value = Number(input.value);
+  if (!isFinite(age) || age < 0 || age > 130) throw new Error("bad age");
+  if (!isFinite(value) || value < 0) throw new Error("bad value");
+  var useAge = input.spouseAge === null || input.spouseAge === undefined || input.spouseAge === ""
+    ? age
+    : Math.floor(Number(input.spouseAge));
+  if (!isFinite(useAge) || useAge < 0 || useAge > 130) throw new Error("bad spouse age");
+  var factor = rrifFactor(rules, useAge);
+  var minimum = input.openedThisYear ? 0 : round2(value * factor);
+  return {
+    ageUsed: useAge,
+    factor: factor,
+    minimum: minimum,
+    monthly: round2(minimum / 12),
+    openedThisYear: !!input.openedThisYear
+  };
+}
+function rrifFactor(rules, age) {
+  if (age <= rules.under_71.max_age) return 1 / (90 - age);
+  var capped = age >= 95 ? 95 : age;
+  var row = rules.factors_from_71.filter(function (r) { return r.age === capped; })[0];
+  if (!row) throw new Error("missing factor");
+  return row.factor;
+}
+function round2(n) { return Math.round(n * 100) / 100; }
+// CALC:END
+
+(function () {
+  if (typeof document === "undefined") return;
+  var rules = JSON.parse(document.getElementById("rrif-rules").textContent);
+  var fmt = new Intl.NumberFormat("fr-CA", { style: "currency", currency: "CAD" });
+  var tbody = document.querySelector("#factor-table tbody");
+  rules.factors_from_71.forEach(function (row) {
+    var tr = document.createElement("tr");
+    var age = document.createElement("th");
+    age.scope = "row";
+    age.textContent = row.age >= 95 ? "95 ans ou plus" : String(row.age);
+    var factor = document.createElement("td");
+    factor.className = "num";
+    factor.textContent = (row.factor * 100).toFixed(2).replace(".", ",") + " %";
+    tr.appendChild(age);
+    tr.appendChild(factor);
+    tbody.appendChild(tr);
+  });
+  document.getElementById("verified").textContent = rules.last_verified;
+
+  function factorText(age, factor) {
+    if (age <= rules.under_71.max_age) return "1 / " + (90 - age);
+    return (factor * 100).toFixed(2).replace(".", ",") + " %";
+  }
+  function parseMoney(s) {
+    var t = String(s).replace(/[\s\u00a0\u202f$]/g, "");
+    if (t.indexOf(",") !== -1 && t.indexOf(".") !== -1) {
+      if (t.lastIndexOf(",") > t.lastIndexOf(".")) t = t.replace(/\./g, "").replace(",", ".");
+      else t = t.replace(/,/g, "");
+    } else if (/,\d{1,2}$/.test(t)) t = t.replace(",", ".");
+    else t = t.replace(/,/g, "");
+    return t;
+  }
+
+  document.getElementById("calc-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var valueRaw = parseMoney(document.getElementById("value").value);
+    var value = Number(valueRaw);
+    var age = Number(document.getElementById("age").value);
+    var spouseRaw = document.getElementById("spouse").value.trim();
+    var valueErr = document.getElementById("value-err");
+    var ageErr = document.getElementById("age-err");
+    var spouseErr = document.getElementById("spouse-err");
+    var valueField = document.getElementById("value");
+    var ageField = document.getElementById("age");
+    var spouseField = document.getElementById("spouse");
+    valueErr.textContent = "";
+    ageErr.textContent = "";
+    spouseErr.textContent = "";
+    valueField.removeAttribute("aria-invalid");
+    ageField.removeAttribute("aria-invalid");
+    spouseField.removeAttribute("aria-invalid");
+    if (valueRaw === "" || !isFinite(value) || value < 0) {
+      valueErr.textContent = "Entrez la valeur au 1er janvier en chiffres, par exemple 100000.";
+      valueField.setAttribute("aria-invalid", "true");
+      valueField.focus();
+      return;
+    }
+    if (!isFinite(age) || age < 0 || age > 130 || Math.floor(age) !== age) {
+      ageErr.textContent = "Entrez votre âge en années complètes, de 0 à 130.";
+      ageField.setAttribute("aria-invalid", "true");
+      ageField.focus();
+      return;
+    }
+    if (spouseRaw !== "") {
+      var spouse = Number(spouseRaw);
+      if (!isFinite(spouse) || spouse < 0 || spouse > 130 || Math.floor(spouse) !== spouse) {
+        spouseErr.textContent = "Entrez l'âge de l'époux ou du conjoint de fait en années complètes, ou laissez le champ vide.";
+        spouseField.setAttribute("aria-invalid", "true");
+        spouseField.focus();
+        return;
+      }
+    }
+    var r = computeRrifMinimum(rules, {
+      value: value,
+      age: age,
+      spouseAge: spouseRaw,
+      openedThisYear: document.getElementById("opened").checked
+    });
+    document.getElementById("r-min").textContent = fmt.format(r.minimum);
+    document.getElementById("r-month").textContent = r.openedThisYear
+      ? "Aucun minimum n'est dû cette année."
+      : "Environ " + fmt.format(r.monthly) + " par mois s'il est versé en 12 montants égaux.";
+    document.getElementById("r-factor").textContent = "Facteur pour " + r.ageUsed + " ans : " + factorText(r.ageUsed, r.factor) + ".";
+    document.getElementById("r-explain").textContent = r.openedThisYear
+      ? "Le minimum commence l'année après l'établissement du FERR. Le minimum de l'an prochain utilisera la valeur au 1er janvier de cette année-là."
+      : "Ceci représente " + factorText(r.ageUsed, r.factor) + " de " + fmt.format(value) + ", arrondi au cent près.";
+    document.getElementById("r-note").textContent = "Ceci utilise les facteurs de l'ARC pour tous les autres FERR. Ce n'est pas une estimation d'impôt et ce n'est pas le relevé de votre émetteur.";
+    var res = document.getElementById("results");
+    res.hidden = false;
+    res.focus();
+  });
+})();
+</script>
+</body>
+</html>

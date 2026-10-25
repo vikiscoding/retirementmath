@@ -25,4 +25,6 @@ def inline(html_name, json_name, script_id, marker):
     print("%s updated, last_verified %s" % (html_name, date))
 
 inline("index.html", "data/oas-rules.json", "oas-rules", "RULES")
+inline("fr/index.html", "data/oas-rules.json", "oas-rules", "RULES")
 inline("rrif.html", "data/rrif-rules.json", "rrif-rules", "RRIF_RULES")
+inline("fr/rrif.html", "data/rrif-rules.json", "rrif-rules", "RRIF_RULES")

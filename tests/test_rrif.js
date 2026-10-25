@@ -7,6 +7,10 @@ const computeRrifMinimum = new Function(src + "\nreturn computeRrifMinimum;")();
 const inline = JSON.parse(html.match(/<script id="rrif-rules" type="application\/json">([\s\S]*?)<\/script>/)[1]);
 const rules = JSON.parse(fs.readFileSync(path.join(root, "data/rrif-rules.json"), "utf8"));
 assert.deepStrictEqual(inline, rules, "inline RRIF rules are stale: run python3 scripts/build.py");
+const frHtml = fs.readFileSync(path.join(root, "fr/rrif.html"), "utf8");
+const frInline = JSON.parse(frHtml.match(/<script id="rrif-rules" type="application\/json">([\s\S]*?)<\/script>/)[1]);
+assert.deepStrictEqual(frInline, rules, "inline RRIF rules in fr/rrif.html are stale: run python3 scripts/build.py");
+assert.strictEqual(frHtml.match(/\/\/ CALC:BEGIN[\s\S]*?\/\/ CALC:END/)[0], src, "French RRIF calc drifted from rrif.html");
 
 const cases = [
   ["CRA age 71 on $100,000", { value: 100000, age: 71 }, 5280],
