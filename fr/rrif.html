@@ -50,6 +50,7 @@ h2{font-size:1.35rem;line-height:1.25;margin:0 0 .75rem;letter-spacing:-.02em}
 .eyebrow{display:flex;align-items:center;gap:.5rem;margin:0 0 .45rem;color:var(--accent);font-weight:700;font-size:.92rem}
 .eyebrow::before{content:"";width:1.25rem;height:3px;border-radius:2px;background:#e2b15a;flex:none}
 .lede{color:var(--muted);margin:0;max-width:40rem}
+.checked{color:var(--fg);font-weight:600;margin:.85rem 0 0;max-width:40rem}
 .facts{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0;padding:0;list-style:none}
 .facts li{margin:0;max-width:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:.45rem .75rem;font-size:.92rem;line-height:1.35}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.2rem 1.35rem;margin:1.35rem 0 0;box-shadow:var(--shadow)}
@@ -121,6 +122,7 @@ footer p{margin:.3rem 0}
     <p class="eyebrow">Fonds enregistré de revenu de retraite</p>
     <h1>Calculatrice du minimum d'un FERR</h1>
     <p class="lede">Estimez le paiement minimum annuel d'un FERR. Le facteur vient du tableau de l'ARC pour tous les autres FERR. Rien de ce que vous écrivez ne quitte votre navigateur.</p>
+    <p class="checked">Les facteurs ont été vérifiés le <time class="verified-date" datetime="2026-10-22">22 octobre 2026</time>. La page du tableau de l'ARC est datée du <time class="source-date" datetime="2025-10-01">1er octobre 2025</time>.</p>
     <ul class="facts">
       <li>Le facteur à 71 ans est de 5,28 %</li>
       <li>Pas de minimum l'année de l'ouverture</li>
@@ -175,7 +177,7 @@ footer p{margin:.3rem 0}
         <tbody></tbody>
       </table>
     </div>
-    <p class="hint">Règles vérifiées le : <strong id="verified">2026-10-22</strong>. La page du tableau de l'ARC indique 2025-10-01. Sources :
+    <p class="hint">Règles vérifiées le <time class="verified-date" datetime="2026-10-22">22 octobre 2026</time>. La page du tableau de l'ARC est datée du <time class="source-date" datetime="2025-10-01">1er octobre 2025</time>. Sources :
       <a href="https://www.canada.ca/fr/agence-revenu/services/impot/entreprises/sujets/remplir-feuillets-sommaires/declaration-renseignements-t4rsp-t4rif/paiements/tableau-facteurs-prescrits.html">Facteurs prescrits de l'ARC</a>,
       <a href="https://www.canada.ca/fr/agence-revenu/services/impot/entreprises/sujets/remplir-feuillets-sommaires/declaration-renseignements-t4rsp-t4rif/paiements/montant-minimum-ferr.html">Montant minimum d'un FERR</a>.</p>
   </section>
@@ -283,7 +285,20 @@ function round2(n) { return Math.round(n * 100) / 100; }
     tr.appendChild(factor);
     tbody.appendChild(tr);
   });
-  document.getElementById("verified").textContent = rules.last_verified;
+  var months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+  function humanDate(iso) {
+    var p = iso.split("-");
+    var day = Number(p[2]);
+    return (day === 1 ? "1er" : String(day)) + " " + months[Number(p[1]) - 1] + " " + p[0];
+  }
+  document.querySelectorAll(".verified-date").forEach(function (el) {
+    el.setAttribute("datetime", rules.last_verified);
+    el.textContent = humanDate(rules.last_verified);
+  });
+  document.querySelectorAll(".source-date").forEach(function (el) {
+    el.setAttribute("datetime", rules.source_page_date);
+    el.textContent = humanDate(rules.source_page_date);
+  });
 
   function factorText(age, factor) {
     if (age <= rules.under_71.max_age) return "1 / " + (90 - age);

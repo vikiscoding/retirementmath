@@ -18,6 +18,7 @@ jobs:
         with: { python-version: "3.12" }
       - uses: actions/setup-node@v4
         with: { node-version: "20" }
+      # Slow canada.ca reads are retried inside the script. A hard failure still exits 2.
       - name: Check rules against canada.ca
         run: python3 scripts/check_rules.py --update
       - name: Test calculator math

@@ -2,7 +2,7 @@
 
 Static utility site for Canadian retirement money questions, at retirementmath.ca. Page one estimates the Old Age Security clawback (recovery tax).
 
-Status (2026-10-25): live at https://retirementmath.ca/ and https://retirementmath.pages.dev. French pages are at https://retirementmath.ca/fr/. GitHub repo https://github.com/vikiscoding/retirementmath. Pushing `main` tests the calculator and deploys to Cloudflare Pages. Search Console ownership is verified. The public title is the 2026 OAS clawback calculator, and the mark is `logo.svg`. The RRIF minimum calculator is at https://retirementmath.ca/rrif. Unknown addresses return `404.html`. `www` redirects to the apex in `functions/_middleware.js`. A lawyer or accountant has read the disclaimer and privacy page. The weekly canada.ca rules check is `.github/workflows/check-oas-rules.yml`. No ads, no analytics, no email list.
+Status (2026-10-25): live at https://retirementmath.ca/ and https://retirementmath.pages.dev. French pages are at https://retirementmath.ca/fr/. GitHub repo https://github.com/vikiscoding/retirementmath. Pushing `main` tests the calculator and deploys to Cloudflare Pages. Search Console ownership is verified. The public title is the 2026 OAS clawback calculator, and the mark is `logo.svg`. The RRIF minimum calculator is at https://retirementmath.ca/rrif. Unknown addresses return `404.html`. `www` redirects to the apex in `functions/_middleware.js`. A lawyer or accountant has read the disclaimer and privacy page. The weekly canada.ca rules check is `.github/workflows/check-oas-rules.yml`. Each calculator shows that check date above the form, in words. No ads, no analytics, no email list.
 
 ## Layout
 ```
@@ -19,7 +19,7 @@ logo.svg                   Mark: spruce tile, cream bar, gold bar
 data/oas-rules.json        Every OAS figure with source URL and date
 data/rrif-rules.json       CRA RRIF factors with source URL and date
 scripts/build.py           Inlines JSON into index.html and rrif.html
-scripts/check_rules.py     Fetches canada.ca, diffs thresholds, optional --update
+scripts/check_rules.py     Fetches canada.ca (retries a slow read), diffs thresholds, optional --update
 tests/test_calc.js         Math tests, also checks inline data is fresh
 functions/_middleware.js              Redirect www.retirementmath.ca to the apex
 .github/workflows/deploy.yml          Test and publish to Cloudflare Pages on push to main

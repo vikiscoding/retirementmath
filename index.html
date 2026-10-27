@@ -146,7 +146,7 @@ footer p{margin:.3rem 0}
     <ul class="facts">
       <li>15% of income over the line</li>
       <li>2025 income starts at $93,454</li>
-      <li>Stays in your browser</li>
+      <li>Checked against canada.ca on <time class="verified-date" datetime="2026-10-22">22 October 2026</time></li>
     </ul>
     <nav class="onpage" aria-label="On this page">
       <a href="#who">Who it is for</a>
@@ -232,7 +232,7 @@ footer p{margin:.3rem 0}
     <tbody></tbody>
   </table>
   </div>
-  <p class="hint">Rules last verified: <strong id="verified">2026-10-22</strong>. Sources:
+  <p class="hint">Rules last verified: <time class="verified-date" datetime="2026-10-22">22 October 2026</time>. Sources:
     <a href="https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html">canada.ca OAS recovery tax</a>,
     <a href="https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/payments.html">canada.ca OAS payment amounts</a>,
     <a href="https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-october-december.html">ESDC quarterly amounts, October to December 2026</a>.</p>
@@ -360,7 +360,12 @@ function round2(n) { return Math.round(n * 100) / 100; }
       });
     tbody.appendChild(tr);
   });
-  document.getElementById("verified").textContent = rules.last_verified;
+  var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+  document.querySelectorAll(".verified-date").forEach(function (el) {
+    var p = rules.last_verified.split("-");
+    el.setAttribute("datetime", rules.last_verified);
+    el.textContent = Number(p[2]) + " " + months[Number(p[1]) - 1] + " " + p[0];
+  });
 
   document.getElementById("calc-form").addEventListener("submit", function (e) {
     e.preventDefault();

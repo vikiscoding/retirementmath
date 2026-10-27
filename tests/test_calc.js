@@ -37,6 +37,33 @@ const frInline = JSON.parse(frHtml.match(/<script id="oas-rules" type="applicati
 assert.deepStrictEqual(frInline, rules, "inline rules in fr/index.html are stale: run python3 scripts/build.py");
 assert.strictEqual(frHtml.match(/\/\/ CALC:BEGIN[\s\S]*?\/\/ CALC:END/)[0], src, "French OAS calc drifted from index.html");
 
+const EN_MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+const FR_MONTHS = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+function humanDate(iso, lang) {
+  const [year, month, day] = iso.split("-").map(Number);
+  const label = lang === "fr" && day === 1 ? "1er" : String(day);
+  return label + " " + (lang === "fr" ? FR_MONTHS : EN_MONTHS)[month - 1] + " " + year;
+}
+function countTimes(page, css, iso, lang) {
+  const needle = '<time class="' + css + '" datetime="' + iso + '">' + humanDate(iso, lang) + "</time>";
+  return page.split(needle).length - 1;
+}
+const rrifHtml = fs.readFileSync(path.join(root, "rrif.html"), "utf8");
+const frRrifHtml = fs.readFileSync(path.join(root, "fr/rrif.html"), "utf8");
+const rrifRules = JSON.parse(fs.readFileSync(path.join(root, "data/rrif-rules.json"), "utf8"));
+assert.strictEqual(countTimes(html, "verified-date", rules.last_verified, "en"), 2, "OAS check date");
+assert.strictEqual(countTimes(frHtml, "verified-date", rules.last_verified, "fr"), 2, "French OAS check date");
+assert.strictEqual(countTimes(rrifHtml, "verified-date", rrifRules.last_verified, "en"), 2, "RRIF check date");
+assert.strictEqual(countTimes(rrifHtml, "source-date", rrifRules.source_page_date, "en"), 2, "RRIF chart date");
+assert.strictEqual(countTimes(frRrifHtml, "verified-date", rrifRules.last_verified, "fr"), 2, "French RRIF check date");
+assert.strictEqual(countTimes(frRrifHtml, "source-date", rrifRules.source_page_date, "fr"), 2, "French RRIF chart date");
+assert.ok(html.includes("Checked against canada.ca on"), "OAS recency chip");
+assert.ok(frHtml.includes("Vérifié sur canada.ca le"), "French OAS recency chip");
+assert.ok(!html.includes("Stays in your browser"), "old browser chip should be gone");
+assert.strictEqual(html.match(/"@type":"WebPage".*?"dateModified":"([^"]+)"/)[1], rules.last_verified, "dateModified");
+assert.strictEqual(frHtml.match(/"@type":"WebPage".*?"dateModified":"([^"]+)"/)[1], rules.last_verified, "French dateModified");
+console.log("check dates ok");
+
 const pages = [
   ["index.html", "fr/index.html"],
   ["rrif.html", "fr/rrif.html"],

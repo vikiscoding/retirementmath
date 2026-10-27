@@ -2,26 +2,49 @@
 """Inline rules JSON into the calculator pages. Idempotent."""
 import json, pathlib, re
 root = pathlib.Path(__file__).resolve().parent.parent
+MONTHS = {
+    "en": ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+    "fr": ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"],
+}
+
+def human_date(iso, lang):
+    year, month, day = (int(part) for part in iso.split("-"))
+    label = "1er" if lang == "fr" and day == 1 else str(day)
+    return "%s %s %d" % (label, MONTHS[lang][month - 1], year)
+
+def stamp_times(html, css_class, iso, lang):
+    text = human_date(iso, lang)
+    pattern = r'(<time class="%s" datetime=")[^"]*(">)[^<]*(</time>)' % css_class
+    return re.subn(pattern, lambda m: m.group(1) + iso + m.group(2) + text + m.group(3), html)
 
 def inline(html_name, json_name, script_id, marker):
-    rules = json.loads((root / json_name).read_text())
+    rules = json.loads((root / json_name).read_text(encoding="utf-8"))
     html_path = root / html_name
-    html = html_path.read_text()
+    html = html_path.read_text(encoding="utf-8")
     block = '<script id="%s" type="application/json">' % script_id + json.dumps(rules, separators=(",", ":")).replace("</", "<\\/") + "</script>"
     pattern = r'(<!-- %s:BEGIN[^>]*-->\n).*?(\n<!-- %s:END -->)' % (marker, marker)
     new, n = re.subn(pattern, lambda m: m.group(1) + block + m.group(2), html, flags=re.S)
     if n != 1:
         raise SystemExit("%s markers not found exactly once in %s" % (marker, html_name))
+    lang = "fr" if html_name.startswith("fr/") else "en"
     date = rules["last_verified"]
-    new, n_date = re.subn(
-        r'(<strong id="verified">)[^<]*(</strong>)',
-        lambda m: m.group(1) + date + m.group(2),
-        new,
-        count=1,
-    )
-    if n_date != 1:
-        raise SystemExit("verified date not found exactly once in %s" % html_name)
-    html_path.write_text(new)
+    new, n_date = stamp_times(new, "verified-date", date, lang)
+    if n_date < 1:
+        raise SystemExit("verified date not found in %s" % html_name)
+    if rules.get("source_page_date"):
+        new, n_source = stamp_times(new, "source-date", rules["source_page_date"], lang)
+        if n_source < 1:
+            raise SystemExit("source date not found in %s" % html_name)
+    if '"@type":"WebPage"' in new:
+        new, n_mod = re.subn(
+            r'("dateModified":")\d{4}-\d{2}-\d{2}(")',
+            lambda m: m.group(1) + date + m.group(2),
+            new,
+            count=1,
+        )
+        if n_mod != 1:
+            raise SystemExit("dateModified not found exactly once in %s" % html_name)
+    html_path.write_text(new, encoding="utf-8")
     print("%s updated, last_verified %s" % (html_name, date))
 
 inline("index.html", "data/oas-rules.json", "oas-rules", "RULES")

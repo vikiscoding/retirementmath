@@ -94,3 +94,18 @@ Not built, on purpose:
 - No AdSense. The earlier decision stands: more useful pages, then a consent tool, then an application.
 - No RRIF calculator in this change. It needs CRA factors with sources, tests, and its own page. Income guesses of $50 to $300 a month, or $10 to $50 from ads, are not forecasts and are not on the site.
 - No emails to planners.
+
+## Recency pass (2026-10-27)
+
+Four reviewers: plain language, layout, compliance, and search. The check date was buried under the figures table as `2026-10-22`.
+
+Agreed and built:
+- The date stays `last_verified` from the rules file. No new field. A clean weekly check does not move that date, so the page does not say "this week" or "always up to date".
+- OAS: the third chip repeated the lede ("Stays in your browser"). It now says the figures were checked against canada.ca on 22 October 2026. The form stays where it was. French uses the same chip.
+- The sources line uses that same human date. Print hides the chips and keeps the sources line.
+- RRIF chips are the calculation, so they stay. A line under the lede says the factors were checked on 22 October 2026, and that the CRA chart page is dated 1 October 2025. French says 1er octobre 2025.
+- `scripts/build.py` stamps those lines and the WebPage `dateModified`. The French page had drifted to 2026-10-25.
+
+Not built, on purpose:
+- No title change, no meta description change, and no review stars.
+- No second warning above the form. The 2026 estimate and the quarterly OAS gap are already in the result, the questions, and the disclaimer.

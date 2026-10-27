@@ -17,6 +17,7 @@ Static utility site for Canadians, named Retirement Math (retirementmath.ca). Fi
 - Test math (must exit 0): `node tests/test_calc.js`
 - Check rules against canada.ca (report only): `python3 scripts/check_rules.py`
 - Offline parser test: `python3 scripts/check_rules.py --recovery-file tests/fixtures/recovery-tax.html --payments-file tests/fixtures/payments.html` (must print OK)
+- Fetch retry test: `python3 -m unittest tests/test_check_rules.py`
 - Check and write changes: `python3 scripts/check_rules.py --update`
 - Preview: `python3 -m http.server 8000` then open http://localhost:8000
 

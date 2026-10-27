@@ -145,7 +145,7 @@ footer p{margin:.3rem 0}
     <ul class="facts">
       <li>15 % du revenu au-dessus du seuil</li>
       <li>Le revenu de 2025 commence à 93 454 $</li>
-      <li>Le calcul reste dans votre navigateur</li>
+      <li>Vérifié sur canada.ca le <time class="verified-date" datetime="2026-10-22">22 octobre 2026</time></li>
     </ul>
     <nav class="onpage" aria-label="Sur cette page">
       <a href="#who">À qui ça s'adresse</a>
@@ -230,7 +230,7 @@ footer p{margin:.3rem 0}
     <tbody></tbody>
   </table>
   </div>
-  <p class="hint">Règles vérifiées le : <strong id="verified">2026-10-22</strong>. Sources :
+  <p class="hint">Règles vérifiées le <time class="verified-date" datetime="2026-10-22">22 octobre 2026</time>. Sources :
     <a href="https://www.canada.ca/fr/services/prestations/pensionspubliques/securite-vieillesse/impot-recuperation.html">canada.ca, impôt de récupération de la SV</a>,
     <a href="https://www.canada.ca/fr/services/prestations/pensionspubliques/securite-vieillesse/paiements.html">canada.ca, montant des paiements de la SV</a>.</p>
 </section>
@@ -283,7 +283,7 @@ footer p{margin:.3rem 0}
 <!-- RULES:END -->
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebPage","name":"Calculatrice de récupération de la SV 2026 (Canada)","url":"https://retirementmath.ca/fr/","inLanguage":"fr-CA","dateModified":"2026-10-25","description":"Estimez l'impôt de récupération de la Sécurité de la vieillesse à partir de votre revenu net de toutes provenances. Seuils officiels de canada.ca.","isPartOf":{"@type":"WebSite","name":"Retirement Math","url":"https://retirementmath.ca/"},"about":{"@type":"Thing","name":"Impôt de récupération de la Sécurité de la vieillesse"}}
+{"@context":"https://schema.org","@type":"WebPage","name":"Calculatrice de récupération de la SV 2026 (Canada)","url":"https://retirementmath.ca/fr/","inLanguage":"fr-CA","dateModified":"2026-10-22","description":"Estimez l'impôt de récupération de la Sécurité de la vieillesse à partir de votre revenu net de toutes provenances. Seuils officiels de canada.ca.","isPartOf":{"@type":"WebSite","name":"Retirement Math","url":"https://retirementmath.ca/"},"about":{"@type":"Thing","name":"Impôt de récupération de la Sécurité de la vieillesse"}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebApplication","name":"Calculatrice de récupération de la SV","url":"https://retirementmath.ca/fr/","applicationCategory":"FinanceApplication","operatingSystem":"Any","inLanguage":"fr-CA","isAccessibleForFree":true,"areaServed":{"@type":"Country","name":"Canada"},"offers":{"@type":"Offer","price":"0","priceCurrency":"CAD"},"publisher":{"@type":"Organization","name":"Retirement Math","url":"https://retirementmath.ca/"},"description":"Calculatrice canadienne gratuite pour l'impôt de récupération de la Sécurité de la vieillesse."}
@@ -371,7 +371,13 @@ function round2(n) { return Math.round(n * 100) / 100; }
       });
     tbody.appendChild(tr);
   });
-  document.getElementById("verified").textContent = rules.last_verified;
+  var months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+  document.querySelectorAll(".verified-date").forEach(function (el) {
+    var p = rules.last_verified.split("-");
+    var day = Number(p[2]);
+    el.setAttribute("datetime", rules.last_verified);
+    el.textContent = (day === 1 ? "1er" : String(day)) + " " + months[Number(p[1]) - 1] + " " + p[0];
+  });
 
   document.getElementById("calc-form").addEventListener("submit", function (e) {
     e.preventDefault();

@@ -5,18 +5,43 @@ Usage:
   python3 scripts/check_rules.py            # report only, exit 1 if anything differs
   python3 scripts/check_rules.py --update   # write changed thresholds, bump last_verified, rebuild index.html
 Stdlib only. Never changes max OAS amounts automatically; those are reported for a human.
+A slow or dropped canada.ca read is retried. Exit 2 only after those tries fail.
 """
-import argparse, datetime, json, pathlib, re, subprocess, sys, urllib.request
+import argparse, datetime, json, pathlib, re, subprocess, sys, time, urllib.error, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 RULES = ROOT / "data/oas-rules.json"
 RECOVERY_URL = "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html"
 PAYMENTS_URL = "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/payments.html"
 UA = {"User-Agent": "Mozilla/5.0 (oas-clawback rules checker)"}
+# The 2026-10-26 Actions run hit "The read operation timed out" at 30s on the first page.
+FETCH_ATTEMPTS = 3
+FETCH_TIMEOUT = 60
 
-def fetch(url):
-    with urllib.request.urlopen(urllib.request.Request(url, headers=UA), timeout=30) as r:
-        return r.read().decode("utf-8", "replace")
+def _retryable(err):
+    if isinstance(err, urllib.error.HTTPError):
+        return err.code == 429 or err.code >= 500
+    if isinstance(err, (TimeoutError, ConnectionError, urllib.error.URLError)):
+        return True
+    return False
+
+def fetch(url, attempts=FETCH_ATTEMPTS, timeout=FETCH_TIMEOUT, opener=None, sleep=time.sleep):
+    """GET url. Retry a stalled read. canada.ca often accepts the connection, then stops sending."""
+    if opener is None:
+        opener = urllib.request.urlopen
+    for n in range(1, attempts + 1):
+        try:
+            req = urllib.request.Request(url, headers=UA)
+            with opener(req, timeout=timeout) as r:
+                return r.read().decode("utf-8", "replace")
+        except Exception as e:
+            if isinstance(e, urllib.error.HTTPError):
+                e.close()
+            if _retryable(e) and n < attempts:
+                print(f"WARN {url} attempt {n} of {attempts} failed: {e}", file=sys.stderr)
+                sleep(2 ** (n - 1))
+                continue
+            raise RuntimeError(f"{url}: {e}") from e
 
 def text(html):
     t = re.sub(r"<script.*?</script>|<style.*?</style>", " ", html, flags=re.S)
