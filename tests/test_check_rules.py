@@ -115,5 +115,27 @@ class CurlFetchTest(unittest.TestCase):
         self.assertEqual(calls, [1])
 
 
+class RecordCheckTest(unittest.TestCase):
+    def test_a_clean_check_moves_only_the_check_date(self):
+        rules = {"last_checked": "2026-10-22", "last_updated": "2026-10-22", "last_verified": "2026-10-22"}
+        changed = check_rules.record_check(rules, "2026-10-27", False)
+        self.assertTrue(changed)
+        self.assertEqual(rules["last_checked"], "2026-10-27")
+        self.assertEqual(rules["last_verified"], "2026-10-27")
+        self.assertEqual(rules["last_updated"], "2026-10-22")
+
+    def test_a_figure_change_moves_both_dates(self):
+        rules = {"last_checked": "2026-10-22", "last_updated": "2026-10-22", "last_verified": "2026-10-22"}
+        check_rules.record_check(rules, "2026-10-27", True)
+        self.assertEqual(rules["last_updated"], "2026-10-27")
+        self.assertEqual(rules["last_checked"], "2026-10-27")
+
+    def test_the_same_day_with_no_figure_change_does_not_count_as_new(self):
+        rules = {"last_checked": "2026-10-27", "last_updated": "2026-10-22", "last_verified": "2026-10-27"}
+        changed = check_rules.record_check(rules, "2026-10-27", False)
+        self.assertFalse(changed)
+        self.assertEqual(rules["last_updated"], "2026-10-22")
+
+
 if __name__ == "__main__":
     unittest.main()

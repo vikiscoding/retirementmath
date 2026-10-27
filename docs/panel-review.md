@@ -109,3 +109,7 @@ Agreed and built:
 Not built, on purpose:
 - No title change, no meta description change, and no review stars.
 - No second warning above the form. The 2026 estimate and the quarterly OAS gap are already in the result, the questions, and the disclaimer.
+
+## Two dates (2026-10-27)
+
+The owner asked for the day of the last successful check and the day a saved figure last changed. Those are `last_checked` and `last_updated` in `data/oas-rules.json`. `last_verified` stays equal to `last_checked`. A clean check moves only the check date. A changed threshold moves both. The RRIF page is not part of that check, so it keeps one date. A Monday with no figure change still opens a pull request for the check date. The live page updates when that pull request is merged.

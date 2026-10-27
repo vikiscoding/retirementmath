@@ -3,11 +3,11 @@
 
 Usage:
   python3 scripts/check_rules.py            # report only, exit 1 if anything differs
-  python3 scripts/check_rules.py --update   # write changed thresholds, bump last_verified, rebuild index.html
+  python3 scripts/check_rules.py --update   # record the check date, and write changed thresholds
 Stdlib only. Never changes max OAS amounts automatically; those are reported for a human.
 A slow or dropped canada.ca read is retried. Exit 2 only after those tries fail.
 """
-import argparse, datetime, json, pathlib, re, subprocess, sys, time, urllib.error, urllib.request
+import argparse, datetime, json, os, pathlib, re, subprocess, sys, time, urllib.error, urllib.request
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 RULES = ROOT / "data/oas-rules.json"
@@ -94,13 +94,45 @@ def parse_payments(t):
     b = re.search(r"age 75 and over\s+less than \$[\d,]+\s+up to (\$[\d,.]+)", t, re.I)
     return {"age_65_74": money(a.group(1)) if a else None, "age_75_plus": money(b.group(1)) if b else None}
 
+def record_check(rules, today, figure_edits):
+    """Stamp a successful compare. last_updated moves only when a saved figure changes."""
+    if "last_updated" not in rules:
+        rules["last_updated"] = rules.get("last_checked") or rules.get("last_verified") or today
+    prior = rules.get("last_checked") or rules.get("last_verified")
+    rules["last_checked"] = today
+    rules["last_verified"] = today
+    if figure_edits:
+        rules["last_updated"] = today
+    return prior != today or figure_edits
+
+def _patch_dates(original, rules):
+    """Change the date lines without reformatting the rest of the JSON file."""
+    text = original
+    for key in ("last_checked", "last_updated", "last_verified"):
+        pattern = r'("%s": ")[^"]*(")' % key
+        text, n = re.subn(pattern, lambda m, value=rules[key]: m.group(1) + value + m.group(2), text, count=1)
+        if n != 1:
+            raise SystemExit("could not update %s in data/oas-rules.json" % key)
+    return text
+
+def _github_output(kind, title, commit):
+    path = os.environ.get("GITHUB_OUTPUT")
+    if not path:
+        return
+    with open(path, "a", encoding="utf-8") as fh:
+        fh.write("kind=%s\n" % kind)
+        fh.write("title=%s\n" % title)
+        fh.write("commit=%s\n" % commit)
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--update", action="store_true")
+    ap.add_argument("--summary-file", help="write the pull request body here")
     ap.add_argument("--recovery-file", help="parse a saved HTML file instead of fetching (offline testing)")
     ap.add_argument("--payments-file", help="parse a saved HTML file instead of fetching (offline testing)")
     args = ap.parse_args()
-    rules = json.loads(RULES.read_text())
+    original = RULES.read_text(encoding="utf-8")
+    rules = json.loads(original)
     try:
         rec_html = pathlib.Path(args.recovery_file).read_text() if args.recovery_file else fetch(RECOVERY_URL)
         pay_html = pathlib.Path(args.payments_file).read_text() if args.payments_file else fetch(PAYMENTS_URL)
@@ -112,6 +144,7 @@ def main():
         print("ERROR could not parse the recovery tax table. Page layout may have changed. Check by hand."); return 2
 
     diffs = []
+    figure_edits = False
     known = {p["income_year"]: p for p in rules["periods"]}
     for year, row in sorted(live.items()):
         p = known.get(year)
@@ -120,12 +153,14 @@ def main():
             if args.update:
                 rules["periods"].append({"id": f"{year}-income", "income_year": year, **{k: (int(v) if isinstance(v, float) else v) for k, v in row.items()},
                                          "status": "estimate", "source": RECOVERY_URL})
+                figure_edits = True
             continue
         for k in ("threshold_min", "threshold_max_65_74", "threshold_max_75_plus"):
             if float(p[k]) != row[k]:
                 diffs.append(f"{year} {k}: json {p[k]} vs canada.ca {row[k]:.0f}")
                 if args.update:
                     p[k] = int(row[k])
+                    figure_edits = True
     cur = next(q for q in rules["max_monthly_oas_2026"] if q["quarter"] == rules["current_quarter"])
     for k, v in pay.items():
         if v is not None and v != cur[k]:
@@ -135,13 +170,38 @@ def main():
         print("OK: data/oas-rules.json matches canada.ca")
     for d in diffs:
         print("DIFF:", d)
-    if args.update and diffs:
-        rules["last_verified"] = datetime.date.today().isoformat()
-        RULES.write_text(json.dumps(rules, indent=2) + "\n")
-        subprocess.run([sys.executable, str(ROOT / "scripts/build.py")], check=True)
-        print("Updated thresholds and last_verified. Review the diff, run node tests/test_calc.js, then commit.")
-    elif args.update:
-        print("No file changes.")
+    kind = "none"
+    title = ""
+    commit = ""
+    if args.update:
+        today = datetime.date.today().isoformat()
+        record_check(rules, today, figure_edits)
+        new_text = json.dumps(rules, indent=2, ensure_ascii=False) + "\n" if figure_edits else _patch_dates(original, rules)
+        if new_text != original:
+            RULES.write_text(new_text, encoding="utf-8")
+            subprocess.run([sys.executable, str(ROOT / "scripts/build.py")], check=True)
+            if figure_edits or diffs:
+                kind = "figures"
+                title = "OAS rules changed on canada.ca"
+                commit = "data: update OAS rules from canada.ca"
+                print("Updated figures and the check date. Review the diff, run node tests/test_calc.js, then commit.")
+            else:
+                kind = "date"
+                title = "OAS check date"
+                commit = "data: record the OAS check date"
+                print("Recorded the check date. Saved figures are unchanged.")
+        else:
+            print("No file changes.")
+    if args.summary_file:
+        lines = ["Automated check against canada.ca.", ""]
+        if diffs:
+            lines.append("A figure differs from the saved file:")
+            lines.extend("- %s" % d for d in diffs)
+        else:
+            lines.append("Saved figures still match canada.ca. This records the check date only.")
+        lines.extend(["", "Verify any changed number against the source URL before merging."])
+        pathlib.Path(args.summary_file).write_text("\n".join(lines) + "\n", encoding="utf-8")
+    _github_output(kind, title, commit)
     return 1 if diffs and not args.update else 0
 
 if __name__ == "__main__":

@@ -14,7 +14,7 @@
 - [x] French version at /fr/ (calculator, RRIF, about, privacy, disclaimer), with hreflang
 - [x] Manual accessibility pass (2026-10-25): keyboard skip target, focus contrast, 320px width, 200% zoom. Checked in a browser with axe. NVDA is not installed on this PC, so a screen reader was not run.
 - [x] Weekly rules check is on: `.github/workflows/check-oas-rules.yml`. A slow canada.ca read is retried before the job fails.
-- [x] The check date is above the form on the OAS and RRIF calculators, as a calendar date from `last_verified`.
+- [x] The OAS calculator shows the last canada.ca check and the day a saved figure last changed. The RRIF page shows its own check date.
 
 ## Monetization order (see panel review)
 1. Launch with no ads. Build content and traffic.

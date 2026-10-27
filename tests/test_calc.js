@@ -51,17 +51,22 @@ function countTimes(page, css, iso, lang) {
 const rrifHtml = fs.readFileSync(path.join(root, "rrif.html"), "utf8");
 const frRrifHtml = fs.readFileSync(path.join(root, "fr/rrif.html"), "utf8");
 const rrifRules = JSON.parse(fs.readFileSync(path.join(root, "data/rrif-rules.json"), "utf8"));
-assert.strictEqual(countTimes(html, "verified-date", rules.last_verified, "en"), 2, "OAS check date");
-assert.strictEqual(countTimes(frHtml, "verified-date", rules.last_verified, "fr"), 2, "French OAS check date");
+assert.strictEqual(rules.last_verified, rules.last_checked, "last_verified mirrors last_checked");
+assert.strictEqual(countTimes(html, "verified-date", rules.last_checked, "en"), 2, "OAS check date");
+assert.strictEqual(countTimes(html, "updated-date", rules.last_updated, "en"), 2, "OAS update date");
+assert.strictEqual(countTimes(frHtml, "verified-date", rules.last_checked, "fr"), 2, "French OAS check date");
+assert.strictEqual(countTimes(frHtml, "updated-date", rules.last_updated, "fr"), 2, "French OAS update date");
 assert.strictEqual(countTimes(rrifHtml, "verified-date", rrifRules.last_verified, "en"), 2, "RRIF check date");
 assert.strictEqual(countTimes(rrifHtml, "source-date", rrifRules.source_page_date, "en"), 2, "RRIF chart date");
 assert.strictEqual(countTimes(frRrifHtml, "verified-date", rrifRules.last_verified, "fr"), 2, "French RRIF check date");
 assert.strictEqual(countTimes(frRrifHtml, "source-date", rrifRules.source_page_date, "fr"), 2, "French RRIF chart date");
 assert.ok(html.includes("Checked against canada.ca on"), "OAS recency chip");
+assert.ok(html.includes("Last update found on"), "OAS update chip");
 assert.ok(frHtml.includes("Vérifié sur canada.ca le"), "French OAS recency chip");
+assert.ok(frHtml.includes("Dernier changement trouvé le"), "French OAS update chip");
 assert.ok(!html.includes("Stays in your browser"), "old browser chip should be gone");
-assert.strictEqual(html.match(/"@type":"WebPage".*?"dateModified":"([^"]+)"/)[1], rules.last_verified, "dateModified");
-assert.strictEqual(frHtml.match(/"@type":"WebPage".*?"dateModified":"([^"]+)"/)[1], rules.last_verified, "French dateModified");
+assert.strictEqual(html.match(/"@type":"WebPage".*?"dateModified":"([^"]+)"/)[1], rules.last_checked, "dateModified");
+assert.strictEqual(frHtml.match(/"@type":"WebPage".*?"dateModified":"([^"]+)"/)[1], rules.last_checked, "French dateModified");
 console.log("check dates ok");
 
 const pages = [

@@ -27,10 +27,15 @@ def inline(html_name, json_name, script_id, marker):
     if n != 1:
         raise SystemExit("%s markers not found exactly once in %s" % (marker, html_name))
     lang = "fr" if html_name.startswith("fr/") else "en"
-    date = rules["last_verified"]
-    new, n_date = stamp_times(new, "verified-date", date, lang)
+    checked = rules.get("last_checked") or rules["last_verified"]
+    updated = rules.get("last_updated") or checked
+    new, n_date = stamp_times(new, "verified-date", checked, lang)
     if n_date < 1:
         raise SystemExit("verified date not found in %s" % html_name)
+    if 'class="updated-date"' in new:
+        new, n_updated = stamp_times(new, "updated-date", updated, lang)
+        if n_updated < 1:
+            raise SystemExit("updated date not found in %s" % html_name)
     if rules.get("source_page_date"):
         new, n_source = stamp_times(new, "source-date", rules["source_page_date"], lang)
         if n_source < 1:
@@ -38,14 +43,14 @@ def inline(html_name, json_name, script_id, marker):
     if '"@type":"WebPage"' in new:
         new, n_mod = re.subn(
             r'("dateModified":")\d{4}-\d{2}-\d{2}(")',
-            lambda m: m.group(1) + date + m.group(2),
+            lambda m: m.group(1) + checked + m.group(2),
             new,
             count=1,
         )
         if n_mod != 1:
             raise SystemExit("dateModified not found exactly once in %s" % html_name)
     html_path.write_text(new, encoding="utf-8")
-    print("%s updated, last_verified %s" % (html_name, date))
+    print("%s updated, checked %s" % (html_name, checked))
 
 inline("index.html", "data/oas-rules.json", "oas-rules", "RULES")
 inline("fr/index.html", "data/oas-rules.json", "oas-rules", "RULES")

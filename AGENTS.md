@@ -41,7 +41,7 @@ A change is done when all are true:
 8. Accessibility: WCAG 2.1 AA. Labels on every input, visible focus, 44px targets, results announced with `aria-live`, works without colour, works at 320px wide.
 
 ## Boundaries
-- Always: run the tests, cite sources, keep `last_verified` honest.
+- Always: run the tests, cite sources, keep `last_checked` and `last_updated` honest. `last_verified` matches `last_checked`.
 - Ask first: adding any third-party script, changing the formula, adding a new data field. The weekly canada.ca rules-check workflow is already on.
 - Deploy: pushing `main` runs `.github/workflows/deploy.yml` and publishes the public HTML to Cloudflare Pages. That is the owner's chosen setup.
 - Never: buy domains, sign up for ad or affiliate accounts, spend money, commit secrets, weaken or delete a failing test to make it pass.
