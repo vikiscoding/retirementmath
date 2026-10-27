@@ -14,9 +14,11 @@ RULES = ROOT / "data/oas-rules.json"
 RECOVERY_URL = "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html"
 PAYMENTS_URL = "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/payments.html"
 UA = {"User-Agent": "Mozilla/5.0 (oas-clawback rules checker)"}
-# The 2026-10-26 Actions run hit "The read operation timed out" at 30s on the first page.
+# Python urlopen on the GitHub runner accepts the connection and then never reads a byte.
+# Each try sits until this timeout. curl over IPv4 returns the same page immediately.
 FETCH_ATTEMPTS = 3
 FETCH_TIMEOUT = 60
+CURL_TIMEOUT = 25
 
 def _retryable(err):
     if isinstance(err, urllib.error.HTTPError):
@@ -25,15 +27,43 @@ def _retryable(err):
         return True
     return False
 
-def fetch(url, attempts=FETCH_ATTEMPTS, timeout=FETCH_TIMEOUT, opener=None, sleep=time.sleep):
-    """GET url. Retry a stalled read. canada.ca often accepts the connection, then stops sending."""
-    if opener is None:
-        opener = urllib.request.urlopen
+def _http_code(err):
+    match = re.search(r"returned error: (\d{3})", err)
+    return int(match.group(1)) if match else None
+
+def _curl_fetch(url, timeout, ipv4, run):
+    cmd = ["curl", "-fsSL", "--max-time", str(int(timeout)), "--connect-timeout", "10",
+           "-A", UA["User-Agent"], "-H", "Accept: text/html", url]
+    if ipv4:
+        cmd.insert(1, "--ipv4")
+    proc = run(cmd, capture_output=True)
+    if proc.returncode != 0:
+        err = proc.stderr.decode("utf-8", "replace").strip() or "curl exit %s" % proc.returncode
+        code = _http_code(err)
+        if code:
+            raise urllib.error.HTTPError(url, code, err, hdrs=None, fp=None)
+        raise ConnectionError(err)
+    return proc.stdout.decode("utf-8", "replace")
+
+def _urllib_fetch(url, timeout, opener):
+    req = urllib.request.Request(url, headers=UA)
+    with opener(req, timeout=timeout) as r:
+        return r.read().decode("utf-8", "replace")
+
+def fetch(url, attempts=FETCH_ATTEMPTS, timeout=FETCH_TIMEOUT, opener=None, sleep=time.sleep, run=None):
+    """GET url. Prefer curl. Fall back to urllib only when curl is not installed."""
+    if run is None:
+        run = subprocess.run
+    use_curl = opener is None
     for n in range(1, attempts + 1):
         try:
-            req = urllib.request.Request(url, headers=UA)
-            with opener(req, timeout=timeout) as r:
-                return r.read().decode("utf-8", "replace")
+            if not use_curl:
+                return _urllib_fetch(url, timeout, opener or urllib.request.urlopen)
+            try:
+                return _curl_fetch(url, CURL_TIMEOUT, ipv4=(n == 1), run=run)
+            except FileNotFoundError:
+                use_curl = False
+                return _urllib_fetch(url, timeout, urllib.request.urlopen)
         except Exception as e:
             if isinstance(e, urllib.error.HTTPError):
                 e.close()

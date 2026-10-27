@@ -80,5 +80,40 @@ class FetchRetryTest(unittest.TestCase):
         self.assertEqual(len(calls), 2)
 
 
+class Proc:
+    def __init__(self, code, out, err):
+        self.returncode = code
+        self.stdout = out
+        self.stderr = err.encode("utf-8")
+
+
+class CurlFetchTest(unittest.TestCase):
+    def test_uses_ipv4_then_returns_the_page(self):
+        calls = []
+
+        def run(cmd, capture_output):
+            calls.append(cmd)
+            if len(calls) == 1:
+                return Proc(28, b"", "curl: (28) Operation timed out")
+            return Proc(0, b"<html>ok</html>", "")
+
+        html = check_rules.fetch("https://example.test/recovery-tax", run=run, sleep=lambda _s: None)
+        self.assertEqual(html, "<html>ok</html>")
+        self.assertIn("--ipv4", calls[0])
+        self.assertEqual(calls[0][-1], "https://example.test/recovery-tax")
+        self.assertNotIn("--ipv4", calls[1])
+
+    def test_does_not_retry_a_curl_404(self):
+        calls = []
+
+        def run(cmd, capture_output):
+            calls.append(1)
+            return Proc(22, b"", "curl: (22) The requested URL returned error: 404")
+
+        with self.assertRaises(RuntimeError):
+            check_rules.fetch("https://example.test/missing", run=run, sleep=lambda _s: None)
+        self.assertEqual(calls, [1])
+
+
 if __name__ == "__main__":
     unittest.main()
