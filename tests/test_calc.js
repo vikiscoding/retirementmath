@@ -80,21 +80,54 @@ const disclosureFr = "Nous pouvons recevoir une commission si vous utilisez ces 
 const pay = "https://buy.stripe.com/eVqeVdbTq2Pmdi0aX34sE00";
 const support = 'This site stays free and private. A small optional <a href="' + pay + '" rel="noopener" target="_blank">contribution</a> helps cover hosting.';
 const supportFr = 'Ce site reste gratuit et privé. Une petite <a href="' + pay + '" rel="noopener" target="_blank">contribution</a> facultative aide à payer l\'hébergement.';
+const printRule = "@media print{header,footer,.skip,.ad-slot,.page-intro,form,.reading,.result-tools,noscript{display:none !important}";
+const paused = ["turbotax.intuit.ca", "turboimpot.intuit.ca", "wealthsimple.com", disclosure, disclosureFr, "Print or save summary", "Imprimer ou enregistrer le résumé"];
+const downloads = {
+  "index.html": "oas-clawback-summary.txt",
+  "rrif.html": "rrif-minimum-summary.txt",
+  "take-home.html": "take-home-summary.txt",
+  "fr/index.html": "oas-clawback-summary.txt",
+  "fr/rrif.html": "rrif-minimum-summary.txt",
+  "fr/take-home.html": "take-home-summary.txt"
+};
+function calculatorPage(file) {
+  if (file === "index.html") return html;
+  if (file === "fr/index.html") return frHtml;
+  return fs.readFileSync(path.join(root, file), "utf8");
+}
 for (const file of ["index.html", "rrif.html", "take-home.html"]) {
-  const page = file === "index.html" ? html : fs.readFileSync(path.join(root, file), "utf8");
+  const page = calculatorPage(file);
   assert.ok(page.includes("Last verified:"), file + " last verified");
-  assert.ok(page.includes(disclosure), file + " disclosure");
+  assert.ok(page.includes('id="summary"'), file + " summary");
+  assert.ok(page.includes('id="copy"'), file + " copy");
   assert.ok(page.includes('id="print"'), file + " print");
-  assert.ok(page.includes("Print or save summary"), file + " print label");
+  assert.ok(page.includes('id="save"'), file + " save");
+  assert.ok(page.includes("Copy summary"), file + " copy label");
+  assert.ok(page.includes("Print summary"), file + " print label");
+  assert.ok(page.includes("Save summary"), file + " save label");
+  assert.ok(page.includes('class="donate"'), file + " donate");
+  assert.ok(page.includes("Make a small contribution"), file + " donate label");
+  assert.ok(page.includes(downloads[file]), file + " download name");
+  assert.ok(page.includes(printRule), file + " print css");
+  assert.ok(page.indexOf('id="summary"') < page.indexOf('class="donate"'), file + " donate outside summary");
   assert.ok(page.includes(support), file + " contribution");
   assert.ok(page.includes("<table"), file + " sources table");
+  for (const gone of paused) assert.ok(!page.includes(gone), file + " still has " + gone);
 }
 for (const file of ["fr/index.html", "fr/rrif.html", "fr/take-home.html"]) {
-  const page = file === "fr/index.html" ? frHtml : fs.readFileSync(path.join(root, file), "utf8");
+  const page = calculatorPage(file);
   assert.ok(page.includes("Dernière vérification :"), file + " last verified");
-  assert.ok(page.includes(disclosureFr), file + " disclosure");
-  assert.ok(page.includes("Imprimer ou enregistrer le résumé"), file + " print label");
+  assert.ok(page.includes('id="summary"'), file + " summary");
+  assert.ok(page.includes("Copier le résumé"), file + " copy label");
+  assert.ok(page.includes("Imprimer le résumé"), file + " print label");
+  assert.ok(page.includes("Enregistrer le résumé"), file + " save label");
+  assert.ok(page.includes('class="donate"'), file + " donate");
+  assert.ok(page.includes("Faire une petite contribution"), file + " donate label");
+  assert.ok(page.includes(downloads[file]), file + " download name");
+  assert.ok(page.includes(printRule), file + " print css");
+  assert.ok(page.indexOf('id="summary"') < page.indexOf('class="donate"'), file + " donate outside summary");
   assert.ok(page.includes(supportFr), file + " contribution");
+  for (const gone of paused) assert.ok(!page.includes(gone), file + " still has " + gone);
 }
 const robots = fs.readFileSync(path.join(root, "robots.txt"), "utf8");
 const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
@@ -141,6 +174,8 @@ assert.ok(missing.includes('href="/rrif"'), "404 RRIF link");
 assert.ok(missing.includes("Run from Toronto, Ontario."), "404 place");
 const about = fs.readFileSync(path.join(root, "about.html"), "utf8");
 const aboutFr = fs.readFileSync(path.join(root, "fr/about.html"), "utf8");
+assert.ok(about.includes("The calculators do not show tax software or robo-advisor links right now."), "about links off");
+assert.ok(aboutFr.includes("n'affichent pas de lien vers un logiciel d'impôt ou un robot-conseiller pour le moment."), "french about links off");
 assert.ok(about.includes("Your card details go to Stripe, not to this site."), "about stripe");
 assert.ok(about.includes("there is no tax receipt."), "about no receipt");
 assert.ok(aboutFr.includes("Les détails de votre carte vont à Stripe, pas à ce site."), "french about stripe");
@@ -148,6 +183,7 @@ assert.ok(about.includes("Vik runs the site from Toronto, Ontario."), "about nam
 assert.ok(about.includes("experienced IT professional, with credentials in AI development and related work."), "about background");
 assert.ok(aboutFr.includes("Vik tient le site depuis Toronto, en Ontario."), "french about name");
 assert.ok(aboutFr.includes("professionnel d'expérience en technologies de l'information"), "french about background");
+assert.ok(fs.readFileSync(path.join(root, "privacy.html"), "utf8").includes("The calculators do not show tax software or robo-advisor links right now."), "privacy links off");
 assert.ok(fs.readFileSync(path.join(root, "privacy.html"), "utf8").includes("If you use the contribution link, your card details go to Stripe, not to this site."), "privacy stripe");
 assert.ok(fs.readFileSync(path.join(root, "fr/privacy.html"), "utf8").includes("Si vous utilisez le lien de contribution, les détails de votre carte vont à Stripe, pas à ce site."), "french privacy stripe");
 assert.ok(fs.readFileSync(path.join(root, "privacy.html"), "utf8").includes("Privacy officer: Vik, Toronto, Ontario."), "privacy officer");

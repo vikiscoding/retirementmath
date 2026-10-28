@@ -17,16 +17,17 @@
 - [x] The OAS calculator shows the last canada.ca check and the day a saved figure last changed. The RRIF page shows its own check date.
 - [x] Take-home estimate at /take-home, in English and French. One 2026 year: federal and provincial tax, the basic personal amount, and employee CPP or QPP, EI, and QPIP. OAS recovery is a separate line and is not subtracted. GIS is a single-person cutoff check, not a payment. Spouse, children, the Canada child benefit, and the disability credit are not on the page. Figures checked 2026-10-27. No account and no ad scripts.
 - [x] Ranking pass on the three calculators (2026-10-27): ISO last-verified line, static worked example, static sources table, FAQ already on the page, privacy sentence, sitemap and robots already allow the three URLs.
-- [x] Light monetization on those three calculators only (2026-10-27): print button, footer contribution line, and two unlabeled service links after the result. No new calculator. The links have no affiliate tag.
+- [x] Light monetization on those three calculators only (2026-10-27): print button, footer contribution line, and two unlabeled service links after the result. No new calculator. The links have no affiliate tag. The service links were turned off on 2026-10-28.
 - [x] The word contribution opens the owner's Stripe Payment Link (2026-10-28). No Stripe script and no card form on the site.
+- [x] Copy, print, and save use the result summary only (2026-10-28). Tax software and robo-advisor links are off until the owner asks. A contribution link shows beside the result.
 
 ## Monetization order (see panel review)
-The three calculators and the light links above are in place. The site stops there.
+The three calculators are in place. Tax software and robo-advisor links are off. The site stops there.
 
 1. Launch with no ad scripts. Done.
 2. Email list for "rules changed" alerts (needs CASL consent and a provider). Not started.
 3. AdSense after about 15 to 20 useful pages and real traffic, with a Google certified CMP. Not started.
-4. Tagged affiliate links only after the owner replaces the public TurboTax and Wealthsimple addresses. The disclosure is already on the result.
+4. Tagged affiliate links only after the owner asks to turn the TurboTax and Wealthsimple links back on and replaces the addresses. Those links are off. The result does not show a commission sentence.
 5. Paid tools later: PDF retirement income plan, multi-year clawback planner. Not started.
 
 ## Next pages (parked)

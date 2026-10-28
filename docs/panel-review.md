@@ -151,6 +151,16 @@ Not built, on purpose:
 
 The owner supplied a Stripe Payment Link. The word contribution now opens https://buy.stripe.com/eVqeVdbTq2Pmdi0aX34sE00. The About note says card details go to Stripe and that there is no tax receipt. The privacy page has the same card sentence in English and French. No Stripe script and no card form were added. The 2026-10-27 note above records the earlier static About link.
 
+## Result summary and paused service links (2026-10-28)
+
+The owner asked for a clean copy, print, and save, to turn off the TurboTax and Wealthsimple links for now, and to show the contribution link beside a result. The 2026-10-27 note above records what was on the page that day.
+
+- Copy, print, and save use the figures inside `#summary`. The buttons, the contribution block, the form, and the reading sections stay out of the copied text and the print.
+- Print still uses `window.print()`. Print CSS hides the header, footer, form, reading sections, and the result tools.
+- Save downloads `oas-clawback-summary.txt`, `rrif-minimum-summary.txt`, or `take-home-summary.txt`.
+- The TurboTax, TurboImpôt, and Wealthsimple links are off the six calculator pages until the owner asks to turn them back on.
+- After Calculate, a contribution link sits beside the buttons. It uses the same Stripe Payment Link. It is outside `#summary`, so it is not copied or printed. The footer line stays.
+
 ## Owner line (2026-10-28)
 
 The owner asked to be named Vik on the public pages, to say he is an experienced IT professional with AI development and related work, and to say the site is run from Toronto, Ontario. The 2026-10-22 About note above records what was true then. The designation sentence now says the site does not claim a tax or financial-planning designation. No employer, year count, or certificate is listed, because none was supplied.

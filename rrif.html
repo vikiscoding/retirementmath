@@ -74,10 +74,14 @@ button:hover{background:var(--accent-hover)}
 .actions button{width:auto;margin-top:0;max-width:100%;white-space:normal;text-align:center}
 button.secondary{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
 button.secondary:hover{background:var(--field)}
-.sponsor{margin-top:1.25rem}
-.sponsor p{max-width:40rem}
-.sponsor ul{margin:.35rem 0 .6rem;padding-left:1.2rem}
-.sponsor a{min-height:44px;display:inline-flex;align-items:center}
+.result-tools{display:flex;flex-wrap:wrap;gap:1rem;align-items:stretch;margin-top:1rem}
+.actions-col{flex:1 1 18rem}
+.result-tools .actions{margin-top:0}
+.donate{flex:1 1 16rem;margin:0;padding:1rem 1.1rem;border:2px solid var(--accent);border-radius:12px;background:var(--card)}
+.donate p{margin:.15rem 0 .5rem;max-width:24rem}
+.donate-link{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:.75rem 1.1rem;border-radius:10px;background:var(--accent);color:var(--accent-fg);font-weight:700;text-decoration:none}
+.donate-link:hover{background:var(--accent-hover)}
+.summary-title{margin:0 0 .35rem;font-weight:700}
 @media (max-width:40rem){h1{font-size:1.75rem}button,input{max-width:none}}
 .error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
 #calc-form > label:first-of-type{margin-top:0}
@@ -106,7 +110,7 @@ footer{color:var(--muted);font-size:.95rem;margin-top:2.75rem;border-top:0;box-s
 .foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.15rem 0 .35rem}
 .foot-nav a{min-height:44px;display:inline-flex;align-items:center}
 footer p{margin:.3rem 0}
-@media print{button,.sponsor{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
+@media print{header,footer,.skip,.ad-slot,.page-intro,form,.reading,.result-tools,noscript{display:none !important}body,.card,.result-grid>div{background:#fff !important;color:#000;box-shadow:none;background-image:none}a{color:#000}}
 </style>
 </head>
 <body>
@@ -170,6 +174,8 @@ footer p{margin:.3rem 0}
   </form>
 
   <section id="results" aria-live="polite" tabindex="-1" hidden>
+    <div id="summary">
+    <p class="summary-title">Retirement Math. RRIF minimum estimate.</p>
     <h2>Your estimate</h2>
     <div class="card">
       <p class="kicker">Yearly minimum</p>
@@ -178,18 +184,23 @@ footer p{margin:.3rem 0}
       <p id="r-factor"></p>
       <p id="r-explain"></p>
       <p class="note" id="r-note"></p>
-      <div class="actions">
-        <button type="button" class="secondary" id="print">Print or save summary</button>
-      </div>
     </div>
-    <aside class="sponsor">
-      <p>We may earn a commission if you use these links. The calculator stays free and private.</p>
-      <ul>
-        <li><a href="https://turbotax.intuit.ca/" rel="noopener" target="_blank">Tax software: TurboTax Canada</a></li>
-        <li><a href="https://www.wealthsimple.com/en-ca/invest" rel="noopener" target="_blank">Robo-advisor: Wealthsimple</a></li>
-      </ul>
-      <p>This site stays free and private. A small optional <a href="https://buy.stripe.com/eVqeVdbTq2Pmdi0aX34sE00" rel="noopener" target="_blank">contribution</a> helps cover hosting.</p>
-    </aside>
+    </div>
+    <div class="result-tools">
+      <div class="actions-col">
+        <div class="actions">
+          <button type="button" class="secondary" id="copy">Copy summary</button>
+          <button type="button" class="secondary" id="print">Print summary</button>
+          <button type="button" class="secondary" id="save">Save summary</button>
+        </div>
+        <p id="copy-status" class="hint" aria-live="polite"></p>
+      </div>
+      <aside class="donate">
+        <p>This calculator stays free and private.</p>
+        <a class="donate-link" href="https://buy.stripe.com/eVqeVdbTq2Pmdi0aX34sE00" rel="noopener" target="_blank">Make a small contribution</a>
+        <p class="hint">Opens Stripe. Card details go to Stripe, not to this site.</p>
+      </aside>
+    </div>
   </section>
 
   <section class="reading" id="how">
@@ -343,7 +354,35 @@ function round2(n) { return Math.round(n * 100) / 100; }
     el.setAttribute("datetime", rules.last_verified);
     el.textContent = rules.last_verified;
   });
+  function summaryText() {
+    return document.getElementById("summary").innerText.replace(/\n{3,}/g, "\n\n").trim();
+  }
+  document.getElementById("copy").addEventListener("click", function () {
+    var status = document.getElementById("copy-status");
+    var text = summaryText();
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        status.textContent = "Copied.";
+      }, function () {
+        status.textContent = "Copy failed. Select the result and copy it yourself.";
+      });
+    } else {
+      status.textContent = "Select the result and copy it yourself.";
+    }
+  });
   document.getElementById("print").addEventListener("click", function () { window.print(); });
+  document.getElementById("save").addEventListener("click", function () {
+    var blob = new Blob([summaryText() + "\n"], { type: "text/plain;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = "rrif-minimum-summary.txt";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    URL.revokeObjectURL(url);
+    document.getElementById("copy-status").textContent = "Saved.";
+  });
 
   function factorText(age, factor) {
     if (age <= rules.under_71.max_age) return "1 / " + (90 - age);
@@ -404,6 +443,7 @@ function round2(n) { return Math.round(n * 100) / 100; }
       ? "The minimum starts the year after the RRIF is set up. Next year's minimum will use the value on January 1 of that year."
       : "This is " + factorText(r.ageUsed, r.factor) + " of " + fmt.format(value) + ", rounded to the nearest cent.";
     document.getElementById("r-note").textContent = "This uses the CRA factors for all other RRIFs. It is not a tax estimate and it is not your carrier's statement.";
+    document.getElementById("copy-status").textContent = "";
     var res = document.getElementById("results");
     res.hidden = false;
     res.focus();
