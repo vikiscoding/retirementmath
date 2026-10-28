@@ -90,7 +90,7 @@ Agreed and built:
 Not built, on purpose:
 - Search Console is already verified. Bing Webmaster Tools needs the owner to sign in. No account was created.
 - No email form. A signup would send personal information off the browser and needs a provider, CASL consent, and a privacy update the owner approves first.
-- No affiliate links and no applications to Questrade, Qtrade, or Wealthsimple. Payout ranges in the review were not re-checked, and they are not a reason to add links.
+- No affiliate links and no applications to Questrade, Qtrade, or Wealthsimple. Payout ranges in the review were not re-checked, and they are not a reason to add links. Superseded on 2026-10-27 for two untagged links after a result. See the ranking section. The payout ranges are still not on the site.
 - No AdSense. The earlier decision stands: more useful pages, then a consent tool, then an application.
 - No RRIF calculator in this change. It needs CRA factors with sources, tests, and its own page. Income guesses of $50 to $300 a month, or $10 to $50 from ads, are not forecasts and are not on the site.
 - No emails to planners.
@@ -127,4 +127,26 @@ Agreed and built:
 Not built, on purpose:
 - No hamburger, no shared template, and no new pages.
 - The result cards do not gain extra hand-off links in this pass.
+
+## Ranking and light monetization (2026-10-27)
+
+The owner asked for ranking and light monetization on the three existing calculators. No new calculator page.
+
+Agreed and built:
+- Each calculator already had an H1, a short explanation, a 3 to 8 question FAQ, and FAQ schema that matches the visible questions. OAS keeps its eight accurate questions. RRIF and take-home keep five.
+- A visible `Last verified:` line shows the ISO date from the rules file. `scripts/build.py` stamps the `iso-date` class. The human check dates stay.
+- OAS and RRIF now have a static sources table. The figure grids that JavaScript fills stay as they were. Take-home already had a sources table. It now has one static worked example: Ontario employment income of $60,000, under 65, take-home $46,242.99. The page says this is the calculator's estimate, not a government example.
+- After the result only: the required commission sentence, then TurboTax Canada and Wealthsimple Invest. French uses TurboImpôt and the French Wealthsimple Invest page. `rel="sponsored"` is not set, because the addresses are public pages with no affiliate tag. A click does not pay the site until the owner replaces them.
+- Print or save summary uses `window.print()`. Print hides the sponsor block.
+- Every footer has one contribution line. The word contribution links to `/about#contribution`, a static note. There is no payment form, pop-up, or image.
+- `robots.txt` already allows crawling. The sitemap already lists the three calculator URLs. `lastmod` on the changed URLs is 2026-10-27.
+- CSS and JavaScript stay inline. HTML is not minified.
+
+Not built, on purpose:
+- No affiliate account, no tracking tag, no ad script, no analytics, and no email gate.
+- No new calculator. CPP start age, a full GIS payment, and pension splitting stay parked.
 - The OAS on-page links above the form stay as they are.
+
+## Owner line (2026-10-28)
+
+The owner asked to be named Vik on the public pages, to say he is an experienced IT professional with AI development and related work, and to say the site is run from Toronto, Ontario. The 2026-10-22 About note above records what was true then. The designation sentence now says the site does not claim a tax or financial-planning designation. No employer, year count, or certificate is listed, because none was supplied.

@@ -70,6 +70,14 @@ input[aria-invalid="true"]{border-color:#b00020}
 @media (prefers-color-scheme:dark){.check:has(input:focus-visible){outline-color:#ffbf47}}
 button{font:inherit;font-weight:700;display:block;margin-top:1.4rem;padding:.75rem 1.4rem;border:0;border-radius:10px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:48px;width:100%;max-width:16rem}
 button:hover{background:var(--accent-hover)}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.actions button{width:auto;margin-top:0;max-width:100%;white-space:normal;text-align:center}
+button.secondary{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+button.secondary:hover{background:var(--field)}
+.sponsor{margin-top:1.25rem}
+.sponsor p{max-width:40rem}
+.sponsor ul{margin:.35rem 0 .6rem;padding-left:1.2rem}
+.sponsor a{min-height:44px;display:inline-flex;align-items:center}
 @media (max-width:40rem){h1{font-size:1.75rem}button,input{max-width:none}}
 .error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
 #calc-form > label:first-of-type{margin-top:0}
@@ -98,7 +106,7 @@ footer{color:var(--muted);font-size:.95rem;margin-top:2.75rem;border-top:0;box-s
 .foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.15rem 0 .35rem}
 .foot-nav a{min-height:44px;display:inline-flex;align-items:center}
 footer p{margin:.3rem 0}
-@media print{button{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
+@media print{button,.sponsor{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
 </style>
 </head>
 <body>
@@ -131,6 +139,8 @@ footer p{margin:.3rem 0}
     <h1>Calculatrice du minimum d'un FERR</h1>
     <p class="lede">Estimez le paiement minimum annuel d'un FERR. Le facteur vient du tableau de l'ARC pour tous les autres FERR. Rien de ce que vous écrivez ne quitte votre navigateur.</p>
     <p class="checked">Les facteurs ont été vérifiés le <time class="verified-date" datetime="2026-10-22">22 octobre 2026</time>. La page du tableau de l'ARC est datée du <time class="source-date" datetime="2025-10-01">1er octobre 2025</time>.</p>
+    <p>Dernière vérification : <time class="iso-date" datetime="2026-10-22">2026-10-22</time></p>
+    <p>Confidentialité : rien de ce que vous écrivez ne quitte votre navigateur, et ce n'est pas conservé. Lisez la <a href="privacy.html">politique de confidentialité</a>.</p>
     <ul class="facts">
       <li>Le facteur à 71 ans est de 5,28 %</li>
       <li>Pas de minimum l'année de l'ouverture</li>
@@ -168,7 +178,18 @@ footer p{margin:.3rem 0}
       <p id="r-factor"></p>
       <p id="r-explain"></p>
       <p class="note" id="r-note"></p>
+      <div class="actions">
+        <button type="button" class="secondary" id="print">Imprimer ou enregistrer le résumé</button>
+      </div>
     </div>
+    <aside class="sponsor">
+      <p>Nous pouvons recevoir une commission si vous utilisez ces liens. Le calculateur reste gratuit et privé.</p>
+      <ul>
+        <li><a href="https://turboimpot.intuit.ca/" rel="noopener" target="_blank">Logiciel d'impôt : TurboImpôt</a></li>
+        <li><a href="https://www.wealthsimple.com/fr-ca/invest" rel="noopener" target="_blank">Robot-conseiller : Wealthsimple</a></li>
+      </ul>
+      <p>Ce site reste gratuit et privé. Une petite <a href="about.html#contribution">contribution</a> facultative aide à payer l'hébergement.</p>
+    </aside>
   </section>
 
   <section class="reading" id="how">
@@ -185,9 +206,19 @@ footer p{margin:.3rem 0}
         <tbody></tbody>
       </table>
     </div>
-    <p class="hint">Règles vérifiées le <time class="verified-date" datetime="2026-10-22">22 octobre 2026</time>. La page du tableau de l'ARC est datée du <time class="source-date" datetime="2025-10-01">1er octobre 2025</time>. Sources :
-      <a href="https://www.canada.ca/fr/agence-revenu/services/impot/entreprises/sujets/remplir-feuillets-sommaires/declaration-renseignements-t4rsp-t4rif/paiements/tableau-facteurs-prescrits.html">Facteurs prescrits de l'ARC</a>,
-      <a href="https://www.canada.ca/fr/agence-revenu/services/impot/entreprises/sujets/remplir-feuillets-sommaires/declaration-renseignements-t4rsp-t4rif/paiements/montant-minimum-ferr.html">Montant minimum d'un FERR</a>.</p>
+    <p class="hint">Règles vérifiées le <time class="verified-date" datetime="2026-10-22">22 octobre 2026</time>. La page du tableau de l'ARC est datée du <time class="source-date" datetime="2025-10-01">1er octobre 2025</time>.</p>
+    <h3 id="sources">Sources</h3>
+    <div class="table-wrap" tabindex="0" role="region" aria-labelledby="sources">
+      <table>
+        <caption>Pages officielles utilisées pour les facteurs de cette calculatrice.</caption>
+        <thead><tr><th scope="col">Ce que la page couvre</th><th scope="col">Page</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Facteurs prescrits</th><td><a href="https://www.canada.ca/fr/agence-revenu/services/impot/entreprises/sujets/remplir-feuillets-sommaires/declaration-renseignements-t4rsp-t4rif/paiements/tableau-facteurs-prescrits.html">Facteurs prescrits de l'ARC</a></td></tr>
+          <tr><th scope="row">Comment le minimum est fixé</th><td><a href="https://www.canada.ca/fr/agence-revenu/services/impot/entreprises/sujets/remplir-feuillets-sommaires/declaration-renseignements-t4rsp-t4rif/paiements/montant-minimum-ferr.html">Montant minimum d'un FERR</a></td></tr>
+          <tr><th scope="row">Quand les paiements commencent</th><td><a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/registered-retirement-income-fund-rrif/receiving-income-a-rrif.html">Page de l'ARC en anglais : recevoir un revenu d'un FERR</a></td></tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
   <section class="reading" id="questions">
@@ -224,7 +255,8 @@ footer p{margin:.3rem 0}
       <a href="privacy.html">Confidentialité</a>
       <a href="disclaimer.html">Avis</a>
     </nav>
-    <p>retirementmath.ca · Fait à Scarborough, en Ontario.</p>
+    <p>retirementmath.ca · Tenu depuis Toronto, en Ontario.</p>
+    <p>Ce site reste gratuit et privé. Une petite <a href="about.html#contribution">contribution</a> facultative aide à payer l'hébergement.</p>
     <p>Cette page n'utilise pas de cookies et ne recueille pas ce que vous écrivez. Ce n'est pas un site du gouvernement du Canada.</p>
   </div>
 </footer>
@@ -308,6 +340,11 @@ function round2(n) { return Math.round(n * 100) / 100; }
     el.setAttribute("datetime", rules.source_page_date);
     el.textContent = humanDate(rules.source_page_date);
   });
+  document.querySelectorAll(".iso-date").forEach(function (el) {
+    el.setAttribute("datetime", rules.last_verified);
+    el.textContent = rules.last_verified;
+  });
+  document.getElementById("print").addEventListener("click", function () { window.print(); });
 
   function factorText(age, factor) {
     if (age <= rules.under_71.max_age) return "1 / " + (90 - age);

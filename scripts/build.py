@@ -17,6 +17,10 @@ def stamp_times(html, css_class, iso, lang):
     pattern = r'(<time class="%s" datetime=")[^"]*(">)[^<]*(</time>)' % css_class
     return re.subn(pattern, lambda m: m.group(1) + iso + m.group(2) + text + m.group(3), html)
 
+def stamp_iso(html, css_class, iso):
+    pattern = r'(<time class="%s" datetime=")[^"]*(">)[^<]*(</time>)' % css_class
+    return re.subn(pattern, lambda m: m.group(1) + iso + m.group(2) + iso + m.group(3), html)
+
 def inline(html_name, json_name, script_id, marker, stamp=True):
     rules = json.loads((root / json_name).read_text(encoding="utf-8"))
     html_path = root / html_name
@@ -36,6 +40,9 @@ def inline(html_name, json_name, script_id, marker, stamp=True):
     new, n_date = stamp_times(new, "verified-date", checked, lang)
     if n_date < 1:
         raise SystemExit("verified date not found in %s" % html_name)
+    new, n_iso = stamp_iso(new, "iso-date", checked)
+    if n_iso < 1:
+        raise SystemExit("ISO verified date not found in %s" % html_name)
     if 'class="updated-date"' in new:
         new, n_updated = stamp_times(new, "updated-date", updated, lang)
         if n_updated < 1:

@@ -161,6 +161,10 @@ assert.ok(html.includes("Kill criteria for /take-home"));
 assert.ok(html.includes("Figures last checked against official sources on"));
 assert.strictEqual(html.split('<time class="verified-date" datetime="2026-10-27">27 October 2026</time>').length - 1, 2);
 assert.strictEqual(frHtml.split('<time class="verified-date" datetime="2026-10-27">27 octobre 2026</time>').length - 1, 2);
+assert.strictEqual(html.split('<time class="iso-date" datetime="2026-10-27">2026-10-27</time>').length - 1, 1);
+assert.strictEqual(frHtml.split('<time class="iso-date" datetime="2026-10-27">2026-10-27</time>').length - 1, 1);
+assert.ok(html.includes("Estimated take-home is $46,242.99."));
+assert.ok(frHtml.includes("46 242,99 $"));
 assert.strictEqual(html.match(/"@type":"WebPage".*?"dateModified":"([^"]+)"/)[1], "2026-10-27");
 assert.strictEqual(frHtml.match(/"@type":"WebPage".*?"dateModified":"([^"]+)"/)[1], "2026-10-27");
 ["$16,452", "$13,094", "$4,230.45", "$23,112", "16.5%"].forEach(function (needle) {

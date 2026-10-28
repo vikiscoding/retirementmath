@@ -77,6 +77,14 @@ legend{font-weight:600;padding:0}
 .radio input{width:1.15rem;height:1.15rem;min-height:0;margin:0;padding:0;accent-color:var(--accent)}
 button{font:inherit;font-weight:700;display:block;margin-top:1.4rem;padding:.75rem 1.4rem;border:0;border-radius:10px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:48px;width:100%;max-width:16rem}
 button:hover{background:var(--accent-hover)}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.actions button{width:auto;margin-top:0;max-width:100%;white-space:normal;text-align:center}
+button.secondary{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+button.secondary:hover{background:var(--field)}
+.sponsor{margin-top:1.25rem}
+.sponsor p{max-width:40rem}
+.sponsor ul{margin:.35rem 0 .6rem;padding-left:1.2rem}
+.sponsor a{min-height:44px;display:inline-flex;align-items:center}
 @media (max-width:40rem){h1{font-size:1.75rem}button,input[type="number"],input[inputmode="decimal"]{max-width:none}}
 @media (max-width:22.5rem){.radio{grid-template-columns:1fr}}
 .error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
@@ -115,7 +123,7 @@ footer{color:var(--muted);font-size:.95rem;margin-top:2.75rem;border-top:0;box-s
 .foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.15rem 0 .35rem}
 .foot-nav a{min-height:44px;display:inline-flex;align-items:center}
 footer p{margin:.3rem 0}
-@media print{.ad-slot,button,.facts,.onpage{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card,.result-grid > div{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
+@media print{.ad-slot,button,.facts,.onpage,.sponsor{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card,.result-grid > div{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
 </style>
 </head>
 <body>
@@ -151,6 +159,8 @@ footer p{margin:.3rem 0}
     <p class="eyebrow">Old Age Security</p>
     <h1>OAS clawback calculator for 2026</h1>
     <p class="lede">Estimate your Old Age Security clawback, also called the recovery tax, from your net world income. For payments from July 2026 to June 2028, it uses your 2025 or 2026 income. The numbers come from canada.ca. Nothing you type leaves your browser.</p>
+    <p>Last verified: <time class="iso-date" datetime="2026-10-27">2026-10-27</time></p>
+    <p>Privacy: nothing you type leaves your browser, and it is not stored. Read the <a href="privacy.html">privacy policy</a>.</p>
     <ul class="facts">
       <li>15% of income over the line</li>
       <li>2025 income starts at $93,454</li>
@@ -216,7 +226,18 @@ footer p{margin:.3rem 0}
     </table>
     <p id="r-explain"></p>
     <p class="note" id="r-note"></p>
+    <div class="actions">
+      <button type="button" class="secondary" id="print">Print or save summary</button>
+    </div>
   </div>
+  <aside class="sponsor">
+    <p>We may earn a commission if you use these links. The calculator stays free and private.</p>
+    <ul>
+      <li><a href="https://turbotax.intuit.ca/" rel="noopener" target="_blank">Tax software: TurboTax Canada</a></li>
+      <li><a href="https://www.wealthsimple.com/en-ca/invest" rel="noopener" target="_blank">Robo-advisor: Wealthsimple</a></li>
+    </ul>
+    <p>This site stays free and private. A small optional <a href="about.html#contribution">contribution</a> helps cover hosting.</p>
+  </aside>
 </section>
 
 <!-- AD SLOT PLACEHOLDER: in-content, below results. No ad code. -->
@@ -240,10 +261,19 @@ footer p{margin:.3rem 0}
     <tbody></tbody>
   </table>
   </div>
-  <p class="hint">Checked against canada.ca on <time class="verified-date" datetime="2026-10-27">27 October 2026</time>. Last update found on <time class="updated-date" datetime="2026-10-22">22 October 2026</time>. Sources:
-    <a href="https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html">canada.ca OAS recovery tax</a>,
-    <a href="https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/payments.html">canada.ca OAS payment amounts</a>,
-    <a href="https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-october-december.html">ESDC quarterly amounts, October to December 2026</a>.</p>
+  <p class="hint">Checked against canada.ca on <time class="verified-date" datetime="2026-10-27">27 October 2026</time>. Last update found on <time class="updated-date" datetime="2026-10-22">22 October 2026</time>.</p>
+  <h3 id="sources">Sources</h3>
+  <div class="table-wrap" tabindex="0" role="region" aria-labelledby="sources">
+  <table>
+    <caption>Official pages used for the figures on this calculator.</caption>
+    <thead><tr><th scope="col">What it covers</th><th scope="col">Page</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Recovery tax thresholds</th><td><a href="https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html">canada.ca OAS recovery tax</a></td></tr>
+      <tr><th scope="row">Current OAS payment amounts</th><td><a href="https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/payments.html">canada.ca OAS payment amounts</a></td></tr>
+      <tr><th scope="row">October to December 2026 amounts</th><td><a href="https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-october-december.html">ESDC quarterly amounts</a></td></tr>
+    </tbody>
+  </table>
+  </div>
 </section>
 
 <section class="reading" id="questions">
@@ -286,7 +316,8 @@ footer p{margin:.3rem 0}
       <a href="privacy.html">Privacy</a>
       <a href="disclaimer.html">Disclaimer</a>
     </nav>
-    <p>retirementmath.ca · Made in Scarborough, Ontario.</p>
+    <p>retirementmath.ca · Run from Toronto, Ontario.</p>
+    <p>This site stays free and private. A small optional <a href="about.html#contribution">contribution</a> helps cover hosting.</p>
     <p>This page does not use cookies or collect what you type. It is not a Government of Canada site.</p>
   </div>
 </footer>
@@ -296,7 +327,7 @@ footer p{margin:.3rem 0}
 <!-- RULES:END -->
 
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"WebSite","name":"Retirement Math","url":"https://retirementmath.ca/","publisher":{"@type":"Organization","name":"Retirement Math","url":"https://retirementmath.ca/","logo":"https://retirementmath.ca/logo.svg","email":"privacy@retirementmath.ca","address":{"@type":"PostalAddress","addressLocality":"Scarborough","addressRegion":"ON","addressCountry":"CA"}}}
+{"@context":"https://schema.org","@type":"WebSite","name":"Retirement Math","url":"https://retirementmath.ca/","publisher":{"@type":"Organization","name":"Retirement Math","url":"https://retirementmath.ca/","logo":"https://retirementmath.ca/logo.svg","email":"privacy@retirementmath.ca","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"}}}
 </script>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"WebPage","name":"OAS clawback calculator 2026 (Canada)","url":"https://retirementmath.ca/","inLanguage":"en-CA","dateModified":"2026-10-27","description":"Free Canadian OAS clawback calculator for 2026. Estimate the recovery tax from your net world income using official canada.ca thresholds.","isPartOf":{"@type":"WebSite","name":"Retirement Math","url":"https://retirementmath.ca/"},"about":{"@type":"Thing","name":"Old Age Security recovery tax"}}
@@ -380,6 +411,12 @@ function round2(n) { return Math.round(n * 100) / 100; }
   }
   stampDate(".verified-date", rules.last_checked || rules.last_verified);
   stampDate(".updated-date", rules.last_updated || rules.last_checked || rules.last_verified);
+  document.querySelectorAll(".iso-date").forEach(function (el) {
+    var iso = rules.last_checked || rules.last_verified;
+    el.setAttribute("datetime", iso);
+    el.textContent = iso;
+  });
+  document.getElementById("print").addEventListener("click", function () { window.print(); });
 
   document.getElementById("calc-form").addEventListener("submit", function (e) {
     e.preventDefault();

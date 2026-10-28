@@ -77,6 +77,14 @@ legend{font-weight:600;padding:0}
 .radio input{width:1.15rem;height:1.15rem;min-height:0;margin:0;padding:0;accent-color:var(--accent)}
 button{font:inherit;font-weight:700;display:block;margin-top:1.4rem;padding:.75rem 1.4rem;border:0;border-radius:10px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:48px;width:100%;max-width:16rem}
 button:hover{background:var(--accent-hover)}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.actions button{width:auto;margin-top:0;max-width:100%;white-space:normal;text-align:center}
+button.secondary{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+button.secondary:hover{background:var(--field)}
+.sponsor{margin-top:1.25rem}
+.sponsor p{max-width:40rem}
+.sponsor ul{margin:.35rem 0 .6rem;padding-left:1.2rem}
+.sponsor a{min-height:44px;display:inline-flex;align-items:center}
 @media (max-width:40rem){h1{font-size:1.75rem}button,input[type="number"],input[inputmode="decimal"]{max-width:none}}
 @media (max-width:22.5rem){.radio{grid-template-columns:1fr}}
 .error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
@@ -115,7 +123,7 @@ footer{color:var(--muted);font-size:.95rem;margin-top:2.75rem;border-top:0;box-s
 .foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.15rem 0 .35rem}
 .foot-nav a{min-height:44px;display:inline-flex;align-items:center}
 footer p{margin:.3rem 0}
-@media print{.ad-slot,button,.facts,.onpage{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card,.result-grid > div{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
+@media print{.ad-slot,button,.facts,.onpage,.sponsor{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card,.result-grid > div{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
 </style>
 </head>
 <body>
@@ -150,6 +158,8 @@ footer p{margin:.3rem 0}
     <p class="eyebrow">Sécurité de la vieillesse</p>
     <h1>Calculatrice de récupération de la SV pour 2026</h1>
     <p class="lede">Estimez l'impôt de récupération de la Sécurité de la vieillesse, aussi appelé clawback, à partir de votre revenu net de toutes provenances. Pour les paiements de juillet 2026 à juin 2028, le calcul utilise votre revenu de 2025 ou de 2026. Les chiffres viennent de canada.ca. Rien de ce que vous écrivez ne quitte votre navigateur.</p>
+    <p>Dernière vérification : <time class="iso-date" datetime="2026-10-27">2026-10-27</time></p>
+    <p>Confidentialité : rien de ce que vous écrivez ne quitte votre navigateur, et ce n'est pas conservé. Lisez la <a href="privacy.html">politique de confidentialité</a>.</p>
     <ul class="facts">
       <li>15 % du revenu au-dessus du seuil</li>
       <li>Le revenu de 2025 commence à 93 454 $</li>
@@ -215,7 +225,18 @@ footer p{margin:.3rem 0}
     </table>
     <p id="r-explain"></p>
     <p class="note" id="r-note"></p>
+    <div class="actions">
+      <button type="button" class="secondary" id="print">Imprimer ou enregistrer le résumé</button>
+    </div>
   </div>
+  <aside class="sponsor">
+    <p>Nous pouvons recevoir une commission si vous utilisez ces liens. Le calculateur reste gratuit et privé.</p>
+    <ul>
+      <li><a href="https://turboimpot.intuit.ca/" rel="noopener" target="_blank">Logiciel d'impôt : TurboImpôt</a></li>
+      <li><a href="https://www.wealthsimple.com/fr-ca/invest" rel="noopener" target="_blank">Robot-conseiller : Wealthsimple</a></li>
+    </ul>
+    <p>Ce site reste gratuit et privé. Une petite <a href="about.html#contribution">contribution</a> facultative aide à payer l'hébergement.</p>
+  </aside>
 </section>
 
 <div class="ad-slot" role="presentation" aria-hidden="true"></div>
@@ -238,9 +259,19 @@ footer p{margin:.3rem 0}
     <tbody></tbody>
   </table>
   </div>
-  <p class="hint">Vérifié sur canada.ca le <time class="verified-date" datetime="2026-10-27">27 octobre 2026</time>. Dernier changement trouvé le <time class="updated-date" datetime="2026-10-22">22 octobre 2026</time>. Sources :
-    <a href="https://www.canada.ca/fr/services/prestations/pensionspubliques/securite-vieillesse/impot-recuperation.html">canada.ca, impôt de récupération de la SV</a>,
-    <a href="https://www.canada.ca/fr/services/prestations/pensionspubliques/securite-vieillesse/paiements.html">canada.ca, montant des paiements de la SV</a>.</p>
+  <p class="hint">Vérifié sur canada.ca le <time class="verified-date" datetime="2026-10-27">27 octobre 2026</time>. Dernier changement trouvé le <time class="updated-date" datetime="2026-10-22">22 octobre 2026</time>.</p>
+  <h3 id="sources">Sources</h3>
+  <div class="table-wrap" tabindex="0" role="region" aria-labelledby="sources">
+  <table>
+    <caption>Pages officielles utilisées pour les chiffres de cette calculatrice.</caption>
+    <thead><tr><th scope="col">Ce que la page couvre</th><th scope="col">Page</th></tr></thead>
+    <tbody>
+      <tr><th scope="row">Seuils de l'impôt de récupération</th><td><a href="https://www.canada.ca/fr/services/prestations/pensionspubliques/securite-vieillesse/impot-recuperation.html">canada.ca, impôt de récupération de la SV</a></td></tr>
+      <tr><th scope="row">Montants actuels des paiements de la SV</th><td><a href="https://www.canada.ca/fr/services/prestations/pensionspubliques/securite-vieillesse/paiements.html">canada.ca, montant des paiements de la SV</a></td></tr>
+      <tr><th scope="row">Montants d'octobre à décembre 2026</th><td><a href="https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-october-december.html">Page d'EDSC en anglais, montants trimestriels</a></td></tr>
+    </tbody>
+  </table>
+  </div>
 </section>
 
 <section class="reading" id="questions">
@@ -282,7 +313,8 @@ footer p{margin:.3rem 0}
       <a href="privacy.html">Confidentialité</a>
       <a href="disclaimer.html">Avis</a>
     </nav>
-    <p>retirementmath.ca · Fait à Scarborough, en Ontario.</p>
+    <p>retirementmath.ca · Tenu depuis Toronto, en Ontario.</p>
+    <p>Ce site reste gratuit et privé. Une petite <a href="about.html#contribution">contribution</a> facultative aide à payer l'hébergement.</p>
     <p>Cette page n'utilise pas de cookies et ne recueille pas ce que vous écrivez. Ce n'est pas un site du gouvernement du Canada.</p>
   </div>
 </footer>
@@ -392,6 +424,12 @@ function round2(n) { return Math.round(n * 100) / 100; }
   }
   stampDate(".verified-date", rules.last_checked || rules.last_verified);
   stampDate(".updated-date", rules.last_updated || rules.last_checked || rules.last_verified);
+  document.querySelectorAll(".iso-date").forEach(function (el) {
+    var iso = rules.last_checked || rules.last_verified;
+    el.setAttribute("datetime", iso);
+    el.textContent = iso;
+  });
+  document.getElementById("print").addEventListener("click", function () { window.print(); });
 
   document.getElementById("calc-form").addEventListener("submit", function (e) {
     e.preventDefault();

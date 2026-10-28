@@ -67,6 +67,41 @@ assert.ok(frHtml.includes("Dernier changement trouvé le"), "French OAS update c
 assert.ok(!html.includes("Stays in your browser"), "old browser chip should be gone");
 assert.strictEqual(html.match(/"@type":"WebPage".*?"dateModified":"([^"]+)"/)[1], rules.last_checked, "dateModified");
 assert.strictEqual(frHtml.match(/"@type":"WebPage".*?"dateModified":"([^"]+)"/)[1], rules.last_checked, "French dateModified");
+function countIso(page, iso) {
+  const needle = '<time class="iso-date" datetime="' + iso + '">' + iso + "</time>";
+  return page.split(needle).length - 1;
+}
+assert.strictEqual(countIso(html, rules.last_checked), 1, "OAS ISO date");
+assert.strictEqual(countIso(frHtml, rules.last_checked), 1, "French OAS ISO date");
+assert.strictEqual(countIso(rrifHtml, rrifRules.last_verified), 1, "RRIF ISO date");
+assert.strictEqual(countIso(frRrifHtml, rrifRules.last_verified), 1, "French RRIF ISO date");
+const disclosure = "We may earn a commission if you use these links. The calculator stays free and private.";
+const disclosureFr = "Nous pouvons recevoir une commission si vous utilisez ces liens. Le calculateur reste gratuit et privé.";
+const support = 'This site stays free and private. A small optional <a href="about.html#contribution">contribution</a> helps cover hosting.';
+const supportFr = 'Ce site reste gratuit et privé. Une petite <a href="about.html#contribution">contribution</a> facultative aide à payer l\'hébergement.';
+for (const file of ["index.html", "rrif.html", "take-home.html"]) {
+  const page = file === "index.html" ? html : fs.readFileSync(path.join(root, file), "utf8");
+  assert.ok(page.includes("Last verified:"), file + " last verified");
+  assert.ok(page.includes(disclosure), file + " disclosure");
+  assert.ok(page.includes('id="print"'), file + " print");
+  assert.ok(page.includes("Print or save summary"), file + " print label");
+  assert.ok(page.includes(support), file + " contribution");
+  assert.ok(page.includes("<table"), file + " sources table");
+}
+for (const file of ["fr/index.html", "fr/rrif.html", "fr/take-home.html"]) {
+  const page = file === "fr/index.html" ? frHtml : fs.readFileSync(path.join(root, file), "utf8");
+  assert.ok(page.includes("Dernière vérification :"), file + " last verified");
+  assert.ok(page.includes(disclosureFr), file + " disclosure");
+  assert.ok(page.includes("Imprimer ou enregistrer le résumé"), file + " print label");
+  assert.ok(page.includes(supportFr), file + " contribution");
+}
+const robots = fs.readFileSync(path.join(root, "robots.txt"), "utf8");
+const sitemap = fs.readFileSync(path.join(root, "sitemap.xml"), "utf8");
+assert.ok(robots.includes("Allow: /"), "robots allow");
+assert.ok(sitemap.includes("<loc>https://retirementmath.ca/</loc>"), "sitemap home");
+assert.ok(sitemap.includes("<loc>https://retirementmath.ca/rrif</loc>"), "sitemap rrif");
+assert.ok(sitemap.includes("<loc>https://retirementmath.ca/take-home</loc>"), "sitemap take-home");
+assert.ok(fs.readFileSync(path.join(root, "404.html"), "utf8").includes('href="/about#contribution"'), "404 contribution");
 console.log("check dates ok");
 
 const pages = [
@@ -88,10 +123,25 @@ for (const [en, fr] of pages) {
   assert.ok(frPage.includes('class="skip"'), fr + " skip");
   assert.ok(enHtml.includes('aria-label="Calculators"'), en + " calculator nav");
   assert.ok(frPage.includes('aria-label="Calculatrices"'), fr + " calculator nav");
+  assert.ok(enHtml.includes("Run from Toronto, Ontario."), en + " place");
+  assert.ok(frPage.includes("Tenu depuis Toronto, en Ontario."), fr + " place");
+  assert.ok(!enHtml.includes("Scarborough"), en + " old city");
+  assert.ok(!frPage.includes("Scarborough"), fr + " old city");
+  assert.ok(!enHtml.includes("Vikrant"), en + " full name");
+  assert.ok(!frPage.includes("Vikrant"), fr + " full name");
 }
 const missing = fs.readFileSync(path.join(root, "404.html"), "utf8");
 assert.ok(missing.includes('aria-label="Calculators"'), "404 calculator nav");
 assert.ok(missing.includes('href="/rrif"'), "404 RRIF link");
+assert.ok(missing.includes("Run from Toronto, Ontario."), "404 place");
+const about = fs.readFileSync(path.join(root, "about.html"), "utf8");
+const aboutFr = fs.readFileSync(path.join(root, "fr/about.html"), "utf8");
+assert.ok(about.includes("Vik runs the site from Toronto, Ontario."), "about name");
+assert.ok(about.includes("experienced IT professional, with credentials in AI development and related work."), "about background");
+assert.ok(aboutFr.includes("Vik tient le site depuis Toronto, en Ontario."), "french about name");
+assert.ok(aboutFr.includes("professionnel d'expérience en technologies de l'information"), "french about background");
+assert.ok(fs.readFileSync(path.join(root, "privacy.html"), "utf8").includes("Privacy officer: Vik, Toronto, Ontario."), "privacy officer");
+assert.ok(fs.readFileSync(path.join(root, "fr/privacy.html"), "utf8").includes("Personne responsable de la protection des renseignements personnels : Vik, Toronto, Ontario."), "french privacy officer");
 console.log("language links ok");
 require("./test_rrif.js");
 require("./test_take_home.js");
