@@ -11,10 +11,11 @@
 - [x] Point sitemap and canonicals at the URLs Pages serves (`/privacy` and `/disclaimer` return 200; the `.html` paths redirect).
 - [x] Lawyer or accountant read of disclaimer and privacy page (2026-10-25). The privacy page no longer says the text is an unread draft.
 - [x] Use retirementmath.ca in canonical, robots.txt, and sitemap.xml
-- [x] French version at /fr/ (calculator, RRIF, about, privacy, disclaimer), with hreflang
+- [x] French version at /fr/ (calculator, RRIF, take-home, about, privacy, disclaimer), with hreflang
 - [x] Manual accessibility pass (2026-10-25): keyboard skip target, focus contrast, 320px width, 200% zoom. Checked in a browser with axe. NVDA is not installed on this PC, so a screen reader was not run.
 - [x] Weekly rules check is on: `.github/workflows/check-oas-rules.yml`. A slow canada.ca read is retried before the job fails.
 - [x] The OAS calculator shows the last canada.ca check and the day a saved figure last changed. The RRIF page shows its own check date.
+- [x] Take-home estimate at /take-home, in English and French. One 2026 year: federal and provincial tax, the basic personal amount, and employee CPP or QPP, EI, and QPIP. OAS recovery is a separate line and is not subtracted. GIS is a single-person cutoff check, not a payment. Spouse, children, the Canada child benefit, and the disability credit are not on the page. Figures checked 2026-10-27. No account and no ads.
 
 ## Monetization order (see panel review)
 1. Launch with no ads. Build content and traffic.
@@ -27,8 +28,9 @@
 | Page | Why | Data source |
 | --- | --- | --- |
 | CPP start age calculator (60 vs 65 vs 70) | High search volume | canada.ca CPP amounts |
-| GIS eligibility estimator | Low income seniors, pairs with OAS | ESDC quarterly tables |
+| GIS eligibility estimator | Not built. The take-home page only checks the single-person cutoff. | ESDC quarterly tables |
 | RRIF minimum withdrawal calculator | Built in rrif.html. All other RRIFs only. No tax estimate. | CRA prescribed factors |
+| Take-home estimate | Built in take-home.html. One year. Basic personal amount only. Employee premiums. OAS recovery is shown and not subtracted. | CRA rates, T4127, Revenu Québec TP-1015.F-V, CPP, EI, QPP, QPIP, GIS |
 | OAS deferral break-even | Natural next step from this page | OAS deferral rules |
 | Pension income splitting estimator | Cuts clawback for couples | CRA T1032 rules |
 | RRSP to RRIF meltdown planner | Clawback planning | CRA + OAS rules |

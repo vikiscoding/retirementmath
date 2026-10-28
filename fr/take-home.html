@@ -1,0 +1,688 @@
+<!doctype html>
+<html lang="fr-CA">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Estimation du revenu après impôt 2026 (Canada) | Retirement Math</title>
+<meta name="description" content="Estimez le revenu qui reste en 2026 après l'impôt fédéral et provincial, le RPC ou le RRQ, et l'assurance-emploi. Taux officiels, avec la date de vérification. Rien de ce que vous écrivez ne quitte votre navigateur.">
+<link rel="canonical" href="https://retirementmath.ca/fr/take-home">
+<link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/take-home">
+<link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/take-home">
+<link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/take-home">
+<meta name="theme-color" content="#1e4d3a" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#143528" media="(prefers-color-scheme: dark)">
+<meta property="og:site_name" content="Retirement Math">
+<meta property="og:title" content="Estimation du revenu après impôt 2026 (Canada) | Retirement Math">
+<meta property="og:description" content="Estimez le revenu qui reste en 2026 après l'impôt fédéral et provincial, le RPC ou le RRQ, et l'assurance-emploi.">
+<meta property="og:url" content="https://retirementmath.ca/fr/take-home">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_CA">
+<meta property="og:locale:alternate" content="en_CA">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Estimation du revenu après impôt 2026 (Canada) | Retirement Math">
+<meta name="twitter:description" content="Estimez le revenu qui reste en 2026 après l'impôt, le RPC ou le RRQ, et l'assurance-emploi.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e4d3a'/%3E%3Crect x='7' y='10' width='18' height='3.5' rx='1.75' fill='%23f6f1e6'/%3E%3Crect x='7' y='18.5' width='18' height='3.5' rx='1.75' fill='%23e2b15a'/%3E%3C/svg%3E" type="image/svg+xml">
+<!-- Kill criteria for /take-home: remove this section if it has no meaningful external use after the launch window, if an official government tool is clearly better and more current, if verification or rule-change maintenance costs more than the page is worth, or if a later paid version stays near zero revenue while people still use it. Until then it stays free. No accounts and no ads. -->
+<style>
+:root{--bg:#f3efe6;--fg:#1c1915;--muted:#514c44;--line:#e3dacd;--input:#6f695f;--field:#fff;--accent:#1e4d3a;--accent-hover:#173d2e;--accent-fg:#f7f3eb;--card:#fffcf7;--warn:#7a4b00;--warnbg:#fff6e0;--focus:#ffbf47;--bar:#1e4d3a;--bar-fg:#f7f3eb;--placeholder:#5e584f;--shadow:0 1px 2px rgba(28,25,21,.05),0 8px 24px rgba(28,25,21,.04);color-scheme:light}
+@media (prefers-color-scheme:dark){:root{--bg:#141210;--fg:#f3efe8;--muted:#c8c0b4;--line:#3d372f;--input:#a39888;--field:#1c1916;--accent:#8fceb0;--accent-hover:#a9dcc2;--accent-fg:#10241b;--card:#211e1a;--warn:#ffd27a;--warnbg:#2c2410;--bar:#143528;--bar-fg:#f3efe8;--placeholder:#c4bbb0;--shadow:none;color-scheme:dark}}
+*{box-sizing:border-box}
+body{margin:0;font:1.0625rem/1.65 ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);background-image:radial-gradient(1100px 420px at 50% -160px,#fff8ec 0%,transparent 70%);color:var(--fg);overflow-wrap:break-word}
+a{color:var(--accent);text-underline-offset:.16em}
+:focus-visible{outline:3px solid #1c1915;outline-offset:2px}
+.site-bar :focus-visible{outline-color:#ffbf47}
+@media (prefers-color-scheme:dark){:focus-visible,.site-bar :focus-visible{outline-color:#ffbf47}}
+.skip{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);clip-path:inset(50%);white-space:nowrap;border:0}
+.skip:focus{position:fixed;left:1rem;top:1rem;width:auto;height:auto;margin:0;overflow:visible;clip:auto;clip-path:none;white-space:normal;background:#fff;color:#1c1915;padding:.55rem .8rem;z-index:20;border-radius:8px;text-decoration:none}
+.wrap{max-width:46rem;margin:0 auto;padding:0 1rem}
+.site-bar{background:var(--bar);color:var(--bar-fg);box-shadow:inset 0 -3px 0 #e2b15a}
+.bar-inner{max-width:46rem;margin:0 auto;padding:.75rem 1rem;display:flex;align-items:center;justify-content:space-between;gap:.75rem 1.25rem;flex-wrap:wrap;min-height:72px}
+.brand{display:flex;align-items:center;gap:.7rem;color:inherit;font-weight:700;text-decoration:none;min-height:44px;letter-spacing:-.02em}
+.brand:hover{text-decoration:underline}
+.mark{width:40px;height:40px;display:block;flex:none}
+.bar-domain{font-size:.9rem;letter-spacing:.01em;color:#e7e0d2}
+.lang{display:flex;flex-wrap:wrap;gap:.15rem .85rem;align-items:center}
+.lang a,.lang [aria-current]{color:var(--bar-fg);min-height:44px;display:inline-flex;align-items:center;font-weight:700}
+.lang a{text-decoration:underline;text-underline-offset:.16em}
+main{padding-bottom:1rem}
+.page-intro{padding-top:2rem}
+h1{font-size:2.35rem;line-height:1.15;margin:0 0 .55rem;letter-spacing:-.03em}
+h2{font-size:1.35rem;line-height:1.25;margin:0 0 .75rem;letter-spacing:-.02em}
+.eyebrow{display:flex;align-items:center;gap:.5rem;margin:0 0 .45rem;color:var(--accent);font-weight:700;font-size:.92rem}
+.eyebrow::before{content:"";width:1.25rem;height:3px;border-radius:2px;background:#e2b15a;flex:none}
+.lede{color:var(--muted);margin:0;max-width:40rem}
+.checked{color:var(--fg);font-weight:600;margin:.85rem 0 0;max-width:40rem}
+.facts{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0;padding:0;list-style:none}
+.facts li{margin:0;max-width:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:.45rem .75rem;font-size:.92rem;line-height:1.35}
+.onpage{display:flex;flex-wrap:wrap;gap:.15rem 1rem;margin:1rem 0 0;padding:0;list-style:none}
+.onpage a{min-height:44px;display:inline-flex;align-items:center}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.2rem 1.35rem;margin:1.35rem 0 0;box-shadow:var(--shadow)}
+#calc-form{border-top:4px solid #e2b15a}
+label{display:block;font-weight:600;margin-top:1.15rem}
+.hint{display:block;font-weight:400;color:var(--muted);font-size:.95rem;margin-top:.15rem}
+input,select{font:inherit;font-variant-numeric:tabular-nums;display:block;width:100%;max-width:22rem;padding:.65rem .75rem;border:1px solid var(--input);border-radius:10px;background:var(--field);color:var(--fg);min-height:48px}
+input::placeholder{color:var(--placeholder);opacity:1}
+input[aria-invalid="true"],select[aria-invalid="true"]{border-color:#b00020}
+fieldset{border:0;margin:1.15rem 0 0;padding:0}
+legend{font-weight:600;padding:0}
+.check{display:flex;align-items:center;gap:.6rem;font-weight:600;margin-top:.45rem;min-height:48px}
+.check input{width:1.15rem;height:1.15rem;min-height:0;max-width:none;margin:0;padding:0}
+.check input:focus-visible{outline:none}
+.check:has(input:focus-visible){outline:3px solid #1c1915;outline-offset:2px;border-radius:8px}
+@media (prefers-color-scheme:dark){.check:has(input:focus-visible){outline-color:#ffbf47}}
+button{font:inherit;font-weight:700;display:block;margin-top:1.4rem;padding:.75rem 1.4rem;border:0;border-radius:10px;background:var(--accent);color:var(--accent-fg);cursor:pointer;min-height:48px;width:100%;max-width:16rem}
+button:hover{background:var(--accent-hover)}
+.actions{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem}
+.actions button{width:auto;margin-top:0;max-width:none}
+button.secondary{background:transparent;color:var(--accent);box-shadow:inset 0 0 0 2px var(--accent)}
+button.secondary:hover{background:var(--field)}
+@media (max-width:40rem){h1{font-size:1.75rem}button,input,select{max-width:none}}
+.error{color:#b00020;font-weight:600;margin:.35rem 0 0}.error:empty{margin:0}
+#calc-form > label:first-of-type{margin-top:0}
+@media (prefers-color-scheme:dark){.error{color:#ff8a8a}input[aria-invalid="true"],select[aria-invalid="true"]{border-color:#ff8a8a}body{background-image:radial-gradient(900px 380px at 50% -160px,#1c3329 0%,transparent 70%)}}
+.table-wrap{overflow-x:auto;margin:.35rem 0 1rem;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table{border-collapse:collapse;width:100%}
+th,td{text-align:left;padding:.6rem .7rem;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--field);font-size:.92rem}
+tr:last-child td,tr:last-child th{border-bottom:0}
+td.num,th.num{text-align:right;white-space:nowrap;font-variant-numeric:tabular-nums}
+caption{text-align:left;caption-side:top;padding:0 0 .45rem;color:var(--muted)}
+.kicker{margin:0;color:var(--muted);font-weight:600;font-size:.92rem}
+.big{font-size:2.15rem;font-weight:700;line-height:1.1;margin:.2rem 0 .15rem;font-variant-numeric:tabular-nums;letter-spacing:-.03em;overflow-wrap:anywhere}
+.note{background:var(--warnbg);color:var(--warn);border-radius:10px;padding:.8rem 1rem;font-size:.95rem}
+.reading{border-top:1px solid var(--line);margin-top:2.75rem;padding-top:1.6rem}
+.reading h2{display:flex;align-items:center;gap:.55rem}
+.reading h2::before{content:"";width:.5rem;height:.5rem;border-radius:2px;background:#e2b15a;flex:none}
+.reading p,.reading li{max-width:40rem}
+.reading ul{padding-left:1.2rem}
+details{border-bottom:1px solid var(--line)}
+details p{margin:.15rem 0 .9rem}
+summary{cursor:pointer;font-weight:600;min-height:48px;padding:.7rem 0}
+footer{color:var(--muted);font-size:.95rem;margin-top:2.75rem;border-top:0;box-shadow:inset 0 3px 0 #e2b15a;background:var(--card)}
+.foot-inner{padding:1.35rem 0 2rem}
+.foot-name{margin:0 0 .15rem;color:var(--fg);font-weight:700;display:flex;align-items:center;gap:.5rem}
+.foot-name .mark{width:24px;height:24px}
+.foot-nav{display:flex;flex-wrap:wrap;gap:.15rem 1.25rem;margin:.15rem 0 .35rem}
+.foot-nav a{min-height:44px;display:inline-flex;align-items:center}
+footer p{margin:.3rem 0}
+@media print{.onpage,button,.facts{display:none}.site-bar{background:none;color:#000;box-shadow:none}.site-bar a{color:#000}body,.card{background:#fff;color:#000;box-shadow:none;background-image:none}footer{box-shadow:none}}
+</style>
+</head>
+<body>
+<a class="skip" href="#calc-form">Aller à la calculatrice</a>
+<header class="site-bar">
+  <div class="bar-inner">
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false">
+        <rect width="32" height="32" rx="8" fill="#f6f1e6"/>
+        <rect x="7" y="10" width="18" height="3.5" rx="1.75" fill="#1e4d3a"/>
+        <rect x="7" y="18.5" width="18" height="3.5" rx="1.75" fill="#c9963a"/>
+      </svg>
+      Retirement Math
+    </a>
+    <nav class="lang" aria-label="Langue">
+      <a href="../take-home.html" hreflang="en-CA" lang="en-CA">English</a>
+      <span lang="fr-CA" aria-current="true">Français</span>
+    </nav>
+    <span class="bar-domain">retirementmath.ca</span>
+  </div>
+</header>
+<main id="main" class="wrap">
+  <div class="page-intro">
+    <p class="eyebrow">Impôt et prestations</p>
+    <h1>Estimation du revenu après impôt</h1>
+    <p class="lede">Estimez ce qui reste d'un revenu d'emploi, d'une pension ou d'un FERR en 2026 après l'impôt fédéral, l'impôt provincial ou territorial, et la part de l'employé au RPC, au RRQ, à l'assurance-emploi et au RQAP. Le calcul se fait dans votre navigateur. Rien de ce que vous écrivez n'est envoyé ni conservé.</p>
+    <p class="checked">Chiffres vérifiés auprès des sources officielles le <time class="verified-date" datetime="2026-10-27">27 octobre 2026</time>.</p>
+    <ul class="facts">
+      <li>Taux de 2026, montant personnel de base seulement</li>
+      <li>Ce n'est pas un talon de paie ni une déclaration</li>
+      <li>La récupération de la SV est à part</li>
+    </ul>
+    <nav class="onpage" aria-label="Sur cette page">
+      <a href="#calc-form">Calculatrice</a>
+      <a href="#included">Ce qui est inclus</a>
+      <a href="#figures">Chiffres officiels</a>
+      <a href="#questions">Questions</a>
+    </nav>
+  </div>
+  <noscript><p class="note">L'estimation a besoin de JavaScript. L'explication, la liste des chiffres et les questions fonctionnent sans JavaScript.</p></noscript>
+  <form id="calc-form" class="card" tabindex="-1" novalidate>
+    <label for="province">Province ou territoire
+      <span class="hint">Là où vous habitez le 31 décembre 2026. Le Québec a son propre impôt, le RRQ et le RQAP.</span></label>
+    <select id="province" name="province" required aria-describedby="province-err">
+      <option value="">Choisir une province ou un territoire</option>
+      <option value="AB">Alberta</option>
+      <option value="BC">Colombie-Britannique</option>
+      <option value="PE">Île-du-Prince-Édouard</option>
+      <option value="MB">Manitoba</option>
+      <option value="NB">Nouveau-Brunswick</option>
+      <option value="NS">Nouvelle-Écosse</option>
+      <option value="NU">Nunavut</option>
+      <option value="ON">Ontario</option>
+      <option value="QC">Québec</option>
+      <option value="SK">Saskatchewan</option>
+      <option value="NL">Terre-Neuve-et-Labrador</option>
+      <option value="NT">Territoires du Nord-Ouest</option>
+      <option value="YT">Yukon</option>
+    </select>
+    <p id="province-err" class="error" aria-live="polite"></p>
+
+    <fieldset>
+      <legend>Type de revenu</legend>
+      <label class="check"><input type="radio" name="kind" value="employment" checked> Emploi</label>
+      <label class="check"><input type="radio" name="kind" value="pension"> Pension ou FERR</label>
+      <span class="hint">Une pension ou un FERR n'est pas soumis ici à la part de l'employé au RPC, au RRQ, à l'assurance-emploi ou au RQAP.</span>
+    </fieldset>
+
+    <fieldset>
+      <legend>Comment vous entrez le montant</legend>
+      <label class="check"><input type="radio" name="period" value="annual" checked> Annuel</label>
+      <label class="check"><input type="radio" name="period" value="monthly"> Mensuel</label>
+      <span class="hint">Un montant mensuel est multiplié par 12. C'est une année, pas une période de paie.</span>
+    </fieldset>
+
+    <label for="income">Montant
+      <span class="hint" id="income-hint">Revenu d'emploi, ou pension ou FERR à imposer. Aucune déduction n'est soustraite d'abord.</span></label>
+    <input id="income" name="income" inputmode="decimal" autocomplete="off" placeholder="p. ex. 60000" aria-describedby="income-hint income-err" required>
+    <p id="income-err" class="error" aria-live="polite"></p>
+
+    <fieldset>
+      <legend>Tranche d'âge</legend>
+      <label class="check"><input type="radio" name="age" value="under_65" checked> Moins de 65 ans</label>
+      <label class="check"><input type="radio" name="age" value="65_74"> 65 à 74 ans</label>
+      <label class="check"><input type="radio" name="age" value="75_plus"> 75 ans ou plus</label>
+      <span class="hint">Sert seulement à la ligne de récupération de la SV et à la vérification du seuil du SRG. Le montant en raison de l'âge n'est pas ajouté.</span>
+    </fieldset>
+
+    <button type="submit">Calculer</button>
+  </form>
+
+  <section id="results" aria-live="polite" tabindex="-1" hidden>
+    <h2>Votre estimation</h2>
+    <div class="card">
+      <p class="kicker" id="r-kicker">Montant estimé qui reste</p>
+      <p class="big" id="r-left"></p>
+      <p class="hint" id="r-left-hint"></p>
+      <div class="table-wrap" tabindex="0" role="region" aria-labelledby="break-cap">
+        <table>
+          <caption id="break-cap">Détail pour l'année. La récupération de la SV n'est pas dans ce tableau.</caption>
+          <thead><tr><th scope="col">Ligne</th><th scope="col">Montant</th></tr></thead>
+          <tbody id="break-body"></tbody>
+        </table>
+      </div>
+      <p class="note" id="r-note"></p>
+      <div class="actions">
+        <button type="button" class="secondary" id="copy">Copier le résultat</button>
+        <button type="button" class="secondary" id="print">Imprimer</button>
+      </div>
+      <p id="copy-status" class="hint" aria-live="polite"></p>
+    </div>
+    <div class="card" id="benefit-card">
+      <h2>Récupération de la SV et seuil du SRG</h2>
+      <p id="r-benefit"></p>
+      <div class="table-wrap" id="oas-wrap" tabindex="0" role="region" aria-labelledby="oas-cap">
+        <table>
+          <caption id="oas-cap">Estimation de la SV. Elle n'est pas soustraite du revenu après impôt.</caption>
+          <tbody id="oas-body"></tbody>
+        </table>
+      </div>
+      <p class="note" id="r-oas-note"></p>
+    </div>
+  </section>
+
+  <section class="reading" id="included">
+    <h2>Ce que cette estimation comprend</h2>
+    <p>Elle impose le montant que vous écrivez comme s'il était votre seul revenu imposable de 2026. Chaque taux s'applique jusqu'au palier publié. Le seul crédit non remboursable est le montant personnel de base, multiplié par le taux le plus bas. Les montants fédéral et du Yukon diminuent entre 181 440 $ et 258 482 $. Celui du Manitoba diminue entre 200 000 $ et 400 000 $.</p>
+    <p>Pour un revenu d'emploi, elle soustrait la cotisation de l'employé au RPC, ou au RRQ au Québec, y compris la deuxième cotisation supplémentaire. Elle soustrait aussi l'assurance-emploi de l'employé. Au Québec, elle utilise le taux plus bas et ajoute le RQAP. Une pension ou un FERR saute ces quatre lignes.</p>
+    <p>Au Québec, l'impôt fédéral est réduit par l'abattement de 16,5 % de l'impôt fédéral de base. L'impôt du Québec utilise les paliers de Revenu Québec et le montant de base de 18 952 $.</p>
+    <p>En Ontario, elle ajoute la surtaxe et la contribution-santé, puis soustrait la réduction de base de 300 $. Les personnes à charge ne sont pas comptées, donc la réduction n'augmente pas.</p>
+    <p>À partir de 65 ans, elle montre aussi une estimation de la récupération de la SV et une vérification du seuil du SRG pour une personne seule. Ni l'une ni l'autre ne change le montant qui reste. La récupération utilise les règles de la <a href="index.html">calculatrice de récupération de la SV</a>. Elle traite le montant écrit comme le revenu net mondial de 2026. La récupération serait retranchée de la SV de juillet 2027 à juin 2028. Les plafonds de 2026 restent des estimations. Le montant de SV utilise le maximum du trimestre en cours pour une pleine pension sans report. La ligne de pleine récupération peut donc différer de canada.ca de quelques milliers de dollars.</p>
+    <h2>Ce qu'elle laisse de côté</h2>
+    <ul>
+      <li>Montant pour époux ou conjoint de fait, personne à charge admissible, et enfants. Il n'y a pas d'estimation de l'allocation canadienne pour enfants. Cette prestation dépend de l'âge de chaque enfant et du revenu familial de l'an dernier.</li>
+      <li>Crédit d'impôt pour personnes handicapées, montant en raison de l'âge, montant pour revenu de pension, et montant canadien pour emploi.</li>
+      <li>Cotisations à un REER, cotisations syndicales, frais de garde et autres déductions. La déduction pour travailleurs du Québec, jusqu'à 1 450 $ en 2026, n'est pas soustraite.</li>
+      <li>La part du RPC ou du RRQ qui est une déduction, et la part qui est un crédit. L'impôt ici peut être un peu élevé à cause de cela.</li>
+      <li>Le travail autonome. Ces taux de RPC et de RRQ sont environ le double, et l'assurance-emploi est différente.</li>
+      <li>Les réductions pour faible revenu des autres provinces, la réduction d'impôt de la Colombie-Britannique, et les crédits de taxe de vente.</li>
+      <li>Le choix de cesser le RPC de 65 à 70 ans, et l'arrêt à 70 ans. Cette page calcule encore le RPC ou le RRQ de l'employé sur un revenu d'emploi.</li>
+      <li>Le revenu d'un conjoint. La ligne du SRG est seulement le seuil d'une personne seule. Ce n'est pas un paiement du SRG.</li>
+    </ul>
+    <p>Les tables de paie peuvent différer. Elles arrondissent certains paliers. En 2026, elles rattrapent un changement en cours d'année pour la Colombie-Britannique (6,14 % au lieu de 5,6 % sur le premier palier) et pour Terre-Neuve-et-Labrador (15 000 $ au lieu du montant de base de 13 094 $). Cette page utilise les taux de la déclaration et le montant de 13 094 $. Un retrait forfaitaire d'un FERR peut aussi être retenu à 10 %, 20 % ou 30 %, ce qui n'est pas cette estimation annuelle.</p>
+  </section>
+
+  <section class="reading" id="figures">
+    <h2>Chiffres officiels</h2>
+    <p>Chiffres vérifiés auprès des sources officielles le <time class="verified-date" datetime="2026-10-27">27 octobre 2026</time>. Chaque constante est dans <code>data/take-home-rules.json</code> avec sa source. Les seuils de la SV restent dans le fichier des règles de la SV. Ils ne sont pas recopiés ici.</p>
+    <div class="table-wrap" tabindex="0" role="region" aria-labelledby="fig-cap">
+      <table>
+        <caption id="fig-cap">Principaux montants utilisés sur cette page.</caption>
+        <thead><tr><th scope="col">Chiffre</th><th scope="col">Montant</th><th scope="col">Source</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Impôt fédéral</th><td>14 % jusqu'à 58 523 $, puis 20,5 %, 26 %, 29 %, et 33 % au-dessus de 258 482 $</td><td><a href="https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html">Taux de l'ARC pour 2026</a>. Page datée du 2026-06-25.</td></tr>
+          <tr><th scope="row">Montant personnel de base fédéral</th><td>16 452 $, jusqu'à 14 829 $</td><td><a href="https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html">T4127, janvier 2026</a></td></tr>
+          <tr><th scope="row">Autres montants de base</th><td>Alberta 22 769 $. Colombie-Britannique 13 216 $. Manitoba 15 780 $. Nouveau-Brunswick 13 664 $. Terre-Neuve-et-Labrador 13 094 $. Territoires du Nord-Ouest 18 198 $. Nouvelle-Écosse 11 932 $. Nunavut 19 659 $. Ontario 12 989 $. Île-du-Prince-Édouard 15 000 $. Québec 18 952 $. Saskatchewan 20 381 $. Le Yukon suit le montant fédéral.</td><td>T4127 de janvier 2026, sauf Terre-Neuve-et-Labrador dans l'<a href="https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jul/t4127-jul-payroll-deductions-formulas.html">édition de juillet 2026</a>, et le Québec dans le <a href="https://www.revenuquebec.ca/documents/en/formulaires/tp/TP-1015.F-V(2026-01).pdf">TP-1015.F-V (2026-01)</a>.</td></tr>
+          <tr><th scope="row">RPC, employé</th><td>5,95 % entre 3 500 $ et 74 600 $, maximum 4 230,45 $. Puis 4 % jusqu'à 85 000 $, maximum 416 $.</td><td><a href="https://www.canada.ca/en/services/benefits/publicpensions/cpp/contributions.html">Cotisations au RPC</a></td></tr>
+          <tr><th scope="row">Assurance-emploi, employé</th><td>1,63 % jusqu'à 68 900 $, maximum 1 123,07 $. Au Québec, 1,30 %, maximum 895,70 $.</td><td><a href="https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/employment-insurance-ei/ei-premium-rates-maximums.html">Taux et maximums d'AE</a></td></tr>
+          <tr><th scope="row">RRQ, employé</th><td>6,30 % entre 3 500 $ et 74 600 $, maximum 4 479,30 $. Puis 4 % jusqu'à 85 000 $, maximum 416 $.</td><td><a href="https://www.revenuquebec.ca/en/businesses/source-deductions-and-employer-contributions/calculating-source-deductions-and-contributions/qpp-contributions/maximum-pensionable-earnings-and-contribution-rate/">RRQ, Revenu Québec</a></td></tr>
+          <tr><th scope="row">RQAP, employé</th><td>0,430 % jusqu'à 103 000 $, maximum 442,90 $</td><td><a href="https://www.revenuquebec.ca/en/businesses/source-deductions-and-employer-contributions/calculating-source-deductions-and-contributions/qpip-premiums/maximum-insurable-earnings-and-premium-rate/">RQAP, Revenu Québec</a></td></tr>
+          <tr><th scope="row">Abattement du Québec</th><td>16,5 % de l'impôt fédéral de base</td><td>T4127, janvier 2026</td></tr>
+          <tr><th scope="row">Surtaxe et contribution-santé de l'Ontario</th><td>20 % de l'impôt de base de l'Ontario au-dessus de 5 818 $, plus 36 % au-dessus de 7 446 $. Contribution-santé de 0 $ à 900 $ selon le revenu.</td><td>T4127, janvier 2026</td></tr>
+          <tr><th scope="row">SRG, personne seule</th><td>Revenu de moins de 23 112 $ pour les paiements d'octobre à décembre 2026. Maximum publié de 1 138,90 $ par mois. Cette page ne verse pas ce montant dans l'estimation.</td><td><a href="https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/guaranteed-income-supplement/benefit-amount.html">Montants du SRG</a>. Page modifiée le 2026-10-13.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h2>Paliers utilisés</h2>
+    <p>Le tableau est rempli à partir des règles enregistrées quand JavaScript fonctionne. Les mêmes paliers fédéraux et provinciaux sont sur la page des taux de l'ARC. Les paliers du Québec sont dans le guide de Revenu Québec cité plus haut.</p>
+    <div class="table-wrap" tabindex="0" role="region" aria-labelledby="bracket-cap">
+      <table id="bracket-table">
+        <caption id="bracket-cap">Paliers de 2026 dans cette estimation. Chaque taux s'applique jusqu'au montant indiqué.</caption>
+        <thead><tr><th scope="col">Administration</th><th scope="col">Jusqu'à</th><th scope="col">Taux</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="reading" id="questions">
+    <h2>Questions</h2>
+    <details>
+      <summary>Est-ce le montant sur mon talon de paie?</summary>
+      <p>Non. C'est une estimation d'une année avec les taux de la déclaration de 2026. Un talon de paie utilise les tables de paie. Elles peuvent arrondir les paliers et, en 2026, rattraper un changement en cours d'année en Colombie-Britannique et à Terre-Neuve-et-Labrador. Le résultat dépend aussi de votre code de demande et de la fréquence de paie.</p>
+    </details>
+    <details>
+      <summary>Quels crédits sont inclus?</summary>
+      <p>Seulement le montant personnel de base. L'Ontario a aussi sa surtaxe, sa contribution-santé et la réduction de base de 300 $. Le conjoint, les enfants, l'invalidité, l'âge, le revenu de pension et le montant pour emploi ne sont pas inclus.</p>
+    </details>
+    <details>
+      <summary>Pourquoi le Québec est-il différent?</summary>
+      <p>Le Québec fixe son propre impôt. L'impôt fédéral est réduit par un abattement de 16,5 %. L'employé paie le RRQ au lieu du RPC, un taux d'assurance-emploi plus bas, et le RQAP. La déduction pour travailleurs n'est pas appliquée, donc l'impôt du Québec peut sembler un peu élevé.</p>
+    </details>
+    <details>
+      <summary>La récupération de la SV est-elle retranchée du montant qui reste?</summary>
+      <p>Non. Le montant qui reste est le revenu écrit, moins l'impôt et les retenues de paie. La récupération de la SV est une ligne à part. C'est une estimation de l'impôt qui réduirait la SV plus tard, et seulement si le montant écrit était votre revenu net mondial. Le revenu net mondial comprend la SV et d'autres revenus. Ce n'est pas le même chiffre qu'un salaire.</p>
+    </details>
+    <details>
+      <summary>Est-ce officiel?</summary>
+      <p>Non. C'est une estimation non officielle pour s'informer, pas un avis, et pas un outil de l'ARC, de Revenu Québec ou de Service Canada. Votre déclaration, votre talon de paie et votre lettre de prestation font foi. Les chiffres peuvent changer.</p>
+    </details>
+  </section>
+
+  <section class="reading">
+    <h2>Avis</h2>
+    <p>Cet outil donne une estimation générale, à titre d'information seulement. Ce n'est pas un avis fiscal, juridique ou financier, et ce n'est pas un outil du gouvernement du Canada, de l'ARC, de Revenu Québec ou de Service Canada. Vérifiez ces sources, ou parlez à une personne qualifiée, avant de décider. Les chiffres peuvent changer. Voyez la date et les sources plus haut. Lisez la page <a href="about.html">À propos</a>, l'<a href="disclaimer.html">avis</a> et la <a href="privacy.html">politique de confidentialité</a>.</p>
+  </section>
+</main>
+<footer>
+  <div class="wrap foot-inner">
+    <p class="foot-name"><svg class="mark" viewBox="0 0 32 32" aria-hidden="true" focusable="false" width="24" height="24"><rect width="32" height="32" rx="8" fill="#1e4d3a"/><rect x="7" y="10" width="18" height="3.5" rx="1.75" fill="#f6f1e6"/><rect x="7" y="18.5" width="18" height="3.5" rx="1.75" fill="#e2b15a"/></svg> Retirement Math</p>
+    <nav class="foot-nav" aria-label="Pages du site">
+      <a href="index.html">Récupération de la SV</a>
+      <a href="rrif.html">Minimum du FERR</a>
+      <a href="take-home.html" aria-current="page">Revenu net estimé</a>
+      <a href="about.html">À propos</a>
+      <a href="privacy.html">Confidentialité</a>
+      <a href="disclaimer.html">Avis</a>
+    </nav>
+    <p>retirementmath.ca · Fait à Scarborough, en Ontario.</p>
+    <p>Cette page n'utilise pas de cookies et ne recueille pas ce que vous écrivez. Ce n'est pas un site du gouvernement du Canada.</p>
+  </div>
+</footer>
+
+<!-- TAKEHOME_RULES:BEGIN (generated from data/take-home-rules.json by scripts/build.py; do not hand edit) -->
+<script id="take-home-rules" type="application/json">{"schema_version":1,"last_checked":"2026-10-27","last_verified":"2026-10-27","tax_year":2026,"oas_period_id":"2026-income","sources":{"rates":{"url":"https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html","page_date":"2026-06-25","note":"2026 return brackets for federal tax and every province except Quebec. British Columbia's first rate on this page is 5.6%. Payroll uses 6.14% in the second half of 2026 as a catch-up. Manitoba's return brackets are $47,564 and $101,200. Payroll tables use $47,000 and $100,000."},"t4127_january":{"url":"https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html","edition":"122nd edition, effective January 1, 2026","note":"Basic personal amounts, the federal phase-out, the Manitoba and Yukon formulas, the 16.5% Quebec abatement on basic federal tax, Ontario surtax, Ontario health premium, and the Ontario basic tax reduction. The January table still shows Newfoundland and Labrador at $11,188."},"t4127_july":{"url":"https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jul/t4127-jul-payroll-deductions-formulas.html","edition":"123rd edition, effective July 1, 2026","note":"Newfoundland and Labrador's basic personal amount rose from $11,188 to $13,094 effective January 1, 2026. Payroll uses $15,000 in the second half of 2026 as a catch-up. This estimate uses $13,094. The same edition says British Columbia's annual lowest rate is 5.60% and that the 6.14% rate is the payroll catch-up."},"quebec_guide":{"url":"https://www.revenuquebec.ca/documents/en/formulaires/tp/TP-1015.F-V(2026-01).pdf","edition":"TP-1015.F-V (2026-01)","note":"Quebec brackets, 14% credit on the basic personal amount of $18,952, and the $1,450 maximum deduction for workers. The worker deduction is not applied here."},"qpp":{"url":"https://www.revenuquebec.ca/en/businesses/source-deductions-and-employer-contributions/calculating-source-deductions-and-contributions/qpp-contributions/maximum-pensionable-earnings-and-contribution-rate/"},"qpip":{"url":"https://www.revenuquebec.ca/en/businesses/source-deductions-and-employer-contributions/calculating-source-deductions-and-contributions/qpip-premiums/maximum-insurable-earnings-and-premium-rate/","note":"2026 employee rate 0.430% on a $103,000 ceiling, maximum $442.90. The January 2026 T4127 formulas use the same 0.0043 rate and $442.90 maximum."},"cpp":{"url":"https://www.canada.ca/en/services/benefits/publicpensions/cpp/contributions.html","note":"2026 ceiling $74,600, additional ceiling $85,000, employee maximum $4,230.45 on the first ceiling, and a 4.00% second contribution with a $416 maximum. The employee rate on the first ceiling is 5.95% (11.9% split with the employer). One sentence on that page still says the 4.00% rate is for 2025. The $416 maximum matches the 2026 band."},"ei":{"url":"https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/employment-insurance-ei/ei-premium-rates-maximums.html"},"gis":{"url":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/guaranteed-income-supplement/benefit-amount.html","page_date":"2026-10-13","note":"October to December 2026 payment table. A single person must have income under $23,112. The maximum payment is not estimated here."}},"federal":{"lowest_rate":0.14,"brackets":[{"up_to":58523,"rate":0.14},{"up_to":117045,"rate":0.205},{"up_to":181440,"rate":0.26},{"up_to":258482,"rate":0.29},{"up_to":null,"rate":0.33}],"bpa":{"max":16452,"min":14829,"phase_start":181440,"phase_end":258482,"enhanced":1623,"width":77042}},"provinces":[{"code":"AB","name":"Alberta","name_fr":"Alberta","bpa":{"type":"flat","amount":22769},"brackets":[{"up_to":61200,"rate":0.08},{"up_to":154259,"rate":0.1},{"up_to":185111,"rate":0.12},{"up_to":246813,"rate":0.13},{"up_to":370220,"rate":0.14},{"up_to":null,"rate":0.15}]},{"code":"BC","name":"British Columbia","name_fr":"Colombie-Britannique","bpa":{"type":"flat","amount":13216},"brackets":[{"up_to":50363,"rate":0.056},{"up_to":100728,"rate":0.077},{"up_to":115648,"rate":0.105},{"up_to":140430,"rate":0.1229},{"up_to":190405,"rate":0.147},{"up_to":265545,"rate":0.168},{"up_to":null,"rate":0.205}]},{"code":"MB","name":"Manitoba","name_fr":"Manitoba","bpa":{"type":"manitoba","max":15780,"phase_start":200000,"phase_end":400000},"brackets":[{"up_to":47564,"rate":0.108},{"up_to":101200,"rate":0.1275},{"up_to":null,"rate":0.174}]},{"code":"NB","name":"New Brunswick","name_fr":"Nouveau-Brunswick","bpa":{"type":"flat","amount":13664},"brackets":[{"up_to":52333,"rate":0.094},{"up_to":104666,"rate":0.14},{"up_to":193861,"rate":0.16},{"up_to":null,"rate":0.195}]},{"code":"NL","name":"Newfoundland and Labrador","name_fr":"Terre-Neuve-et-Labrador","bpa":{"type":"flat","amount":13094},"brackets":[{"up_to":44678,"rate":0.087},{"up_to":89354,"rate":0.145},{"up_to":159528,"rate":0.158},{"up_to":223340,"rate":0.178},{"up_to":285319,"rate":0.198},{"up_to":570638,"rate":0.208},{"up_to":1141275,"rate":0.213},{"up_to":null,"rate":0.218}]},{"code":"NT","name":"Northwest Territories","name_fr":"Territoires du Nord-Ouest","bpa":{"type":"flat","amount":18198},"brackets":[{"up_to":53003,"rate":0.059},{"up_to":106009,"rate":0.086},{"up_to":172346,"rate":0.122},{"up_to":null,"rate":0.1405}]},{"code":"NS","name":"Nova Scotia","name_fr":"Nouvelle-\u00c9cosse","bpa":{"type":"flat","amount":11932},"brackets":[{"up_to":30995,"rate":0.0879},{"up_to":61991,"rate":0.1495},{"up_to":97417,"rate":0.1667},{"up_to":157124,"rate":0.175},{"up_to":null,"rate":0.21}]},{"code":"NU","name":"Nunavut","name_fr":"Nunavut","bpa":{"type":"flat","amount":19659},"brackets":[{"up_to":55801,"rate":0.04},{"up_to":111602,"rate":0.07},{"up_to":181439,"rate":0.09},{"up_to":null,"rate":0.115}]},{"code":"ON","name":"Ontario","name_fr":"Ontario","bpa":{"type":"flat","amount":12989},"brackets":[{"up_to":53891,"rate":0.0505},{"up_to":107785,"rate":0.0915},{"up_to":150000,"rate":0.1116},{"up_to":220000,"rate":0.1216},{"up_to":null,"rate":0.1316}],"surtax":{"first_over":5818,"first_rate":0.2,"second_over":7446,"second_rate":0.36},"tax_reduction_basic":300,"health_premium":[{"up_to":20000,"from":0,"base":0,"rate":0,"cap":0},{"up_to":36000,"from":20000,"base":0,"rate":0.06,"cap":300},{"up_to":48000,"from":36000,"base":300,"rate":0.06,"cap":450},{"up_to":72000,"from":48000,"base":450,"rate":0.25,"cap":600},{"up_to":200000,"from":72000,"base":600,"rate":0.25,"cap":750},{"up_to":null,"from":200000,"base":750,"rate":0.25,"cap":900}]},{"code":"PE","name":"Prince Edward Island","name_fr":"\u00cele-du-Prince-\u00c9douard","bpa":{"type":"flat","amount":15000},"brackets":[{"up_to":33928,"rate":0.095},{"up_to":65820,"rate":0.1347},{"up_to":106890,"rate":0.166},{"up_to":142520,"rate":0.1762},{"up_to":200000,"rate":0.19},{"up_to":null,"rate":0.2}]},{"code":"QC","name":"Quebec","name_fr":"Qu\u00e9bec","abatement":0.165,"bpa":{"type":"flat","amount":18952},"brackets":[{"up_to":54345,"rate":0.14},{"up_to":108680,"rate":0.19},{"up_to":132245,"rate":0.24},{"up_to":null,"rate":0.2575}]},{"code":"SK","name":"Saskatchewan","name_fr":"Saskatchewan","bpa":{"type":"flat","amount":20381},"brackets":[{"up_to":54532,"rate":0.105},{"up_to":155805,"rate":0.125},{"up_to":null,"rate":0.145}]},{"code":"YT","name":"Yukon","name_fr":"Yukon","bpa":{"type":"federal"},"brackets":[{"up_to":58523,"rate":0.064},{"up_to":117045,"rate":0.09},{"up_to":181440,"rate":0.109},{"up_to":500000,"rate":0.128},{"up_to":null,"rate":0.15}]}],"cpp":{"ybe":3500,"ympe":74600,"yampe":85000,"employee_rate":0.0595,"employee_max":4230.45,"second_rate":0.04,"second_max":416},"qpp":{"ybe":3500,"ympe":74600,"yampe":85000,"employee_rate":0.063,"employee_max":4479.3,"second_rate":0.04,"second_max":416},"ei":{"max_insurable":68900,"employee_rate":0.0163,"employee_max":1123.07,"quebec_rate":0.013,"quebec_max":895.7},"qpip":{"max_insurable":103000,"employee_rate":0.0043,"employee_max":442.9},"gis":{"quarter_label":"October to December 2026","single_income_under":23112,"single_max_monthly":1138.9}}</script>
+<!-- TAKEHOME_RULES:END -->
+
+<!-- OAS_RULES:BEGIN (generated from data/oas-rules.json by scripts/build.py; do not hand edit) -->
+<script id="oas-rules" type="application/json">{"schema_version":1,"last_checked":"2026-10-27","last_updated":"2026-10-22","last_verified":"2026-10-27","recovery_rate":0.15,"rate_source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html","periods":[{"id":"2025-income","income_year":2025,"payment_period":"July 2026 to June 2027","threshold_min":93454,"threshold_max_65_74":152062,"threshold_max_75_plus":157923,"status":"final","source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html"},{"id":"2026-income","income_year":2026,"payment_period":"July 2027 to June 2028","threshold_min":95323,"threshold_max_65_74":155320,"threshold_max_75_plus":161320,"status":"estimate","status_note":"canada.ca marks the 2026 maximum thresholds as estimates until October to December of the tax year. ESDC's April to June 2026 quarterly report lists a different upper range ($154,753 age 65 to 74, $160,696 age 75+). The minimum threshold of $95,323 matches on both pages.","source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html","alt_source":"https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"},{"id":"2024-income","income_year":2024,"payment_period":"July 2025 to June 2026","threshold_min":90997,"threshold_max_65_74":148451,"threshold_max_75_plus":154196,"status":"final","source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/recovery-tax.html"}],"max_monthly_oas_2026":[{"quarter":"2026-Q1","months":"January to March 2026","age_65_74":742.31,"age_75_plus":816.54,"source":"https://publications.gc.ca/collections/collection_2026/edsc-esdc/SG3-3-2026-1.pdf"},{"quarter":"2026-Q2","months":"April to June 2026","age_65_74":743.05,"age_75_plus":817.36,"source":"https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"},{"quarter":"2026-Q3","months":"July to September 2026","age_65_74":751.97,"age_75_plus":827.17,"source":"https://open.canada.ca/data/dataset/dfa4daf1-669e-4514-82cd-982f27707ed0/resource/f015e958-829b-44bb-b201-641584b818dd/download/july-september-2026-table-of-rates.pdf"},{"quarter":"2026-Q4","months":"October to December 2026","age_65_74":762.5,"age_75_plus":838.75,"source":"https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/payments.html"}],"current_quarter":"2026-Q4","residency":{"full_years":40,"min_years":10,"note":"Partial pension is years in Canada after age 18 divided by 40. Simplified; Service Canada decides actual entitlement."},"deferral":{"monthly_increase":0.006,"max_increase":0.36,"source":"https://www.canada.ca/en/employment-social-development/programs/pensions/pension/statistics/2026-quarterly-april-june.html"}}</script>
+<!-- OAS_RULES:END -->
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","name":"Estimation du revenu après impôt 2026","url":"https://retirementmath.ca/fr/take-home","inLanguage":"fr-CA","dateModified":"2026-10-27","isPartOf":{"@type":"WebSite","name":"Retirement Math","url":"https://retirementmath.ca/"}}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"Estimation du revenu après impôt","url":"https://retirementmath.ca/fr/take-home","applicationCategory":"FinanceApplication","operatingSystem":"Any","isAccessibleForFree":true,"inLanguage":"fr-CA","areaServed":{"@type":"Country","name":"Canada"},"offers":{"@type":"Offer","price":"0","priceCurrency":"CAD"},"publisher":{"@type":"Organization","name":"Retirement Math","url":"https://retirementmath.ca/"},"description":"Estimation gratuite du revenu qui reste en 2026 après l'impôt, le RPC ou le RRQ, et l'assurance-emploi."}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","inLanguage":"fr-CA","mainEntity":[
+{"@type":"Question","name":"Est-ce le montant sur mon talon de paie?","acceptedAnswer":{"@type":"Answer","text":"Non. C'est une estimation d'une année avec les taux de la déclaration de 2026. Un talon de paie utilise les tables de paie, qui peuvent différer."}},
+{"@type":"Question","name":"Quels crédits sont inclus?","acceptedAnswer":{"@type":"Answer","text":"Seulement le montant personnel de base. L'Ontario a aussi sa surtaxe, sa contribution-santé et la réduction de base de 300 $."}},
+{"@type":"Question","name":"Pourquoi le Québec est-il différent?","acceptedAnswer":{"@type":"Answer","text":"Le Québec fixe son propre impôt. L'impôt fédéral est réduit par un abattement de 16,5 %. L'employé paie le RRQ, un taux d'assurance-emploi plus bas, et le RQAP."}},
+{"@type":"Question","name":"La récupération de la SV est-elle retranchée du montant qui reste?","acceptedAnswer":{"@type":"Answer","text":"Non. La récupération de la SV est une ligne à part. Elle n'est pas soustraite du montant qui reste."}},
+{"@type":"Question","name":"Est-ce officiel?","acceptedAnswer":{"@type":"Answer","text":"Non. C'est une estimation non officielle pour s'informer, pas un avis et pas un outil d'un gouvernement."}}
+]}
+</script>
+
+<script id="calc">
+// CALC:BEGIN pure function, tested by tests/test_take_home.js
+function computeTakeHome(rules, oasRules, input) {
+  var province = provinceByCode(rules, input.province);
+  if (!province) throw new Error("bad province");
+  var income = Number(input.income);
+  if (!isFinite(income) || income < 0) throw new Error("bad income");
+  if (input.period !== "annual" && input.period !== "monthly") throw new Error("bad period");
+  if (input.kind !== "employment" && input.kind !== "pension") throw new Error("bad kind");
+  if (input.age !== "under_65" && input.age !== "65_74" && input.age !== "75_plus") throw new Error("bad age");
+  var annual = input.period === "monthly" ? round2(income * 12) : round2(income);
+  var fTax = round2(bracketTax(rules.federal.brackets, annual));
+  var fBpa = federalBpa(rules, annual);
+  var fCredit = round2(fBpa * rules.federal.lowest_rate);
+  var federalBasic = round2(Math.max(0, fTax - fCredit));
+  var abatement = province.abatement ? round2(federalBasic * province.abatement) : 0;
+  var federalNet = round2(Math.max(0, federalBasic - abatement));
+  var pTax = round2(bracketTax(province.brackets, annual));
+  var pBpa = personalAmount(rules, province.bpa, annual);
+  var pCredit = round2(pBpa * province.brackets[0].rate);
+  var provincialBasic = round2(Math.max(0, pTax - pCredit));
+  var surtax = ontarioSurtax(province.surtax, provincialBasic);
+  var health = ontarioHealth(province.health_premium, annual);
+  var reduction = province.tax_reduction_basic == null ? 0 : ontarioReduction(province.tax_reduction_basic, provincialBasic, surtax);
+  var provincialNet = round2(Math.max(0, provincialBasic + surtax + health - reduction));
+  var cpp = 0, ei = 0, qpip = 0;
+  if (input.kind === "employment") {
+    cpp = pensionContribution(input.province === "QC" ? rules.qpp : rules.cpp, annual);
+    ei = eiPremium(rules, input.province === "QC", annual);
+    if (input.province === "QC") qpip = qpipPremium(rules, annual);
+  }
+  var subtracted = round2(federalNet + provincialNet + cpp + ei + qpip);
+  var takeHome = round2(annual - subtracted);
+  return {
+    annual: annual,
+    federalBracket: fTax,
+    federalBpa: fBpa,
+    federalCredit: fCredit,
+    federalBasic: federalBasic,
+    quebecAbatement: abatement,
+    federalNet: federalNet,
+    provincialBracket: pTax,
+    provincialBpa: pBpa,
+    provincialCredit: pCredit,
+    provincialBasic: provincialBasic,
+    ontarioSurtax: surtax,
+    ontarioHealth: health,
+    ontarioReduction: reduction,
+    provincialNet: provincialNet,
+    cpp: cpp,
+    ei: ei,
+    qpip: qpip,
+    subtracted: subtracted,
+    takeHome: takeHome,
+    monthlyTakeHome: round2(takeHome / 12),
+    kind: input.kind,
+    province: input.province,
+    oas: input.age === "under_65" ? null : oasRecovery(rules, oasRules, input.age, annual),
+    gis: input.age === "under_65" ? null : gisCheck(rules, annual)
+  };
+}
+function provinceByCode(rules, code) {
+  for (var i = 0; i < rules.provinces.length; i++) {
+    if (rules.provinces[i].code === code) return rules.provinces[i];
+  }
+  return null;
+}
+function bracketTax(brackets, income) {
+  var tax = 0, prev = 0;
+  for (var i = 0; i < brackets.length; i++) {
+    var top = brackets[i].up_to == null ? income : brackets[i].up_to;
+    var slice = Math.min(income, top) - prev;
+    if (slice > 0) tax += slice * brackets[i].rate;
+    if (brackets[i].up_to == null || income <= brackets[i].up_to) break;
+    prev = brackets[i].up_to;
+  }
+  return tax;
+}
+function federalBpa(rules, ni) {
+  var b = rules.federal.bpa;
+  if (ni <= b.phase_start) return b.max;
+  if (ni >= b.phase_end) return b.min;
+  return round2(b.max - (ni - b.phase_start) * (b.enhanced / b.width));
+}
+function manitobaBpa(spec, ni) {
+  if (ni <= spec.phase_start) return spec.max;
+  if (ni >= spec.phase_end) return 0;
+  var width = spec.phase_end - spec.phase_start;
+  return round2(spec.max - (ni - spec.phase_start) * (spec.max / width));
+}
+function personalAmount(rules, spec, income) {
+  if (spec.type === "flat") return spec.amount;
+  if (spec.type === "federal") return federalBpa(rules, income);
+  if (spec.type === "manitoba") return manitobaBpa(spec, income);
+  throw new Error("bad bpa");
+}
+function ontarioSurtax(surtax, t4) {
+  if (!surtax || t4 <= surtax.first_over) return 0;
+  var v = surtax.first_rate * (t4 - surtax.first_over);
+  if (t4 > surtax.second_over) v += surtax.second_rate * (t4 - surtax.second_over);
+  return round2(v);
+}
+function ontarioHealth(bands, income) {
+  if (!bands || income <= bands[0].up_to) return 0;
+  var band = bands[bands.length - 1];
+  for (var i = 1; i < bands.length; i++) {
+    if (bands[i].up_to == null || income <= bands[i].up_to) { band = bands[i]; break; }
+  }
+  return round2(Math.min(band.cap, band.base + band.rate * (income - band.from)));
+}
+function ontarioReduction(basic, t4, surtax) {
+  var raw = Math.min(t4 + surtax, (2 * basic) - (t4 + surtax));
+  return round2(Math.max(0, raw));
+}
+function cappedRate(amount, rate, max) {
+  return Math.min(round2(Math.max(0, amount) * rate), max);
+}
+function pensionContribution(plan, annual) {
+  var base = cappedRate(Math.min(annual, plan.ympe) - plan.ybe, plan.employee_rate, plan.employee_max);
+  var second = cappedRate(Math.min(annual, plan.yampe) - plan.ympe, plan.second_rate, plan.second_max);
+  return round2(base + second);
+}
+function eiPremium(rules, quebec, annual) {
+  var insurable = Math.min(annual, rules.ei.max_insurable);
+  if (quebec) return cappedRate(insurable, rules.ei.quebec_rate, rules.ei.quebec_max);
+  return cappedRate(insurable, rules.ei.employee_rate, rules.ei.employee_max);
+}
+function qpipPremium(rules, annual) {
+  return cappedRate(Math.min(annual, rules.qpip.max_insurable), rules.qpip.employee_rate, rules.qpip.employee_max);
+}
+function oasRecovery(rules, oasRules, age, income) {
+  var period = null, q = null, i;
+  for (i = 0; i < oasRules.periods.length; i++) {
+    if (oasRules.periods[i].id === rules.oas_period_id) period = oasRules.periods[i];
+  }
+  if (!period) throw new Error("missing oas period");
+  for (i = 0; i < oasRules.max_monthly_oas_2026.length; i++) {
+    if (oasRules.max_monthly_oas_2026[i].quarter === oasRules.current_quarter) q = oasRules.max_monthly_oas_2026[i];
+  }
+  if (!q) throw new Error("missing oas quarter");
+  var key = age === "75_plus" ? "age_75_plus" : "age_65_74";
+  var annualOas = round2(q[key] * 12);
+  var repayment = round2(Math.min(Math.max(0, income - period.threshold_min) * oasRules.recovery_rate, annualOas));
+  return {
+    annualOas: annualOas,
+    annualRepayment: repayment,
+    keptAnnual: round2(annualOas - repayment),
+    thresholdMin: period.threshold_min,
+    officialMax: period[key === "age_75_plus" ? "threshold_max_75_plus" : "threshold_max_65_74"],
+    fullClawbackAt: round2(period.threshold_min + annualOas / oasRules.recovery_rate),
+    paymentPeriod: period.payment_period,
+    incomeYear: period.income_year,
+    status: period.status,
+    quarter: oasRules.current_quarter
+  };
+}
+function gisCheck(rules, income) {
+  return {
+    underSingleCutoff: income < rules.gis.single_income_under,
+    cutoff: rules.gis.single_income_under,
+    maxMonthly: rules.gis.single_max_monthly,
+    quarterLabel: rules.gis.quarter_label
+  };
+}
+function round2(n) { return Math.round(n * 100) / 100; }
+// CALC:END
+
+(function () {
+  if (typeof document === "undefined") return;
+  var rules = JSON.parse(document.getElementById("take-home-rules").textContent);
+  var oasRules = JSON.parse(document.getElementById("oas-rules").textContent);
+  var fmt = new Intl.NumberFormat("fr-CA", { style: "currency", currency: "CAD" });
+  var months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
+  function stampDate(selector, iso) {
+    var p = iso.split("-");
+    var day = Number(p[2]);
+    var text = (day === 1 ? "1er" : String(day)) + " " + months[Number(p[1]) - 1] + " " + p[0];
+    document.querySelectorAll(selector).forEach(function (el) {
+      el.setAttribute("datetime", iso);
+      el.textContent = text;
+    });
+  }
+  stampDate(".verified-date", rules.last_checked || rules.last_verified);
+
+  function pct(rate) {
+    return (rate * 100).toFixed(4).replace(/0+$/, "").replace(/\.$/, "").replace(".", ",") + " %";
+  }
+  function moneyOrUnlimited(n) {
+    return n == null ? "Sans limite" : fmt.format(n);
+  }
+  var tbody = document.querySelector("#bracket-table tbody");
+  function addBracketRows(label, brackets) {
+    brackets.forEach(function (b, i) {
+      var tr = document.createElement("tr");
+      var name = document.createElement("th");
+      name.scope = "row";
+      name.textContent = i === 0 ? label : "";
+      var up = document.createElement("td");
+      up.className = "num";
+      up.textContent = moneyOrUnlimited(b.up_to);
+      var rate = document.createElement("td");
+      rate.className = "num";
+      rate.textContent = pct(b.rate);
+      tr.appendChild(name);
+      tr.appendChild(up);
+      tr.appendChild(rate);
+      tbody.appendChild(tr);
+    });
+  }
+  addBracketRows("Fédéral", rules.federal.brackets);
+  rules.provinces.forEach(function (p) { addBracketRows(p.name_fr, p.brackets); });
+
+  function parseMoney(s) {
+    var t = String(s).replace(/[\s\u00a0\u202f$]/g, "");
+    if (t.indexOf(",") !== -1 && t.indexOf(".") !== -1) {
+      if (t.lastIndexOf(",") > t.lastIndexOf(".")) t = t.replace(/\./g, "").replace(",", ".");
+      else t = t.replace(/,/g, "");
+    } else if (/,\d{1,2}$/.test(t)) t = t.replace(",", ".");
+    else t = t.replace(/,/g, "");
+    return t;
+  }
+  function checked(name) { return document.querySelector("input[name=" + name + "]:checked").value; }
+  function addRow(body, label, amount, head) {
+    var tr = document.createElement("tr");
+    var th = document.createElement(head ? "th" : "td");
+    if (head) th.scope = "row";
+    th.textContent = label;
+    var td = document.createElement("td");
+    td.className = "num";
+    td.textContent = amount;
+    tr.appendChild(th);
+    tr.appendChild(td);
+    body.appendChild(tr);
+  }
+  var results = document.getElementById("results");
+  document.getElementById("calc-form").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var province = document.getElementById("province");
+    var provinceErr = document.getElementById("province-err");
+    var incomeField = document.getElementById("income");
+    var incomeErr = document.getElementById("income-err");
+    provinceErr.textContent = "";
+    incomeErr.textContent = "";
+    province.removeAttribute("aria-invalid");
+    incomeField.removeAttribute("aria-invalid");
+    if (!province.value) {
+      provinceErr.textContent = "Choisissez une province ou un territoire.";
+      province.setAttribute("aria-invalid", "true");
+      province.focus();
+      return;
+    }
+    var raw = parseMoney(incomeField.value);
+    var income = Number(raw);
+    if (raw === "" || !isFinite(income) || income < 0) {
+      incomeErr.textContent = "Entrez le montant en chiffres, par exemple 60000.";
+      incomeField.setAttribute("aria-invalid", "true");
+      incomeField.focus();
+      return;
+    }
+    var r = computeTakeHome(rules, oasRules, {
+      province: province.value,
+      income: income,
+      period: checked("period"),
+      kind: checked("kind"),
+      age: checked("age")
+    });
+    var place = province.options[province.selectedIndex].text;
+    document.getElementById("r-kicker").textContent = "Montant estimé qui reste : " + place;
+    document.getElementById("r-left").textContent = fmt.format(r.takeHome);
+    var hint = "Pour l'année, après l'impôt et les lignes de paie ci-dessous. La récupération de la SV n'est pas incluse.";
+    if (checked("period") === "monthly") hint = "Vous avez entré un montant mensuel. Il est traité comme " + fmt.format(r.annual) + " pour l'année. " + hint + " Environ " + fmt.format(r.monthlyTakeHome) + " par mois.";
+    document.getElementById("r-left-hint").textContent = hint;
+    var body = document.getElementById("break-body");
+    body.textContent = "";
+    addRow(body, "Revenu utilisé", fmt.format(r.annual));
+    addRow(body, "Impôt fédéral après le montant personnel de base", fmt.format(r.federalBasic));
+    if (r.quebecAbatement) addRow(body, "Abattement du Québec", fmt.format(-r.quebecAbatement));
+    addRow(body, r.province === "QC" ? "Impôt du Québec" : "Impôt provincial ou territorial", fmt.format(r.provincialBasic));
+    if (r.province === "ON") {
+      addRow(body, "Surtaxe de l'Ontario", fmt.format(r.ontarioSurtax));
+      addRow(body, "Contribution-santé de l'Ontario", fmt.format(r.ontarioHealth));
+      addRow(body, "Réduction de base de l'Ontario", r.ontarioReduction ? fmt.format(-r.ontarioReduction) : fmt.format(0));
+    }
+    addRow(body, r.province === "QC" ? "RRQ (employé)" : "RPC (employé)", fmt.format(r.cpp));
+    addRow(body, "Assurance-emploi (employé)", fmt.format(r.ei));
+    if (r.province === "QC") addRow(body, "RQAP (employé)", fmt.format(r.qpip));
+    addRow(body, "Montant qui reste", fmt.format(r.takeHome), true);
+    var note = "Ce n'est pas une retenue sur la paie et ce n'est pas votre déclaration. Seul le montant personnel de base est crédité.";
+    if (r.kind === "pension") note += " Une pension ou un FERR n'est pas soumis ici au RPC, au RRQ, à l'assurance-emploi ou au RQAP.";
+    if (r.province === "QC") note += " La déduction pour travailleurs du Québec n'est pas incluse.";
+    if (r.province !== "ON") note += " Les réductions provinciales pour faible revenu, autres que celle de l'Ontario, ne sont pas incluses. L'impôt peut donc sembler élevé à faible revenu.";
+    document.getElementById("r-note").textContent = note;
+    var benefit = document.getElementById("r-benefit");
+    var oasBody = document.getElementById("oas-body");
+    var oasWrap = document.getElementById("oas-wrap");
+    oasBody.textContent = "";
+    if (!r.oas) {
+      benefit.textContent = "La récupération de la SV et le SRG ne s'appliquent pas avant 65 ans sur cette page.";
+      oasWrap.hidden = true;
+      document.getElementById("r-oas-note").textContent = "";
+    } else {
+      var quarterFr = r.gis.quarterLabel === "October to December 2026" ? "octobre à décembre 2026" : r.gis.quarterLabel;
+      benefit.textContent = r.gis.underSingleCutoff
+        ? "Le montant est sous le seuil du SRG pour une personne seule, " + fmt.format(r.gis.cutoff) + ", pour les paiements d'" + quarterFr + ". C'est une vérification de seuil, pas un paiement du SRG."
+        : "Le montant n'est pas sous le seuil du SRG pour une personne seule, " + fmt.format(r.gis.cutoff) + ", pour les paiements d'" + quarterFr + ". Un conjoint utilise un autre seuil. Ce n'est pas un paiement du SRG.";
+      oasWrap.hidden = false;
+      addRow(oasBody, "SV avant récupération", fmt.format(r.oas.annualOas));
+      addRow(oasBody, "Impôt de récupération estimé", fmt.format(r.oas.annualRepayment));
+      addRow(oasBody, "SV qui reste", fmt.format(r.oas.keptAnnual), true);
+      var status = r.oas.status === "estimate" ? " Les plafonds de cette année de revenu restent des estimations." : "";
+      document.getElementById("r-oas-note").textContent = "Ceci traite " + fmt.format(r.annual) + " comme le revenu net mondial de " + r.oas.incomeYear + ". La récupération serait retranchée de la SV de " + String(r.oas.paymentPeriod).replace("July", "juillet").replace("June", "juin").replace(" to ", " à ") + ". Le montant de SV est le maximum de " + r.oas.quarter + " pour une pleine pension sans report, pas votre SV réelle." + status + " canada.ca indique un revenu de pleine récupération près de " + fmt.format(r.oas.officialMax) + ". Cette estimation atteint la pleine récupération près de " + fmt.format(r.oas.fullClawbackAt) + ".";
+    }
+    document.getElementById("copy-status").textContent = "";
+    results.hidden = false;
+    results.focus();
+  });
+  document.getElementById("copy").addEventListener("click", function () {
+    var text = document.getElementById("results").innerText;
+    var status = document.getElementById("copy-status");
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        status.textContent = "Copié.";
+      }, function () {
+        status.textContent = "La copie a échoué. Sélectionnez le résultat et copiez-le vous-même.";
+      });
+    } else {
+      status.textContent = "Sélectionnez le résultat et copiez-le vous-même.";
+    }
+  });
+  document.getElementById("print").addEventListener("click", function () { window.print(); });
+})();
+</script>
+</body>
+</html>

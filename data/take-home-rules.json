@@ -1,0 +1,282 @@
+{
+  "schema_version": 1,
+  "last_checked": "2026-10-27",
+  "last_verified": "2026-10-27",
+  "tax_year": 2026,
+  "oas_period_id": "2026-income",
+  "sources": {
+    "rates": {
+      "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/tax-rates-brackets/current-year.html",
+      "page_date": "2026-06-25",
+      "note": "2026 return brackets for federal tax and every province except Quebec. British Columbia's first rate on this page is 5.6%. Payroll uses 6.14% in the second half of 2026 as a catch-up. Manitoba's return brackets are $47,564 and $101,200. Payroll tables use $47,000 and $100,000."
+    },
+    "t4127_january": {
+      "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jan/t4127-jan-payroll-deductions-formulas-computer-programs.html",
+      "edition": "122nd edition, effective January 1, 2026",
+      "note": "Basic personal amounts, the federal phase-out, the Manitoba and Yukon formulas, the 16.5% Quebec abatement on basic federal tax, Ontario surtax, Ontario health premium, and the Ontario basic tax reduction. The January table still shows Newfoundland and Labrador at $11,188."
+    },
+    "t4127_july": {
+      "url": "https://www.canada.ca/en/revenue-agency/services/forms-publications/payroll/t4127-payroll-deductions-formulas/t4127-jul/t4127-jul-payroll-deductions-formulas.html",
+      "edition": "123rd edition, effective July 1, 2026",
+      "note": "Newfoundland and Labrador's basic personal amount rose from $11,188 to $13,094 effective January 1, 2026. Payroll uses $15,000 in the second half of 2026 as a catch-up. This estimate uses $13,094. The same edition says British Columbia's annual lowest rate is 5.60% and that the 6.14% rate is the payroll catch-up."
+    },
+    "quebec_guide": {
+      "url": "https://www.revenuquebec.ca/documents/en/formulaires/tp/TP-1015.F-V(2026-01).pdf",
+      "edition": "TP-1015.F-V (2026-01)",
+      "note": "Quebec brackets, 14% credit on the basic personal amount of $18,952, and the $1,450 maximum deduction for workers. The worker deduction is not applied here."
+    },
+    "qpp": {
+      "url": "https://www.revenuquebec.ca/en/businesses/source-deductions-and-employer-contributions/calculating-source-deductions-and-contributions/qpp-contributions/maximum-pensionable-earnings-and-contribution-rate/"
+    },
+    "qpip": {
+      "url": "https://www.revenuquebec.ca/en/businesses/source-deductions-and-employer-contributions/calculating-source-deductions-and-contributions/qpip-premiums/maximum-insurable-earnings-and-premium-rate/",
+      "note": "2026 employee rate 0.430% on a $103,000 ceiling, maximum $442.90. The January 2026 T4127 formulas use the same 0.0043 rate and $442.90 maximum."
+    },
+    "cpp": {
+      "url": "https://www.canada.ca/en/services/benefits/publicpensions/cpp/contributions.html",
+      "note": "2026 ceiling $74,600, additional ceiling $85,000, employee maximum $4,230.45 on the first ceiling, and a 4.00% second contribution with a $416 maximum. The employee rate on the first ceiling is 5.95% (11.9% split with the employer). One sentence on that page still says the 4.00% rate is for 2025. The $416 maximum matches the 2026 band."
+    },
+    "ei": {
+      "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/payroll/payroll-deductions-contributions/employment-insurance-ei/ei-premium-rates-maximums.html"
+    },
+    "gis": {
+      "url": "https://www.canada.ca/en/services/benefits/publicpensions/old-age-security/guaranteed-income-supplement/benefit-amount.html",
+      "page_date": "2026-10-13",
+      "note": "October to December 2026 payment table. A single person must have income under $23,112. The maximum payment is not estimated here."
+    }
+  },
+  "federal": {
+    "lowest_rate": 0.14,
+    "brackets": [
+      {"up_to": 58523, "rate": 0.14},
+      {"up_to": 117045, "rate": 0.205},
+      {"up_to": 181440, "rate": 0.26},
+      {"up_to": 258482, "rate": 0.29},
+      {"up_to": null, "rate": 0.33}
+    ],
+    "bpa": {
+      "max": 16452,
+      "min": 14829,
+      "phase_start": 181440,
+      "phase_end": 258482,
+      "enhanced": 1623,
+      "width": 77042
+    }
+  },
+  "provinces": [
+    {
+      "code": "AB",
+      "name": "Alberta",
+      "name_fr": "Alberta",
+      "bpa": {"type": "flat", "amount": 22769},
+      "brackets": [
+        {"up_to": 61200, "rate": 0.08},
+        {"up_to": 154259, "rate": 0.1},
+        {"up_to": 185111, "rate": 0.12},
+        {"up_to": 246813, "rate": 0.13},
+        {"up_to": 370220, "rate": 0.14},
+        {"up_to": null, "rate": 0.15}
+      ]
+    },
+    {
+      "code": "BC",
+      "name": "British Columbia",
+      "name_fr": "Colombie-Britannique",
+      "bpa": {"type": "flat", "amount": 13216},
+      "brackets": [
+        {"up_to": 50363, "rate": 0.056},
+        {"up_to": 100728, "rate": 0.077},
+        {"up_to": 115648, "rate": 0.105},
+        {"up_to": 140430, "rate": 0.1229},
+        {"up_to": 190405, "rate": 0.147},
+        {"up_to": 265545, "rate": 0.168},
+        {"up_to": null, "rate": 0.205}
+      ]
+    },
+    {
+      "code": "MB",
+      "name": "Manitoba",
+      "name_fr": "Manitoba",
+      "bpa": {"type": "manitoba", "max": 15780, "phase_start": 200000, "phase_end": 400000},
+      "brackets": [
+        {"up_to": 47564, "rate": 0.108},
+        {"up_to": 101200, "rate": 0.1275},
+        {"up_to": null, "rate": 0.174}
+      ]
+    },
+    {
+      "code": "NB",
+      "name": "New Brunswick",
+      "name_fr": "Nouveau-Brunswick",
+      "bpa": {"type": "flat", "amount": 13664},
+      "brackets": [
+        {"up_to": 52333, "rate": 0.094},
+        {"up_to": 104666, "rate": 0.14},
+        {"up_to": 193861, "rate": 0.16},
+        {"up_to": null, "rate": 0.195}
+      ]
+    },
+    {
+      "code": "NL",
+      "name": "Newfoundland and Labrador",
+      "name_fr": "Terre-Neuve-et-Labrador",
+      "bpa": {"type": "flat", "amount": 13094},
+      "brackets": [
+        {"up_to": 44678, "rate": 0.087},
+        {"up_to": 89354, "rate": 0.145},
+        {"up_to": 159528, "rate": 0.158},
+        {"up_to": 223340, "rate": 0.178},
+        {"up_to": 285319, "rate": 0.198},
+        {"up_to": 570638, "rate": 0.208},
+        {"up_to": 1141275, "rate": 0.213},
+        {"up_to": null, "rate": 0.218}
+      ]
+    },
+    {
+      "code": "NT",
+      "name": "Northwest Territories",
+      "name_fr": "Territoires du Nord-Ouest",
+      "bpa": {"type": "flat", "amount": 18198},
+      "brackets": [
+        {"up_to": 53003, "rate": 0.059},
+        {"up_to": 106009, "rate": 0.086},
+        {"up_to": 172346, "rate": 0.122},
+        {"up_to": null, "rate": 0.1405}
+      ]
+    },
+    {
+      "code": "NS",
+      "name": "Nova Scotia",
+      "name_fr": "Nouvelle-Écosse",
+      "bpa": {"type": "flat", "amount": 11932},
+      "brackets": [
+        {"up_to": 30995, "rate": 0.0879},
+        {"up_to": 61991, "rate": 0.1495},
+        {"up_to": 97417, "rate": 0.1667},
+        {"up_to": 157124, "rate": 0.175},
+        {"up_to": null, "rate": 0.21}
+      ]
+    },
+    {
+      "code": "NU",
+      "name": "Nunavut",
+      "name_fr": "Nunavut",
+      "bpa": {"type": "flat", "amount": 19659},
+      "brackets": [
+        {"up_to": 55801, "rate": 0.04},
+        {"up_to": 111602, "rate": 0.07},
+        {"up_to": 181439, "rate": 0.09},
+        {"up_to": null, "rate": 0.115}
+      ]
+    },
+    {
+      "code": "ON",
+      "name": "Ontario",
+      "name_fr": "Ontario",
+      "bpa": {"type": "flat", "amount": 12989},
+      "brackets": [
+        {"up_to": 53891, "rate": 0.0505},
+        {"up_to": 107785, "rate": 0.0915},
+        {"up_to": 150000, "rate": 0.1116},
+        {"up_to": 220000, "rate": 0.1216},
+        {"up_to": null, "rate": 0.1316}
+      ],
+      "surtax": {"first_over": 5818, "first_rate": 0.2, "second_over": 7446, "second_rate": 0.36},
+      "tax_reduction_basic": 300,
+      "health_premium": [
+        {"up_to": 20000, "from": 0, "base": 0, "rate": 0, "cap": 0},
+        {"up_to": 36000, "from": 20000, "base": 0, "rate": 0.06, "cap": 300},
+        {"up_to": 48000, "from": 36000, "base": 300, "rate": 0.06, "cap": 450},
+        {"up_to": 72000, "from": 48000, "base": 450, "rate": 0.25, "cap": 600},
+        {"up_to": 200000, "from": 72000, "base": 600, "rate": 0.25, "cap": 750},
+        {"up_to": null, "from": 200000, "base": 750, "rate": 0.25, "cap": 900}
+      ]
+    },
+    {
+      "code": "PE",
+      "name": "Prince Edward Island",
+      "name_fr": "Île-du-Prince-Édouard",
+      "bpa": {"type": "flat", "amount": 15000},
+      "brackets": [
+        {"up_to": 33928, "rate": 0.095},
+        {"up_to": 65820, "rate": 0.1347},
+        {"up_to": 106890, "rate": 0.166},
+        {"up_to": 142520, "rate": 0.1762},
+        {"up_to": 200000, "rate": 0.19},
+        {"up_to": null, "rate": 0.2}
+      ]
+    },
+    {
+      "code": "QC",
+      "name": "Quebec",
+      "name_fr": "Québec",
+      "abatement": 0.165,
+      "bpa": {"type": "flat", "amount": 18952},
+      "brackets": [
+        {"up_to": 54345, "rate": 0.14},
+        {"up_to": 108680, "rate": 0.19},
+        {"up_to": 132245, "rate": 0.24},
+        {"up_to": null, "rate": 0.2575}
+      ]
+    },
+    {
+      "code": "SK",
+      "name": "Saskatchewan",
+      "name_fr": "Saskatchewan",
+      "bpa": {"type": "flat", "amount": 20381},
+      "brackets": [
+        {"up_to": 54532, "rate": 0.105},
+        {"up_to": 155805, "rate": 0.125},
+        {"up_to": null, "rate": 0.145}
+      ]
+    },
+    {
+      "code": "YT",
+      "name": "Yukon",
+      "name_fr": "Yukon",
+      "bpa": {"type": "federal"},
+      "brackets": [
+        {"up_to": 58523, "rate": 0.064},
+        {"up_to": 117045, "rate": 0.09},
+        {"up_to": 181440, "rate": 0.109},
+        {"up_to": 500000, "rate": 0.128},
+        {"up_to": null, "rate": 0.15}
+      ]
+    }
+  ],
+  "cpp": {
+    "ybe": 3500,
+    "ympe": 74600,
+    "yampe": 85000,
+    "employee_rate": 0.0595,
+    "employee_max": 4230.45,
+    "second_rate": 0.04,
+    "second_max": 416
+  },
+  "qpp": {
+    "ybe": 3500,
+    "ympe": 74600,
+    "yampe": 85000,
+    "employee_rate": 0.063,
+    "employee_max": 4479.3,
+    "second_rate": 0.04,
+    "second_max": 416
+  },
+  "ei": {
+    "max_insurable": 68900,
+    "employee_rate": 0.0163,
+    "employee_max": 1123.07,
+    "quebec_rate": 0.013,
+    "quebec_max": 895.7
+  },
+  "qpip": {
+    "max_insurable": 103000,
+    "employee_rate": 0.0043,
+    "employee_max": 442.9
+  },
+  "gis": {
+    "quarter_label": "October to December 2026",
+    "single_income_under": 23112,
+    "single_max_monthly": 1138.9
+  }
+}

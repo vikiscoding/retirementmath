@@ -72,6 +72,7 @@ console.log("check dates ok");
 const pages = [
   ["index.html", "fr/index.html"],
   ["rrif.html", "fr/rrif.html"],
+  ["take-home.html", "fr/take-home.html"],
   ["about.html", "fr/about.html"],
   ["privacy.html", "fr/privacy.html"],
   ["disclaimer.html", "fr/disclaimer.html"],
@@ -88,3 +89,4 @@ for (const [en, fr] of pages) {
 }
 console.log("language links ok");
 require("./test_rrif.js");
+require("./test_take_home.js");

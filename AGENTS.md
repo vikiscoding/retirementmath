@@ -3,7 +3,7 @@
 Read this first before changing anything in this project.
 
 ## Project
-Static utility site for Canadians, named Retirement Math (retirementmath.ca). First page: OAS clawback (recovery tax) calculator, `index.html`. French pages are in `fr/` and served at `/fr/`. Owner: Vikrant, Scarborough ON. Domain DNS is on the main Cloudflare account (vikrant.singh1@outlook.com). Pages hosting is the free plan on retirementmathai@gmail.com, project `retirementmath`, currently https://retirementmath.pages.dev. GitHub repo: `vikiscoding/retirementmath`. Auto-deploy is `.github/workflows/deploy.yml` and needs the `CLOUDFLARE_API_TOKEN` secret. The weekly canada.ca check is `.github/workflows/check-oas-rules.yml`.
+Static utility site for Canadians, named Retirement Math (retirementmath.ca). First page: OAS clawback (recovery tax) calculator, `index.html`. The take-home estimate is `take-home.html` (French: `fr/take-home.html`). The homepage stays the OAS clawback calculator, and take-home figures live in `data/take-home-rules.json`. French pages are in `fr/` and served at `/fr/`. Owner: Vikrant, Scarborough ON. Domain DNS is on the main Cloudflare account (vikrant.singh1@outlook.com). Pages hosting is the free plan on retirementmathai@gmail.com, project `retirementmath`, currently https://retirementmath.pages.dev. GitHub repo: `vikiscoding/retirementmath`. Auto-deploy is `.github/workflows/deploy.yml` and needs the `CLOUDFLARE_API_TOKEN` secret. The weekly canada.ca check is `.github/workflows/check-oas-rules.yml`.
 
 ## Doc map (read in order)
 1. This file

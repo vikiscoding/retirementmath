@@ -34,7 +34,7 @@ jobs:
       - name: Stage the public site
         run: |
           mkdir site
-          cp index.html rrif.html about.html privacy.html disclaimer.html 404.html robots.txt sitemap.xml ads.txt _redirects logo.svg googlea9324d5b76946cff.html.html site/
+          cp index.html rrif.html take-home.html about.html privacy.html disclaimer.html 404.html robots.txt sitemap.xml ads.txt _redirects logo.svg googlea9324d5b76946cff.html.html site/
           cp -r fr site/fr
 
       - name: Create the Pages project if it is missing

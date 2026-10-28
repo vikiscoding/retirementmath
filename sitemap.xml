@@ -29,6 +29,20 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/rrif"/>
   </url>
   <url>
+    <loc>https://retirementmath.ca/take-home</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/take-home"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/take-home"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/take-home"/>
+  </url>
+  <url>
+    <loc>https://retirementmath.ca/fr/take-home</loc>
+    <lastmod>2026-10-27</lastmod>
+    <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/take-home"/>
+    <xhtml:link rel="alternate" hreflang="fr-CA" href="https://retirementmath.ca/fr/take-home"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://retirementmath.ca/take-home"/>
+  </url>
+  <url>
     <loc>https://retirementmath.ca/about</loc>
     <lastmod>2026-10-25</lastmod>
     <xhtml:link rel="alternate" hreflang="en-CA" href="https://retirementmath.ca/about"/>

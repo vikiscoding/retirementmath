@@ -17,7 +17,7 @@ def stamp_times(html, css_class, iso, lang):
     pattern = r'(<time class="%s" datetime=")[^"]*(">)[^<]*(</time>)' % css_class
     return re.subn(pattern, lambda m: m.group(1) + iso + m.group(2) + text + m.group(3), html)
 
-def inline(html_name, json_name, script_id, marker):
+def inline(html_name, json_name, script_id, marker, stamp=True):
     rules = json.loads((root / json_name).read_text(encoding="utf-8"))
     html_path = root / html_name
     html = html_path.read_text(encoding="utf-8")
@@ -26,6 +26,10 @@ def inline(html_name, json_name, script_id, marker):
     new, n = re.subn(pattern, lambda m: m.group(1) + block + m.group(2), html, flags=re.S)
     if n != 1:
         raise SystemExit("%s markers not found exactly once in %s" % (marker, html_name))
+    if not stamp:
+        html_path.write_text(new, encoding="utf-8")
+        print("%s inlined %s" % (html_name, marker))
+        return
     lang = "fr" if html_name.startswith("fr/") else "en"
     checked = rules.get("last_checked") or rules["last_verified"]
     updated = rules.get("last_updated") or checked
@@ -56,3 +60,7 @@ inline("index.html", "data/oas-rules.json", "oas-rules", "RULES")
 inline("fr/index.html", "data/oas-rules.json", "oas-rules", "RULES")
 inline("rrif.html", "data/rrif-rules.json", "rrif-rules", "RRIF_RULES")
 inline("fr/rrif.html", "data/rrif-rules.json", "rrif-rules", "RRIF_RULES")
+inline("take-home.html", "data/take-home-rules.json", "take-home-rules", "TAKEHOME_RULES")
+inline("fr/take-home.html", "data/take-home-rules.json", "take-home-rules", "TAKEHOME_RULES")
+inline("take-home.html", "data/oas-rules.json", "oas-rules", "OAS_RULES", stamp=False)
+inline("fr/take-home.html", "data/oas-rules.json", "oas-rules", "OAS_RULES", stamp=False)
