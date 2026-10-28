@@ -41,6 +41,9 @@ a{color:var(--accent);text-underline-offset:.16em}
 .brand:hover{text-decoration:underline}
 .mark{width:40px;height:40px;display:block;flex:none}
 .bar-domain{font-size:.9rem;letter-spacing:.01em;color:#e7e0d2}
+.tools{flex:1 0 100%;display:flex;flex-wrap:wrap;gap:.15rem 1.1rem;align-items:center}
+.tools a{color:var(--bar-fg);min-height:44px;display:inline-flex;align-items:center;font-weight:700;text-decoration:underline;text-underline-offset:.16em}
+.tools a[aria-current="page"]{text-decoration:none;box-shadow:inset 0 -3px 0 #e2b15a}
 .lang{display:flex;flex-wrap:wrap;gap:.15rem .85rem;align-items:center}
 .lang a,.lang [aria-current]{color:var(--bar-fg);min-height:44px;display:inline-flex;align-items:center;font-weight:700}
 .lang a{text-decoration:underline;text-underline-offset:.16em}
@@ -125,6 +128,11 @@ footer p{margin:.3rem 0}
       <a href="fr/take-home.html" hreflang="fr-CA" lang="fr-CA">Français</a>
     </nav>
     <span class="bar-domain">retirementmath.ca</span>
+    <nav class="tools" aria-label="Calculators">
+      <a href="index.html">OAS clawback calculator</a>
+      <a href="rrif.html">RRIF minimum</a>
+      <a href="take-home.html" aria-current="page">Take-home estimate</a>
+    </nav>
   </div>
 </header>
 <main id="main" class="wrap">

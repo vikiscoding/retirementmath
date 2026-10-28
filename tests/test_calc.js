@@ -86,7 +86,12 @@ for (const [en, fr] of pages) {
   assert.ok(frPage.includes('hreflang="en-CA"'), fr + " hreflang");
   assert.ok(enHtml.includes('class="skip"'), en + " skip");
   assert.ok(frPage.includes('class="skip"'), fr + " skip");
+  assert.ok(enHtml.includes('aria-label="Calculators"'), en + " calculator nav");
+  assert.ok(frPage.includes('aria-label="Calculatrices"'), fr + " calculator nav");
 }
+const missing = fs.readFileSync(path.join(root, "404.html"), "utf8");
+assert.ok(missing.includes('aria-label="Calculators"'), "404 calculator nav");
+assert.ok(missing.includes('href="/rrif"'), "404 RRIF link");
 console.log("language links ok");
 require("./test_rrif.js");
 require("./test_take_home.js");

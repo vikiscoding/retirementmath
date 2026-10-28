@@ -113,3 +113,18 @@ Not built, on purpose:
 ## Two dates (2026-10-27)
 
 The owner asked for the day of the last successful check and the day a saved figure last changed. Those are `last_checked` and `last_updated` in `data/oas-rules.json`. `last_verified` stays equal to `last_checked`. A clean check moves only the check date. A changed threshold moves both. The RRIF page is not part of that check, so it keeps one date. A Monday with no figure change still opens a pull request for the check date. The live page updates when that pull request is merged.
+
+## Calculator links (2026-10-27)
+
+Three reviewers: task flow, accessibility, and trust. The other calculators were only in the footer. The 22 October note deferred a shared header partial until there were three pages. It did not say the tools had to stay at the bottom.
+
+Agreed and built:
+- Every page has a Calculators row in the top bar: OAS clawback calculator, RRIF minimum, and Take-home estimate. French uses the same footer labels: Récupération de la SV, Minimum du FERR, Revenu net estimé.
+- The current calculator has `aria-current="page"` and no underline. The other two stay underlined. The gold line is not the only cue.
+- The row wraps, each link is at least 44px tall, and the bar is not sticky. The skip link still goes to the form.
+- About, Privacy, and Disclaimer stay in the footer, with the three calculators repeated there. The domain stays in the bar.
+
+Not built, on purpose:
+- No hamburger, no shared template, and no new pages.
+- The result cards do not gain extra hand-off links in this pass.
+- The OAS on-page links above the form stay as they are.
