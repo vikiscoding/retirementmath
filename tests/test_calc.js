@@ -77,8 +77,9 @@ assert.strictEqual(countIso(rrifHtml, rrifRules.last_verified), 1, "RRIF ISO dat
 assert.strictEqual(countIso(frRrifHtml, rrifRules.last_verified), 1, "French RRIF ISO date");
 const disclosure = "We may earn a commission if you use these links. The calculator stays free and private.";
 const disclosureFr = "Nous pouvons recevoir une commission si vous utilisez ces liens. Le calculateur reste gratuit et privé.";
-const support = 'This site stays free and private. A small optional <a href="about.html#contribution">contribution</a> helps cover hosting.';
-const supportFr = 'Ce site reste gratuit et privé. Une petite <a href="about.html#contribution">contribution</a> facultative aide à payer l\'hébergement.';
+const pay = "https://buy.stripe.com/eVqeVdbTq2Pmdi0aX34sE00";
+const support = 'This site stays free and private. A small optional <a href="' + pay + '" rel="noopener" target="_blank">contribution</a> helps cover hosting.';
+const supportFr = 'Ce site reste gratuit et privé. Une petite <a href="' + pay + '" rel="noopener" target="_blank">contribution</a> facultative aide à payer l\'hébergement.';
 for (const file of ["index.html", "rrif.html", "take-home.html"]) {
   const page = file === "index.html" ? html : fs.readFileSync(path.join(root, file), "utf8");
   assert.ok(page.includes("Last verified:"), file + " last verified");
@@ -101,7 +102,7 @@ assert.ok(robots.includes("Allow: /"), "robots allow");
 assert.ok(sitemap.includes("<loc>https://retirementmath.ca/</loc>"), "sitemap home");
 assert.ok(sitemap.includes("<loc>https://retirementmath.ca/rrif</loc>"), "sitemap rrif");
 assert.ok(sitemap.includes("<loc>https://retirementmath.ca/take-home</loc>"), "sitemap take-home");
-assert.ok(fs.readFileSync(path.join(root, "404.html"), "utf8").includes('href="/about#contribution"'), "404 contribution");
+assert.ok(fs.readFileSync(path.join(root, "404.html"), "utf8").includes('href="' + pay + '"'), "404 contribution");
 console.log("check dates ok");
 
 const pages = [
@@ -123,6 +124,10 @@ for (const [en, fr] of pages) {
   assert.ok(frPage.includes('class="skip"'), fr + " skip");
   assert.ok(enHtml.includes('aria-label="Calculators"'), en + " calculator nav");
   assert.ok(frPage.includes('aria-label="Calculatrices"'), fr + " calculator nav");
+  assert.ok(enHtml.includes(pay), en + " stripe link");
+  assert.ok(frPage.includes(pay), fr + " stripe link");
+  assert.ok(!enHtml.includes("js.stripe.com"), en + " no stripe script");
+  assert.ok(!frPage.includes("js.stripe.com"), fr + " no stripe script");
   assert.ok(enHtml.includes("Run from Toronto, Ontario."), en + " place");
   assert.ok(frPage.includes("Tenu depuis Toronto, en Ontario."), fr + " place");
   assert.ok(!enHtml.includes("Scarborough"), en + " old city");
@@ -136,10 +141,15 @@ assert.ok(missing.includes('href="/rrif"'), "404 RRIF link");
 assert.ok(missing.includes("Run from Toronto, Ontario."), "404 place");
 const about = fs.readFileSync(path.join(root, "about.html"), "utf8");
 const aboutFr = fs.readFileSync(path.join(root, "fr/about.html"), "utf8");
+assert.ok(about.includes("Your card details go to Stripe, not to this site."), "about stripe");
+assert.ok(about.includes("there is no tax receipt."), "about no receipt");
+assert.ok(aboutFr.includes("Les détails de votre carte vont à Stripe, pas à ce site."), "french about stripe");
 assert.ok(about.includes("Vik runs the site from Toronto, Ontario."), "about name");
 assert.ok(about.includes("experienced IT professional, with credentials in AI development and related work."), "about background");
 assert.ok(aboutFr.includes("Vik tient le site depuis Toronto, en Ontario."), "french about name");
 assert.ok(aboutFr.includes("professionnel d'expérience en technologies de l'information"), "french about background");
+assert.ok(fs.readFileSync(path.join(root, "privacy.html"), "utf8").includes("If you use the contribution link, your card details go to Stripe, not to this site."), "privacy stripe");
+assert.ok(fs.readFileSync(path.join(root, "fr/privacy.html"), "utf8").includes("Si vous utilisez le lien de contribution, les détails de votre carte vont à Stripe, pas à ce site."), "french privacy stripe");
 assert.ok(fs.readFileSync(path.join(root, "privacy.html"), "utf8").includes("Privacy officer: Vik, Toronto, Ontario."), "privacy officer");
 assert.ok(fs.readFileSync(path.join(root, "fr/privacy.html"), "utf8").includes("Personne responsable de la protection des renseignements personnels : Vik, Toronto, Ontario."), "french privacy officer");
 console.log("language links ok");

@@ -17,7 +17,8 @@
 - [x] The OAS calculator shows the last canada.ca check and the day a saved figure last changed. The RRIF page shows its own check date.
 - [x] Take-home estimate at /take-home, in English and French. One 2026 year: federal and provincial tax, the basic personal amount, and employee CPP or QPP, EI, and QPIP. OAS recovery is a separate line and is not subtracted. GIS is a single-person cutoff check, not a payment. Spouse, children, the Canada child benefit, and the disability credit are not on the page. Figures checked 2026-10-27. No account and no ad scripts.
 - [x] Ranking pass on the three calculators (2026-10-27): ISO last-verified line, static worked example, static sources table, FAQ already on the page, privacy sentence, sitemap and robots already allow the three URLs.
-- [x] Light monetization on those three calculators only (2026-10-27): print button, footer contribution line to `/about#contribution`, and two unlabeled service links after the result. No new calculator. The links have no affiliate tag.
+- [x] Light monetization on those three calculators only (2026-10-27): print button, footer contribution line, and two unlabeled service links after the result. No new calculator. The links have no affiliate tag.
+- [x] The word contribution opens the owner's Stripe Payment Link (2026-10-28). No Stripe script and no card form on the site.
 
 ## Monetization order (see panel review)
 The three calculators and the light links above are in place. The site stops there.

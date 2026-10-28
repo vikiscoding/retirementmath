@@ -147,6 +147,10 @@ Not built, on purpose:
 - No new calculator. CPP start age, a full GIS payment, and pension splitting stay parked.
 - The OAS on-page links above the form stay as they are.
 
+## Stripe contribution link (2026-10-28)
+
+The owner supplied a Stripe Payment Link. The word contribution now opens https://buy.stripe.com/eVqeVdbTq2Pmdi0aX34sE00. The About note says card details go to Stripe and that there is no tax receipt. The privacy page has the same card sentence in English and French. No Stripe script and no card form were added. The 2026-10-27 note above records the earlier static About link.
+
 ## Owner line (2026-10-28)
 
 The owner asked to be named Vik on the public pages, to say he is an experienced IT professional with AI development and related work, and to say the site is run from Toronto, Ontario. The 2026-10-22 About note above records what was true then. The designation sentence now says the site does not claim a tax or financial-planning designation. No employer, year count, or certificate is listed, because none was supplied.
