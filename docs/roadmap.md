@@ -19,6 +19,8 @@
 - [x] Ranking pass on the three calculators (2026-10-27): ISO last-verified line, static worked example, static sources table, FAQ already on the page, privacy sentence, sitemap and robots already allow the three URLs.
 - [x] Light monetization on those three calculators only (2026-10-27): print button, footer contribution line, and two unlabeled service links after the result. No new calculator. The links have no affiliate tag. The service links were turned off on 2026-10-28.
 - [x] The word contribution opens the owner's Stripe Payment Link (2026-10-28). No Stripe script and no card form on the site.
+- [x] Quick wins from the 2026-10-31 panel review: form on the first phone screen, optional fields folded, one full clawback line (canada.ca), official figures table written into the HTML by build.py, social images, header domain removed, Cloudflare named as host on the privacy page, clearer contribution line.
+- [ ] Owner: turn off Cloudflare Bot Fight Mode or JavaScript Detections for retirementmath.ca. It adds a challenge script to every page, which the privacy page does not mention.
 - [x] Copy, print, and save use the result summary only (2026-10-28). Tax software and robo-advisor links are off until the owner asks. A contribution link shows beside the result.
 
 ## Monetization order (see panel review)

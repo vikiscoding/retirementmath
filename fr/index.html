@@ -18,7 +18,11 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="fr_CA">
 <meta property="og:locale:alternate" content="en_CA">
-<meta name="twitter:card" content="summary">
+<meta property="og:image" content="https://retirementmath.ca/og-fr.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Retirement Math : calculatrices de retraite pour le Canada">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Calculatrice de récupération de la SV 2026 (Canada) | Retirement Math">
 <meta name="twitter:description" content="Estimez l'impôt de récupération de la Sécurité de la vieillesse (clawback de la SV) à partir de votre revenu net de toutes provenances. Seuils officiels de canada.ca.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%231e4d3a'/%3E%3Crect x='7' y='10' width='18' height='3.5' rx='1.75' fill='%23f6f1e6'/%3E%3Crect x='7' y='18.5' width='18' height='3.5' rx='1.75' fill='%23e2b15a'/%3E%3C/svg%3E" type="image/svg+xml">
@@ -39,7 +43,6 @@ a{color:var(--accent);text-underline-offset:.16em}
 .brand{display:flex;align-items:center;gap:.7rem;color:inherit;font-weight:700;text-decoration:none;min-height:44px;letter-spacing:-.02em}
 .brand:hover{text-decoration:underline}
 .mark{width:40px;height:40px;display:block;flex:none}
-.bar-domain{font-size:.9rem;letter-spacing:.01em;color:#e7e0d2}
 .tools{flex:1 0 100%;display:flex;flex-wrap:wrap;gap:.15rem 1.1rem;align-items:center}
 .tools a{color:var(--bar-fg);min-height:44px;display:inline-flex;align-items:center;font-weight:700;text-decoration:underline;text-underline-offset:.16em}
 .tools a[aria-current="page"]{text-decoration:none;box-shadow:inset 0 -3px 0 #e2b15a}
@@ -56,6 +59,10 @@ h3{font-size:1.05rem;margin:1.35rem 0 .45rem}
 .lede{color:var(--muted);margin:0;max-width:40rem}
 .facts{display:flex;flex-wrap:wrap;gap:.45rem;margin:1rem 0 0;padding:0;list-style:none}
 .facts li{margin:0;max-width:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:.45rem .75rem;font-size:.92rem;line-height:1.35}
+.stamp{margin:.55rem 0 0;color:var(--muted);font-size:.95rem}
+.more{border-bottom:0;margin-top:1.15rem}
+.more summary{color:var(--accent)}
+.more > label:first-of-type{margin-top:.35rem}
 .onpage{display:flex;flex-wrap:wrap;gap:.15rem 1.1rem;margin:.35rem 0 0;padding:0}
 .onpage a{min-height:44px;display:inline-flex;align-items:center}
 .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:1.2rem 1.2rem 1.35rem;margin:1.35rem 0 0;box-shadow:var(--shadow)}
@@ -146,7 +153,6 @@ footer p{margin:.3rem 0}
       <a href="../index.html" hreflang="en-CA" lang="en-CA">English</a>
       <span lang="fr-CA" aria-current="true">Français</span>
     </nav>
-    <span class="bar-domain">retirementmath.ca</span>
     <nav class="tools" aria-label="Calculatrices">
       <a href="./" aria-current="page">Récupération de la SV</a>
       <a href="rrif.html">Minimum du FERR</a>
@@ -161,19 +167,8 @@ footer p{margin:.3rem 0}
   <div class="page-intro">
     <p class="eyebrow">Sécurité de la vieillesse</p>
     <h1>Calculatrice de récupération de la SV pour 2026</h1>
-    <p class="lede">Estimez l'impôt de récupération de la Sécurité de la vieillesse, aussi appelé clawback, à partir de votre revenu net de toutes provenances. Pour les paiements de juillet 2026 à juin 2028, le calcul utilise votre revenu de 2025 ou de 2026. Les chiffres viennent de canada.ca. Rien de ce que vous écrivez ne quitte votre navigateur.</p>
-    <p>Dernière vérification : <time class="iso-date" datetime="2026-10-27">2026-10-27</time></p>
-    <p>Confidentialité : rien de ce que vous écrivez ne quitte votre navigateur, et ce n'est pas conservé. Lisez la <a href="privacy.html">politique de confidentialité</a>.</p>
-    <ul class="facts">
-      <li>15 % du revenu au-dessus du seuil</li>
-      <li>Le revenu de 2025 commence à 93 454 $</li>
-      <li>Vérifié sur canada.ca le <time class="verified-date" datetime="2026-10-27">27 octobre 2026</time>. Dernier changement trouvé le <time class="updated-date" datetime="2026-10-22">22 octobre 2026</time>.</li>
-    </ul>
-    <nav class="onpage" aria-label="Sur cette page">
-      <a href="#who">À qui ça s'adresse</a>
-      <a href="#how">Comment ça marche</a>
-      <a href="#questions">Questions</a>
-    </nav>
+    <p class="lede">Estimez l'impôt de récupération de la Sécurité de la vieillesse, aussi appelé clawback, à partir de votre revenu net de toutes provenances. Pour les paiements de juillet 2026 à juin 2028, le calcul utilise votre revenu de 2025 ou de 2026. Rien de ce que vous écrivez ne quitte votre navigateur ni n'est conservé (<a href="privacy.html">politique de confidentialité</a>).</p>
+    <p class="stamp">Dernière vérification : <time class="iso-date" datetime="2026-10-27">2026-10-27</time> sur canada.ca.</p>
   </div>
 <form id="calc-form" class="card" tabindex="-1" novalidate>
   <label for="income">Revenu net de toutes provenances pour l'année
@@ -192,6 +187,8 @@ footer p{margin:.3rem 0}
   <label for="period">Année de revenu et période de remboursement</label>
   <select id="period" name="period"></select>
 
+  <details class="more">
+  <summary>Pension partielle ou reportée? (facultatif)</summary>
   <label for="years">Années vécues au Canada après 18 ans (facultatif)
     <span class="hint">40 ans ou plus, c'est une pleine pension. De 10 à 39 ans, c'est une pension partielle.</span></label>
   <input id="years" name="years" type="number" min="10" max="40" step="1" value="40">
@@ -199,6 +196,7 @@ footer p{margin:.3rem 0}
   <label for="defer">Mois de report de la SV après 65 ans (facultatif)
     <span class="hint">0,6 % de plus par mois, jusqu'à 60 mois (36 %).</span></label>
   <input id="defer" name="defer" type="number" min="0" max="60" step="1" value="0">
+  </details>
 
   <button type="submit">Calculer</button>
 </form>
@@ -225,8 +223,7 @@ footer p{margin:.3rem 0}
       <tbody>
         <tr><th scope="row">SV estimée avant récupération (par année)</th><td class="num" id="r-oas"></td></tr>
         <tr><th scope="row">La récupération commence à</th><td class="num" id="r-min"></td></tr>
-        <tr><th scope="row">Pleine récupération sur canada.ca</th><td class="num" id="r-official"></td></tr>
-        <tr><th scope="row">Pleine récupération dans cette estimation</th><td class="num" id="r-full"></td></tr>
+        <tr><th scope="row">Pleine récupération (canada.ca)</th><td class="num" id="r-official"></td></tr>
       </tbody>
     </table>
     <p id="r-explain"></p>
@@ -243,7 +240,7 @@ footer p{margin:.3rem 0}
       <p id="copy-status" class="hint" aria-live="polite"></p>
     </div>
     <aside class="donate">
-      <p>Cette calculatrice reste gratuite et privée.</p>
+      <p>Les contributions gardent cette calculatrice gratuite, privée et à jour avec les chiffres officiels.</p>
       <a class="donate-link" href="https://buy.stripe.com/eVqeVdbTq2Pmdi0aX34sE00" rel="noopener" target="_blank">Faire une petite contribution</a>
       <p class="hint">Ouvre Stripe. Les détails de votre carte vont à Stripe, pas à ce site.</p>
     </aside>
@@ -261,13 +258,24 @@ footer p{margin:.3rem 0}
 
 <section class="reading" id="how">
   <h2>Comment fonctionne la récupération de la SV</h2>
+  <ul class="facts">
+    <li>15 % du revenu au-dessus du seuil</li>
+    <li>Le revenu de 2025 commence à 93 454 $</li>
+    <li>Vérifié sur canada.ca le <time class="verified-date" datetime="2026-10-27">27 octobre 2026</time>. Dernier changement trouvé le <time class="updated-date" datetime="2026-10-22">22 octobre 2026</time>.</li>
+  </ul>
   <p>Si votre revenu net de toutes provenances dépasse le seuil annuel, vous remboursez 15 % du montant au-dessus du seuil. Le remboursement ne peut pas dépasser la SV que vous recevez. L'Agence du revenu du Canada le retient sur vos versements mensuels de la SV, de juillet de l'année suivante à juin de l'année d'après.</p>
   <p>Exemple de canada.ca : revenu de 100 000 $ en 2025, seuil de 93 454 $. 100 000 $ moins 93 454 $ font 6 546 $. 15 % de ce montant font 981,90 $ à rembourser de juillet 2026 à juin 2027.</p>
   <h3 id="official-figures">Chiffres officiels utilisés</h3>
   <div class="table-wrap" tabindex="0" role="region" aria-labelledby="official-figures">
   <table id="rules-table">
     <thead><tr><th scope="col">Année de revenu</th><th scope="col">Période de remboursement</th><th scope="col">Le seuil</th><th scope="col">Pleine récupération, 65 à 74 ans</th><th scope="col">Pleine récupération, 75 ans et plus</th></tr></thead>
-    <tbody></tbody>
+    <tbody>
+<!-- RULES_TABLE:BEGIN (generated from data/oas-rules.json by scripts/build.py; do not hand edit) -->
+<tr><th scope="row">2025</th><td>juillet 2026 à juin 2027</td><td>93 454 $</td><td>152 062 $</td><td>157 923 $</td></tr>
+<tr><th scope="row">2026 (estimation)</th><td>juillet 2027 à juin 2028</td><td>95 323 $</td><td>155 320 $</td><td>161 320 $</td></tr>
+<tr><th scope="row">2024</th><td>juillet 2025 à juin 2026</td><td>90 997 $</td><td>148 451 $</td><td>154 196 $</td></tr>
+    <!-- RULES_TABLE:END -->
+    </tbody>
   </table>
   </div>
   <p class="hint">Vérifié sur canada.ca le <time class="verified-date" datetime="2026-10-27">27 octobre 2026</time>. Dernier changement trouvé le <time class="updated-date" datetime="2026-10-22">22 octobre 2026</time>.</p>
@@ -407,21 +415,11 @@ function round2(n) { return Math.round(n * 100) / 100; }
     return t;
   }
   var sel = document.getElementById("period");
-  var tbody = document.querySelector("#rules-table tbody");
   rules.periods.forEach(function (p) {
     var o = document.createElement("option");
     o.value = p.id;
     o.textContent = "Revenu de " + p.income_year + ", remboursé de " + periodFr(p.payment_period) + (p.status === "estimate" ? " (les plafonds sont des estimations)" : "");
     sel.appendChild(o);
-    var tr = document.createElement("tr");
-    [p.income_year + (p.status === "estimate" ? " (estimation)" : ""), periodFr(p.payment_period), fmt0.format(p.threshold_min), fmt0.format(p.threshold_max_65_74), fmt0.format(p.threshold_max_75_plus)]
-      .forEach(function (t, i) {
-        var cell = document.createElement(i === 0 ? "th" : "td");
-        if (i === 0) cell.scope = "row";
-        cell.textContent = t;
-        tr.appendChild(cell);
-      });
-    tbody.appendChild(tr);
   });
   var months = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"];
   function stampDate(selector, iso) {
@@ -496,14 +494,13 @@ function round2(n) { return Math.round(n * 100) / 100; }
     set("r-keep-m", fmt.format(r.keptMonthly));
     set("r-min", fmt0.format(r.thresholdMin));
     set("r-official", fmt0.format(r.officialMax) + (r.period.status === "estimate" ? " (estimation)" : ""));
-    set("r-full", fmt0.format(r.fullClawbackAt));
     var ex;
     if (!r.eligible) ex = "Il faut au moins 10 ans au Canada après 18 ans pour recevoir la SV. Il n'y a donc rien à récupérer.";
     else if (r.annualRepayment === 0) ex = "Votre revenu est égal ou inférieur au seuil de " + fmt0.format(r.thresholdMin) + ". Vous gardez toute votre SV.";
-    else if (r.keptAnnual === 0) ex = "Votre revenu dépasse la ligne de pleine récupération de cette estimation. Toute la pension de SV est remboursée.";
+    else if (r.keptAnnual === 0) ex = "Votre revenu est assez élevé pour que toute la pension de SV soit remboursée.";
     else ex = "Votre revenu dépasse le seuil de " + fmt.format(income - r.thresholdMin) + ". 15 % de cet écart font " + fmt.format(r.annualRepayment) + ", soit environ " + fmt.format(r.monthlyRepayment) + " par mois, de " + periodFr(r.period.payment_period) + ".";
     set("r-explain", ex);
-    set("r-note", "La première ligne de pleine récupération est le chiffre de canada.ca" + (r.period.status === "estimate" ? " (estimation)." : ".") + " Cette calculatrice utilise la SV maximale du " + quarterFr(rules.current_quarter) + ". Ce montant change chaque trimestre, donc la ligne de pleine récupération de cette estimation peut différer de quelques milliers de dollars.");
+    set("r-note", "La ligne de pleine récupération ci-dessus est le chiffre de canada.ca" + (r.period.status === "estimate" ? " (estimation)." : ".") + " Cette calculatrice utilise la SV maximale du " + quarterFr(rules.current_quarter) + ". Ce montant change chaque trimestre, donc le revenu où cette estimation atteint la pleine récupération peut s'en écarter de quelques milliers de dollars.");
     document.getElementById("copy-status").textContent = "";
     var res = document.getElementById("results"); res.hidden = false; res.focus();
   });

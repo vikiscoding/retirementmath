@@ -21,6 +21,36 @@ def stamp_iso(html, css_class, iso):
     pattern = r'(<time class="%s" datetime=")[^"]*(">)[^<]*(</time>)' % css_class
     return re.subn(pattern, lambda m: m.group(1) + iso + m.group(2) + iso + m.group(3), html)
 
+PERIOD_FR = {"January": "janvier", "February": "février", "March": "mars", "April": "avril", "May": "mai", "June": "juin",
+             "July": "juillet", "August": "août", "September": "septembre", "October": "octobre", "November": "novembre", "December": "décembre"}
+
+def money0(n, lang):
+    whole = "{:,}".format(int(round(n)))
+    if lang == "fr":
+        return whole.replace(",", " ") + " $"
+    return "$" + whole
+
+def rules_table_rows(html, rules, lang):
+    """Write the official figures table into the page so it reads without JavaScript."""
+    rows = []
+    for p in rules["periods"]:
+        estimate = p.get("status") == "estimate"
+        if lang == "fr":
+            year = "%d%s" % (p["income_year"], " (estimation)" if estimate else "")
+            period = p["payment_period"].replace(" to ", " à ")
+            for en, fr in PERIOD_FR.items():
+                period = period.replace(en, fr)
+        else:
+            year = "%d%s" % (p["income_year"], " (estimate)" if estimate else "")
+            period = p["payment_period"]
+        cells = [money0(p[k], lang) for k in ("threshold_min", "threshold_max_65_74", "threshold_max_75_plus")]
+        rows.append('<tr><th scope="row">%s</th><td>%s</td>%s</tr>' % (year, period, "".join("<td>%s</td>" % c for c in cells)))
+    pattern = r'(<!-- RULES_TABLE:BEGIN[^>]*-->\n).*?(\n *<!-- RULES_TABLE:END -->)'
+    new, n = re.subn(pattern, lambda m: m.group(1) + "\n".join(rows) + m.group(2), html, flags=re.S)
+    if n != 1:
+        raise SystemExit("RULES_TABLE markers not found exactly once")
+    return new
+
 def inline(html_name, json_name, script_id, marker, stamp=True):
     rules = json.loads((root / json_name).read_text(encoding="utf-8"))
     html_path = root / html_name
@@ -35,6 +65,8 @@ def inline(html_name, json_name, script_id, marker, stamp=True):
         print("%s inlined %s" % (html_name, marker))
         return
     lang = "fr" if html_name.startswith("fr/") else "en"
+    if "RULES_TABLE:BEGIN" in new:
+        new = rules_table_rows(new, rules, lang)
     checked = rules.get("last_checked") or rules["last_verified"]
     updated = rules.get("last_updated") or checked
     new, n_date = stamp_times(new, "verified-date", checked, lang)

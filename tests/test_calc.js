@@ -189,5 +189,43 @@ assert.ok(fs.readFileSync(path.join(root, "fr/privacy.html"), "utf8").includes("
 assert.ok(fs.readFileSync(path.join(root, "privacy.html"), "utf8").includes("Privacy officer: Vik, Toronto, Ontario."), "privacy officer");
 assert.ok(fs.readFileSync(path.join(root, "fr/privacy.html"), "utf8").includes("Personne responsable de la protection des renseignements personnels : Vik, Toronto, Ontario."), "french privacy officer");
 console.log("language links ok");
+
+// Quick wins (2026-10-31): static rules table, one full clawback line, folded optional fields, social image, host named.
+function staticRows(page) {
+  const body = page.match(/<!-- RULES_TABLE:BEGIN[^>]*-->\r?\n([\s\S]*?)\r?\n *<!-- RULES_TABLE:END -->/);
+  assert.ok(body, "rules table markers");
+  return body[1];
+}
+const enRows = staticRows(html), frRows = staticRows(frHtml);
+assert.strictEqual((enRows.match(/<tr>/g) || []).length, rules.periods.length, "static OAS rows");
+assert.strictEqual((frRows.match(/<tr>/g) || []).length, rules.periods.length, "static French OAS rows");
+for (const p of rules.periods) {
+  assert.ok(enRows.includes("$" + p.threshold_min.toLocaleString("en-CA")), "static row " + p.id);
+  assert.ok(enRows.includes(p.payment_period), "static period " + p.id);
+}
+assert.ok(frRows.includes("93 454 $") && frRows.includes("juillet 2026 à juin 2027"), "static French row format");
+assert.ok(!html.includes("tbody.appendChild"), "table not rebuilt in JS");
+for (const page of [html, frHtml]) {
+  assert.ok(!page.includes('id="r-full"'), "second full clawback line removed");
+  assert.ok(page.includes('id="r-official"'), "canada.ca full clawback line kept");
+  assert.ok(/<details class="more">[\s\S]*id="years"[\s\S]*id="defer"[\s\S]*<\/details>/.test(page), "optional fields folded");
+  assert.ok(page.indexOf('class="facts"') > page.indexOf('id="calc-form"'), "fact chips below the form");
+}
+const deploy = fs.readFileSync(path.join(root, ".github/workflows/deploy.yml"), "utf8");
+for (const img of ["og.png", "og-fr.png"]) {
+  assert.ok(fs.existsSync(path.join(root, img)), img + " exists");
+  assert.ok(deploy.includes(" " + img + " "), img + " deployed");
+}
+for (const [en, fr] of pages) {
+  const enHtml = fs.readFileSync(path.join(root, en), "utf8");
+  const frPage = fs.readFileSync(path.join(root, fr), "utf8");
+  assert.ok(enHtml.includes('content="https://retirementmath.ca/og.png"'), en + " og:image");
+  assert.ok(frPage.includes('content="https://retirementmath.ca/og-fr.png"'), fr + " og:image");
+  assert.ok(enHtml.includes('content="summary_large_image"') && frPage.includes('content="summary_large_image"'), en + " large card");
+  assert.ok(!enHtml.includes("bar-domain") && !frPage.includes("bar-domain"), en + " header domain gone");
+}
+assert.ok(fs.readFileSync(path.join(root, "privacy.html"), "utf8").includes("hosted by Cloudflare"), "privacy names host");
+assert.ok(fs.readFileSync(path.join(root, "fr/privacy.html"), "utf8").includes("hébergé par Cloudflare"), "French privacy names host");
+console.log("quick wins ok");
 require("./test_rrif.js");
 require("./test_take_home.js");
