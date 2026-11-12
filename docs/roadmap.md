@@ -1,8 +1,8 @@
 # Roadmap
 
 ## Before launch (owner decisions, nothing done yet)
-- [x] Register retirementmath.ca on the main Cloudflare account (vikrant.singh1@outlook.com).
-- [x] Host on Cloudflare Pages free tier, account retirementmathai@gmail.com. Project `retirementmath`. Live at https://retirementmath.pages.dev.
+- [x] Register retirementmath.ca on the main Cloudflare account.
+- [x] Host on Cloudflare Pages free tier, on the site's Cloudflare account. Project `retirementmath`. Live at https://retirementmath.pages.dev.
 - [x] Point retirementmath.ca at the Pages site. https://retirementmath.ca/ serves the calculator.
 - [x] Store a Cloudflare Pages API token as the GitHub secret `CLOUDFLARE_API_TOKEN`.
 - [x] Verify retirementmath.ca in Google Search Console. Bing Webmaster Tools is not connected. The owner has to sign in and add the site.
