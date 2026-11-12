@@ -1,6 +1,6 @@
 # Test, then publish the public HTML to Cloudflare Pages on every push to main.
 # Secrets (set on the repo, never committed):
-#   CLOUDFLARE_API_TOKEN  Pages edit on the retirementmathai@gmail.com account
+#   CLOUDFLARE_API_TOKEN  Pages edit on the site's Cloudflare account
 #   CLOUDFLARE_ACCOUNT_ID That account's ID
 name: deploy
 
